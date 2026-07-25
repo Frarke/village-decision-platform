@@ -1,0 +1,16 @@
+[global]
+developmentMode = false
+
+[theme]
+primaryColor = "#168AAD"
+backgroundColor = "#F3F6F9"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#102A43"
+font = "sans serif"
+
+[server]
+headless = true
+maxUploadSize = 50
+
+[browser]
+gatherUsageStats = false

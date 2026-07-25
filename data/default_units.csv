@@ -1,0 +1,5 @@
+unit_id,unit_name,risk,haz,distance_m,rainfall_mm,slope_deg,height_m,catchment_km2,gully_level,foot_space_m,fs0,k_rain,identified_or_risk_area,focus_unit,safe_drainage_outlet,artificial_or_bare,anchor_condition,slip_surface_or_review,slip_surface_confirmed,motion_path,accessible,wall_back_drainage,key_paths,risk_weight,evidence_level,notes
+U01,近承灾体中高风险人工切坡,4,4,35,1800,42,12,0.03,1,1.5,1.05,0.82,True,True,True,True,True,True,False,True,True,True,2,4.5,示例参数,示例治理单元；抗滑桩需后续勘察复核
+U02,低风险浅表冲刷缓坡,2,2,80,1450,20,6,0.015,0,3.0,1.18,0.90,False,False,True,False,True,False,False,False,True,True,0,1.5,示例参数,示例治理单元；因近承灾体纳入治理对象库
+U03,沟谷汇流与物源输移单元,4,4,120,1700,28,8,0.12,3,4.0,1.00,0.80,True,True,True,False,True,False,False,True,True,True,3,5.0,示例参数,示例治理单元；突出沟谷断链需求
+U04,降雨敏感中风险坡面,3,3,65,1900,32,9,0.025,0,2.5,1.12,0.85,False,True,True,True,True,False,False,False,True,True,1,3.0,示例参数,示例治理单元；突出排水与坡面防护协同

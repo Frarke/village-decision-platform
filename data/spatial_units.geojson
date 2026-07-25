@@ -1,0 +1,11 @@
+{
+  "type": "FeatureCollection",
+  "name": "示例治理单元",
+  "metadata": {"data_nature": "系统功能验证使用的示例治理单元，可替换为实际调查GeoJSON数据", "crs": "WGS84"},
+  "features": [
+    {"type":"Feature","properties":{"unit_id":"U01","name":"近承灾体中高风险人工切坡","hazard_type":"潜在滑坡","material_type":"花岗岩残坡积土","protected_object":"示例居民点与村道"},"geometry":{"type":"Polygon","coordinates":[[[116.090,25.094],[116.096,25.093],[116.098,25.098],[116.092,25.100],[116.090,25.094]]]}},
+    {"type":"Feature","properties":{"unit_id":"U02","name":"低风险浅表冲刷缓坡","hazard_type":"坡面冲刷","material_type":"残坡积砂质黏土","protected_object":"示例居民点"},"geometry":{"type":"Polygon","coordinates":[[[116.101,25.091],[116.107,25.091],[116.108,25.096],[116.102,25.097],[116.101,25.091]]]}},
+    {"type":"Feature","properties":{"unit_id":"U03","name":"沟谷汇流与物源输移单元","hazard_type":"沟谷物源输移","material_type":"坡积物与沟谷松散堆积物","protected_object":"示例下游沟口居民点"},"geometry":{"type":"Polygon","coordinates":[[[116.086,25.105],[116.092,25.106],[116.094,25.112],[116.088,25.114],[116.086,25.105]]]}},
+    {"type":"Feature","properties":{"unit_id":"U04","name":"降雨敏感中风险坡面","hazard_type":"降雨型浅层滑坡","material_type":"强风化花岗岩与残坡积土","protected_object":"示例村道与房屋"},"geometry":{"type":"Polygon","coordinates":[[[116.099,25.104],[116.106,25.103],[116.108,25.109],[116.101,25.111],[116.099,25.104]]]}}
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "data_nature": "示例空间拓扑关系，仅用于功能验证，不代表现场实测结论",
+  "paths": [
+    {"path_id":"R01","name":"北侧沟谷风险传播路径","source_unit":"U03","transport_unit":"U04","receptor_unit":"U01","receptor_name":"示例居民点与村道","key":true},
+    {"path_id":"R02","name":"东侧坡面风险传播路径","source_unit":"U04","transport_unit":"U02","receptor_unit":"U01","receptor_name":"示例房屋组A","key":true},
+    {"path_id":"R03","name":"沟口次级风险路径","source_unit":"U03","transport_unit":"U03","receptor_unit":"U02","receptor_name":"示例房屋组B","key":true}
+  ]
+}

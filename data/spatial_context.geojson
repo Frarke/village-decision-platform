@@ -1,0 +1,12 @@
+{
+  "type":"FeatureCollection",
+  "name":"示例空间背景要素",
+  "metadata":{"data_nature":"仅用于展示空间交互与图层组织，不代表现场调查成果"},
+  "features":[
+    {"type":"Feature","properties":{"category":"村庄范围","name":"示例村庄范围"},"geometry":{"type":"Polygon","coordinates":[[[116.080,25.086],[116.114,25.086],[116.115,25.118],[116.081,25.119],[116.080,25.086]]]}},
+    {"type":"Feature","properties":{"category":"沟谷或水系","name":"示例沟谷"},"geometry":{"type":"LineString","coordinates":[[116.090,25.114],[116.094,25.106],[116.097,25.100],[116.101,25.095],[116.106,25.089]]}},
+    {"type":"Feature","properties":{"category":"道路","name":"示例村道"},"geometry":{"type":"LineString","coordinates":[[116.083,25.091],[116.093,25.096],[116.103,25.098],[116.112,25.104]]}},
+    {"type":"Feature","properties":{"category":"房屋或承灾体","name":"示例房屋组A"},"geometry":{"type":"Point","coordinates":[116.099,25.094]}},
+    {"type":"Feature","properties":{"category":"房屋或承灾体","name":"示例房屋组B"},"geometry":{"type":"Point","coordinates":[116.106,25.096]}}
+  ]
+}
