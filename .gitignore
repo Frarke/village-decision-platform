@@ -3,3 +3,11 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .streamlit/secrets.toml
+venv/
+**pycache**/
+*.pyc
+references_private/
+data_private/
+runs/
+temp/
+tmp/
