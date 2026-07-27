@@ -10,10 +10,15 @@ app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
 if app.exception:
     raise RuntimeError("；".join(str(item.value) for item in app.exception))
 visible = "\n".join(str(item.value) for item in app.markdown)
-if "GIS智能研判与多目标决策平台" not in visible:
+if "综合整治工程技术多目标优化智能研判与决策平台" not in visible:
     raise RuntimeError("第三版正式标题未渲染。")
-if not app.radio or list(app.radio[0].options) != ["项目总览", "数据与单元", "智能研判", "方案比选", "空间协同", "成果管理"]:
-    raise RuntimeError("六个一级模块未按预期渲染。")
+if not app.radio or list(app.radio[0].options) != [
+    "阶段一 治理对象与基础数据",
+    "阶段二 多维综合评估",
+    "阶段三 多目标优化求解",
+    "阶段四 方案评审与决策输出",
+]:
+    raise RuntimeError("四个一级阶段未按预期渲染。")
 if any(term in visible for term in ["MVP", "Demo版本", "AI生成"]):
     raise RuntimeError("前台包含不应出现的开发定位表述。")
-print("Streamlit第三版首屏检查通过：0个异常，六个一级模块与GIS主工作区成功渲染。")
+print("Streamlit首屏检查通过：0个异常，四个一级阶段与主工作区成功渲染。")

@@ -98,7 +98,10 @@ class RoundTwoAcceptanceTests(unittest.TestCase):
         one = evaluate_unit(self.units[0], (grid,), self.config)
         two = evaluate_unit(self.units[0], (drainage, grid), self.config)
         self.assertGreater(two["lifecycle_cost"], one["lifecycle_cost"])
-        self.assertLess(two["economy"], one["economy"])
+        self.assertGreaterEqual(two["economy"], 0.0)
+        self.assertLessEqual(two["economy"], 100.0)
+        self.assertGreaterEqual(two["lci_score"], 0.0)
+        self.assertLessEqual(two["lci_score"], 100.0)
         self.assertAlmostEqual(two["actual_cost"], two["lifecycle_cost"])
 
     def test_25_windows_scripts_do_not_depend_on_py_only(self):

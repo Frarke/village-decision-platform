@@ -34,8 +34,27 @@ from model.workflow import GUIDED_STEPS, STEP_OUTPUTS, extract_unit_id, next_ste
 
 
 DATA_DIR = ROOT / "data"
-MODULES = ("项目总览", "数据与单元", "智能研判", "方案比选", "空间协同", "成果管理")
-STEP_MODULE = ("项目总览", "数据与单元", "智能研判", "智能研判", "智能研判", "方案比选", "空间协同", "成果管理")
+MODULES = ("阶段一 治理对象与基础数据", "阶段二 多维综合评估", "阶段三 多目标优化求解", "阶段四 方案评审与决策输出")
+STEP_MODULE = (
+    "阶段一 治理对象与基础数据",
+    "阶段一 治理对象与基础数据",
+    "阶段二 多维综合评估",
+    "阶段二 多维综合评估",
+    "阶段三 多目标优化求解",
+    "阶段三 多目标优化求解",
+    "阶段四 方案评审与决策输出",
+    "阶段四 方案评审与决策输出",
+)
+STEP_STAGE_TITLE = {
+    0: "阶段一：治理对象与基础数据",
+    1: "阶段一：治理对象与基础数据",
+    2: "阶段二：多维综合评估",
+    3: "阶段二：多维综合评估",
+    4: "阶段三：多目标优化求解",
+    5: "阶段三：多目标优化求解",
+    6: "阶段四：方案评审与决策输出",
+    7: "阶段四：方案评审与决策输出",
+}
 COLORS = {"navy": "#102A43", "blue": "#173F5F", "cyan": "#168AAD", "muted": "#6B7C8F", "paper": "#F4F7FA", "red": "#C0392B", "orange": "#D97706", "green": "#2E7D5B"}
 RISK_COLORS = {1: "#DDEFE5", 2: "#A9D8C0", 3: "#F2C66D", 4: "#E78856", 5: "#C0392B"}
 
@@ -82,15 +101,15 @@ def load_defaults() -> tuple[pd.DataFrame, pd.DataFrame, dict, dict, dict]:
 def state_defaults() -> dict[str, object]:
     units, measures, units_geojson, context_geojson, topology = load_defaults()
     return {
-        "mode": "引导式研判", "current_step": 0, "current_module": "项目总览", "module_nav": "项目总览", "pending_module": None, "completed_steps": set(),
+        "mode": "引导式研判", "current_step": 0, "current_module": MODULES[0], "module_nav": MODULES[0], "pending_module": None, "completed_steps": set(),
         "intelligence_page": "工程措施准入", "last_intelligence_step": -1,
         "project_name": "村庄地质灾害综合整治研究", "village_name": "示例研究区", "data_version": "V3-示例数据-20260722",
         "units_df": units.copy(), "measures_df": measures.copy(), "units_geojson": copy.deepcopy(units_geojson),
         "context_geojson": copy.deepcopy(context_geojson), "topology": copy.deepcopy(topology), "editor_version": 0,
-        "selected_unit": "U01", "unit_selector_widget": "U01", "pending_unit_selector": None, "selected_plan_label": "综合折中方案",
+        "selected_unit": "U01", "unit_selector_widget": "U01", "pending_unit_selector": None, "selected_plan_label": "综合折中代表方案",
         "map_background": "在线街道底图", "display_mode": "治理前风险", "show_paths": True,
         "result": None, "exact_result": None, "nsga_result": None, "validation": None, "benchmark_results": None,
-        "result_valid": False, "last_optimization_hash": None, "last_preference_hash": None, "scenario_history": [],
+        "result_valid": False, "result_invalid_reason": "", "last_optimization_hash": None, "last_preference_hash": None, "scenario_history": [],
         "total_budget": 520.0, "max_measures": 2, "allow_untreated": False, "min_fs": 1.05, "min_safety": 58.0,
         "max_enumerations": 200_000, "drainage_synergy": 1.10, "second_factor": 0.90,
         "weight_safety": 0.35, "weight_economy": 0.20, "weight_sustainability": 0.20, "weight_resilience": 0.25,
@@ -157,7 +176,7 @@ def refresh_result_state() -> None:
         return
     try:
         if st.session_state.last_optimization_hash != current_optimization_hash():
-            st.session_state.result_valid = False
+            invalidate_results("输入数据、约束条件或求解方式已变化，需重新计算。")
             return
         new_pref = current_preference_hash()
         if st.session_state.last_preference_hash != new_pref:
@@ -165,8 +184,9 @@ def refresh_result_state() -> None:
                 rebuild_representatives(result)
             st.session_state.result = st.session_state.exact_result if st.session_state.solver_method == "exact" else st.session_state.nsga_result
             st.session_state.last_preference_hash = new_pref
+            st.session_state.result_invalid_reason = ""
     except (KeyError, TypeError, ValueError):
-        st.session_state.result_valid = False
+        invalidate_results("当前结果与输入状态不一致，需重新计算。")
 
 
 def editor_columns(frame: pd.DataFrame) -> dict:
@@ -188,12 +208,36 @@ def csv_bytes(frame: pd.DataFrame) -> bytes:
     return frame.to_csv(index=False).encode("utf-8-sig")
 
 
+def render_frame(frame: pd.DataFrame, *, use_container_width: bool = True, hide_index: bool = True) -> None:
+    try:
+        st.dataframe(frame, use_container_width=use_container_width, hide_index=hide_index)
+    except Exception:
+        fallback = frame if not hide_index else frame.reset_index(drop=True)
+        st.markdown(fallback.to_html(index=not hide_index, escape=False), unsafe_allow_html=True)
+        st.caption("当前运行环境未能启用交互式表格，已自动切换为静态表格回退。")
+
+
+def invalidate_results(reason: str | None = None) -> None:
+    st.session_state.result_valid = False
+    if reason:
+        st.session_state.result_invalid_reason = reason
+
+
+def read_uploaded_table(uploaded_file) -> pd.DataFrame:
+    suffix = Path(uploaded_file.name).suffix.lower()
+    if suffix == ".csv":
+        return pd.read_csv(uploaded_file)
+    if suffix in {".xlsx", ".xls"}:
+        return pd.read_excel(uploaded_file)
+    raise ValueError(f"暂不支持的表格格式：{suffix}")
+
+
 def selected_plan(result) -> tuple[str, list[dict[str, object]]]:
     if result is None or result.representatives.empty:
         return "", []
     labels = result.representatives["recommendation_type"].astype(str).tolist()
     if st.session_state.selected_plan_label not in labels:
-        st.session_state.selected_plan_label = "综合折中方案" if "综合折中方案" in labels else labels[0]
+        st.session_state.selected_plan_label = "综合折中代表方案" if "综合折中代表方案" in labels else labels[0]
     row = result.representatives[result.representatives["recommendation_type"] == st.session_state.selected_plan_label].iloc[0]
     plan_id = str(row["plan_id"])
     return plan_id, result.detail_lookup.get(plan_id, [])
@@ -370,22 +414,23 @@ def run_model() -> None:
         verify = bool(st.session_state.verify_current_run)
         if st.session_state.solver_method == "exact" or verify:
             holder.info("正在逐一评价完整组合空间并筛选四目标非支配方案……")
-            exact = solve_exact(units, measures, config, DATA_DIR / "assumptions.csv")
+            exact = solve_exact(units, measures, config, DATA_DIR / "assumptions.csv", topology=st.session_state.topology)
         if st.session_state.solver_method == "nsga2" or verify:
             bar = st.progress(0.0, text="正在初始化离散方案种群……")
             def callback(item: dict[str, object]) -> None:
                 ratio = float(item["generation"]) / max(config.nsga_generations, 1)
                 bar.progress(ratio, text=f"真实迭代 {item['generation']}/{config.nsga_generations}｜可行个体{item['current_feasible']}｜累计评价{item['unique_evaluations']}个唯一方案")
-            nsga = solve_nsga2(units, measures, config, DATA_DIR / "assumptions.csv", progress_callback=callback)
+            nsga = solve_nsga2(units, measures, config, DATA_DIR / "assumptions.csv", topology=st.session_state.topology, progress_callback=callback)
             bar.empty()
         result = exact if st.session_state.solver_method == "exact" else nsga
         st.session_state.exact_result = exact; st.session_state.nsga_result = nsga; st.session_state.result = result
         st.session_state.validation = validate_runs(exact, [nsga]) if exact is not None and nsga is not None else None
         st.session_state.result_valid = True; st.session_state.last_optimization_hash = current_optimization_hash(); st.session_state.last_preference_hash = current_preference_hash()
+        st.session_state.result_invalid_reason = ""
         st.session_state.completed_steps.add(4); st.session_state.scenario_history.append(result.run_metadata)
         holder.success(f"计算完成：{result.run_metadata['feasible_plans']:,}个可行方案，{result.run_metadata['pareto_plans']:,}个Pareto方案。")
     except Exception as exc:
-        st.session_state.result_valid = False; holder.error(f"计算未完成：{exc}")
+        invalidate_results(str(exc)); holder.error(f"计算未完成：{exc}")
 
 
 def run_multiseed_validation() -> None:
@@ -443,12 +488,13 @@ def header() -> None:
     status = "结果有效" if result else ("结果已失效" if st.session_state.result is not None else "待计算")
     left, right = st.columns([3.7, 2])
     with left:
-        st.markdown("<div class='platform-head'><h1>村庄地质灾害综合整治GIS智能研判与多目标决策平台</h1><div class='platform-sub'>数据核查 · 工程准入 · 多目标优化 · 空间协同 · 专家复核</div></div>", unsafe_allow_html=True)
+        st.markdown("<div class='platform-head'><h1>综合整治工程技术多目标优化智能研判与决策平台</h1><div class='platform-sub'>治理单元识别 · 多维综合评估 · 多目标优化求解 · 方案评审与成果输出</div></div>", unsafe_allow_html=True)
     with right:
         st.markdown(f"<div class='platform-head meta-line'>项目：{st.session_state.project_name}<br>村庄：{st.session_state.village_name}｜场景：{scenario}<br>数据：{st.session_state.data_version}｜{status}</div>", unsafe_allow_html=True)
     st.markdown("<div class='notice'><b>数据边界：</b>当前空间单元和风险路径为平台演示数据，不代表现场实测边界；估算成本用于方案比选，不等同于施工预算。</div>", unsafe_allow_html=True)
     if st.session_state.result is not None and not st.session_state.result_valid:
-        st.markdown("<div class='invalid'>当前输入条件已发生变化，现有结果已经失效，请重新运行优化计算。</div>", unsafe_allow_html=True)
+        reason = st.session_state.result_invalid_reason or "当前输入条件已发生变化，现有结果已经失效，请重新运行优化计算。"
+        st.markdown(f"<div class='invalid'>{reason}</div>", unsafe_allow_html=True)
 
 
 def sidebar() -> tuple[bool, bool, bool]:
@@ -458,6 +504,7 @@ def sidebar() -> tuple[bool, bool, bool]:
         st.radio("工作模式", ["引导式研判", "快速分析"], key="mode", horizontal=True)
         if st.session_state.mode == "引导式研判":
             step = int(st.session_state.current_step)
+            st.markdown(f"<div class='section-label'>{STEP_STAGE_TITLE[step]}</div>", unsafe_allow_html=True)
             progress_lines = []
             for i, label in enumerate(GUIDED_STEPS):
                 cls = "step-now" if i == step else ("step-done" if i in st.session_state.completed_steps else "")
@@ -522,7 +569,7 @@ def navigation() -> None:
         st.session_state.module_nav = st.session_state.pending_module
         st.session_state.current_module = st.session_state.pending_module
         st.session_state.pending_module = None
-    module = st.radio("一级模块", MODULES, horizontal=True, key="module_nav", label_visibility="collapsed")
+    module = st.radio("一级阶段", MODULES, horizontal=True, key="module_nav", label_visibility="collapsed")
     if module != st.session_state.current_module:
         st.session_state.current_module = module
     if st.session_state.mode == "引导式研判":
@@ -556,15 +603,19 @@ def render_data_units(result) -> None:
     with right: unit_detail(result, details)
     linked_unit_table()
     with st.expander("编辑或导入项目数据"):
-        st.info("导入后会校验必填字段、类型、编号唯一性、GeoJSON对应关系和风险路径引用。")
-        unit_file = st.file_uploader("治理单元CSV", type=["csv"], key="unit_upload")
-        measure_file = st.file_uploader("措施库CSV", type=["csv"], key="measure_upload")
+        st.info("支持CSV、Excel和GeoJSON/JSON。导入后会校验必填字段、类型、编号唯一性、GeoJSON对应关系和风险路径引用。")
+        unit_file = st.file_uploader("治理单元表", type=["csv", "xlsx", "xls"], key="unit_upload")
+        measure_file = st.file_uploader("措施库表", type=["csv", "xlsx", "xls"], key="measure_upload")
         geo_file = st.file_uploader("治理单元GeoJSON", type=["geojson", "json"], key="geo_upload")
         topo_file = st.file_uploader("风险路径JSON", type=["json"], key="topo_upload")
+        t1, t2, t3 = st.columns(3)
+        t1.download_button("下载治理单元模板CSV", csv_bytes(st.session_state.units_df.head(0)), file_name="治理单元模板.csv", mime="text/csv", use_container_width=True)
+        t2.download_button("下载措施库模板CSV", csv_bytes(st.session_state.measures_df.head(0)), file_name="措施库模板.csv", mime="text/csv", use_container_width=True)
+        t3.download_button("下载当前拓扑示例JSON", json.dumps(st.session_state.topology, ensure_ascii=False, indent=2).encode("utf-8"), file_name="风险路径示例.json", mime="application/json", use_container_width=True)
         if st.button("校验并载入所选数据"):
             try:
-                units_df = pd.read_csv(unit_file) if unit_file else st.session_state.units_df
-                measures_df = pd.read_csv(measure_file) if measure_file else st.session_state.measures_df
+                units_df = read_uploaded_table(unit_file) if unit_file else st.session_state.units_df
+                measures_df = read_uploaded_table(measure_file) if measure_file else st.session_state.measures_df
                 geojson = json.load(geo_file) if geo_file else st.session_state.units_geojson
                 topology = json.load(topo_file) if topo_file else st.session_state.topology
                 errors = validate_project_data(units_df, measures_df, geojson, topology)
@@ -572,7 +623,7 @@ def render_data_units(result) -> None:
                 else:
                     st.session_state.units_df = units_df; st.session_state.measures_df = measures_df; st.session_state.units_geojson = geojson; st.session_state.topology = topology
                     st.session_state.selected_unit = synchronize_selected_unit(st.session_state.selected_unit, units_df.unit_id.astype(str).tolist())
-                    st.session_state.result_valid = False; st.success("数据通过一致性校验并已载入。")
+                    invalidate_results("数据或空间拓扑已更新，需要重新计算。"); st.success("数据通过一致性校验并已载入。")
             except Exception as exc: st.error(f"导入失败：{exc}")
         st.session_state.units_df = st.data_editor(st.session_state.units_df, key=f"units_editor_{st.session_state.editor_version}", use_container_width=True, num_rows="dynamic", column_config=editor_columns(st.session_state.units_df))
 
@@ -582,7 +633,7 @@ def render_screening() -> None:
     st.markdown("### 工程措施准入判定")
     st.info(f"{len(screening)}条判定记录＝{len(units)}个治理单元×{len(measures)}类候选措施，并不表示{len(screening)}种不同工程措施。M01—M08是措施类别编码；每条判定使用Uxx-Mxx唯一编号。")
     a, b, c = st.columns(3); a.metric("判定记录", len(screening)); b.metric("准入", int(screening.eligible.sum())); c.metric("剔除", int((~screening.eligible).sum()))
-    st.dataframe(chinese_frame(screening), use_container_width=True, hide_index=True)
+    render_frame(chinese_frame(screening), use_container_width=True, hide_index=True)
     with st.expander("准入条件与符号说明"):
         st.markdown("- 汇流面积 *Ac*，单位为平方千米。例如“Ac<0.05 km²”表示汇流面积小于0.05平方千米的沟谷或小型汇水区。\n- 坡度 *θ*，单位为度；坡高 *H*、坡脚空间 *W*，单位为米。\n- 风险与危险性均采用1—5级，数值越高表示关注程度越高。每条记录同时给出命中条件、限制条件、准入结论和剔除原因。")
 
@@ -598,6 +649,7 @@ def render_solver(result) -> None:
         st.markdown("#### 当前配置")
         st.write(f"求解方法：{'精确枚举' if st.session_state.solver_method == 'exact' else 'NSGA-II智能搜索'}")
         st.write(f"预算：{st.session_state.total_budget:.0f}万元｜稳定系数下限：{st.session_state.min_fs:.2f}｜安全得分下限：{st.session_state.min_safety:.0f}")
+        st.caption("说明：区域协同在每个候选方案的后台评价链中已经参与四目标形成；本页只是触发统一计算。")
         if st.button("立即运行优化计算", type="primary", use_container_width=True): run_model()
     if result:
         meta = result.run_metadata; cols = st.columns(4)
@@ -618,7 +670,7 @@ def render_algorithm_validation() -> None:
         if st.button("运行4个标准函数×3个随机种子", type="primary"): run_standard_validation()
         bundle = st.session_state.benchmark_results
         if bundle:
-            st.dataframe(bundle["summary"], use_container_width=True, hide_index=True)
+            render_frame(bundle["summary"], use_container_width=True, hide_index=True)
             name = st.selectbox("查看函数", ["ZDT1", "ZDT2", "ZDT3", "DTLZ2"])
             example = bundle["examples"][name]
             if example.objectives.shape[1] == 2:
@@ -632,8 +684,8 @@ def render_algorithm_validation() -> None:
         st.info("精确枚举作为小案例完整基准，用于检验离散编码、准入/互斥、硬约束、修复和工程评价耦合是否正确。")
         if st.button("运行精确基准＋3随机种子NSGA-II", type="primary"): run_multiseed_validation()
         if st.session_state.validation:
-            st.dataframe(st.session_state.validation.metrics, use_container_width=True, hide_index=True)
-            st.dataframe(st.session_state.validation.seed_summary, use_container_width=True, hide_index=True)
+            render_frame(st.session_state.validation.metrics, use_container_width=True, hide_index=True)
+            render_frame(st.session_state.validation.seed_summary, use_container_width=True, hide_index=True)
             st.markdown(f"<div class='ok'>{st.session_state.validation.conclusion}</div>", unsafe_allow_html=True)
 
 
@@ -641,7 +693,7 @@ def render_plans(result) -> None:
     if not result:
         st.warning("请先完成优化计算，再进入方案比选。")
         return
-    st.markdown("### Pareto候选方案与代表方案")
+    st.markdown("### Pareto候选方案与唯一代表方案")
     preference_controls()
     rebuild_representatives(result)
     st.selectbox("当前联动代表方案", result.representatives.recommendation_type.tolist(), key="selected_plan_label")
@@ -656,15 +708,19 @@ def render_plans(result) -> None:
     fig.update_layout(title="代表方案四目标标准化热力图", height=350); st.plotly_chart(fig, use_container_width=True)
     st.caption("图表解读：热力图用于比较不同代表方案的优势方向，避免五条雷达曲线相互遮挡；最终推荐仍需结合成本增量和空间薄弱环节复核。")
     plan_id, details = selected_plan(result); selected = result.representatives[result.representatives.plan_id.astype(str) == plan_id].iloc[0]
-    cheapest = result.representatives.sort_values("total_cost").iloc[0]; metrics = coordination_metrics(st.session_state.topology, details)
-    st.markdown(f"<div class='work-card'><b>推荐结论：</b>{st.session_state.selected_plan_label}（{plan_id}）。估算全寿命成本{selected['total_cost']:.1f}万元；相较代表方案中的最低成本方案增加{selected['total_cost']-cheapest['total_cost']:.1f}万元，安全性提高{selected['safety']-cheapest['safety']:.1f}分。<br><b>空间复核：</b>{metrics['未治理薄弱环节']}<br><b>参数复核：</b>{selected['expert_review']}<br><b>限制：</b>示例空间边界和待标定参数不能直接替代现场勘察与施工设计。</div>", unsafe_allow_html=True)
-    st.dataframe(chinese_frame(pd.DataFrame(details)), use_container_width=True, hide_index=True)
+    cheapest = result.representatives.sort_values("total_cost").iloc[0]
+    metrics = coordination_metrics(st.session_state.topology, details)
+    tie_count = int(selected.get("tie_candidate_count", 1))
+    tie_note = f"主目标并列候选共{tie_count}个；本次按{selected.get('tie_break_rule', '既定规则')}确定唯一代表方案。" if tie_count > 1 else "主目标不存在并列极值，直接按主指标选出唯一代表方案。"
+    st.markdown(f"<div class='work-card'><b>推荐结论：</b>{st.session_state.selected_plan_label}（{plan_id}）。估算全寿命成本{selected['total_cost']:.1f}万元；相较代表方案中的最低成本方案增加{selected['total_cost']-cheapest['total_cost']:.1f}万元，安全性提高{selected['safety']-cheapest['safety']:.1f}分。<br><b>并列处理：</b>{tie_note}<br><b>空间复核：</b>{metrics['未治理薄弱环节']}<br><b>参数复核：</b>{selected['expert_review']}<br><b>限制：</b>示例空间边界和待标定参数不能直接替代现场勘察与施工设计。</div>", unsafe_allow_html=True)
+    render_frame(chinese_frame(pd.DataFrame(details)), use_container_width=True, hide_index=True)
 
 
 def render_coordination(result) -> None:
     if not result:
         st.warning("请先完成优化计算，再开展空间协同研判。")
         return
+    st.markdown("<div class='notice'><b>说明：</b>本页只解析和复核已经参与第6步优化计算的村域协同结果，不在此处首次计算区域协同评分。</div>", unsafe_allow_html=True)
     st.selectbox("联动代表方案", result.representatives.recommendation_type.tolist(), key="selected_plan_label")
     plan_id, details = selected_plan(result); metrics = coordination_metrics(st.session_state.topology, details)
     left, right = st.columns([2.8, 1.2])
@@ -679,8 +735,8 @@ def render_coordination(result) -> None:
     for path in st.session_state.topology.get("paths", []):
         stages = path_stage_status(detail_map, path)
         rows.append({"路径编号": path["path_id"], "风险路径": path["name"], "物源控制": "有效" if stages[0] else "未覆盖", "输移拦截": "有效" if stages[1] else "未覆盖", "承灾体防护": "有效" if stages[2] else "未覆盖", "完整控制": "是" if all(stages) else "否"})
-    st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
-    st.caption("图表解读：只有措施类型与物源、输移或承灾体环节相匹配时才计为有效覆盖。当前协同指标用于结果解释和代表方案复核，尚未作为NSGA-II独立优化目标。")
+    render_frame(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+    st.caption("图表解读：只有措施类型与物源、输移或承灾体环节相匹配时才计为有效覆盖。本页读取与优化阶段一致的路径数据和覆盖逻辑，只负责解释与复核。")
 
 
 def render_results(result) -> None:
@@ -689,7 +745,7 @@ def render_results(result) -> None:
         return
     meta = result.run_metadata
     st.markdown("### 场景追踪与成果导出")
-    st.dataframe(pd.DataFrame([{ "项目名称": st.session_state.project_name, "村庄名称": st.session_state.village_name, "数据版本": st.session_state.data_version,
+    render_frame(pd.DataFrame([{ "项目名称": st.session_state.project_name, "村庄名称": st.session_state.village_name, "数据版本": st.session_state.data_version,
         "场景编号": meta["scenario_id"], "创建时间": meta["run_time"], "配置标识": meta["configuration_hash"],
         "求解方法": "精确枚举" if meta["solver"] == "exact_enumeration" else "NSGA-II智能搜索", "随机种子": meta["random_seed"],
         "结果状态": "有效", "数据性质": "平台演示数据"}]), use_container_width=True, hide_index=True)
@@ -719,24 +775,52 @@ def guide_footer() -> None:
 
 
 def main() -> None:
-    st.set_page_config(page_title="村庄地质灾害综合整治GIS智能研判平台", page_icon="⛰", layout="wide", initial_sidebar_state="expanded")
+    st.set_page_config(page_title="综合整治工程技术多目标优化智能研判与决策平台", page_icon="⛰", layout="wide", initial_sidebar_state="expanded")
     inject_style(); initialize_state(); refresh_result_state()
     quick, run_clicked, _ = sidebar()
     header(); navigation()
     if quick or run_clicked: run_model()
     result = st.session_state.result if st.session_state.result_valid else None
     module = st.session_state.current_module
-    if module == "项目总览": render_project_overview(result)
-    elif module == "数据与单元": render_data_units(result)
-    elif module == "智能研判":
-        if st.session_state.mode == "引导式研判" and st.session_state.last_intelligence_step != st.session_state.current_step:
-            st.session_state.intelligence_page = "工程措施准入" if st.session_state.current_step == 2 else "优化计算"
-            st.session_state.last_intelligence_step = st.session_state.current_step
-        sub = st.radio("智能研判二级页面", ["工程措施准入", "优化计算", "算法验证"], horizontal=True, key="intelligence_page")
-        if sub == "工程措施准入": render_screening()
-        elif sub == "优化计算": render_solver(result)
-        else: render_algorithm_validation()
-    elif module == "方案比选": render_plans(result)
-    elif module == "空间协同": render_coordination(result)
-    else: render_results(result)
+    if module == MODULES[0]:
+        if st.session_state.mode == "引导式研判":
+            if st.session_state.current_step == 0:
+                render_project_overview(result)
+            else:
+                render_data_units(result)
+        else:
+            sub = st.radio("阶段一子步骤", ["项目与研究区概览、数据导入", "空间治理单元识别与属性复核"], horizontal=True)
+            if sub.startswith("项目与研究区"):
+                render_project_overview(result)
+            else:
+                render_data_units(result)
+    elif module == MODULES[1]:
+        if st.session_state.mode == "引导式研判":
+            if st.session_state.current_step == 2:
+                render_screening()
+            else:
+                render_solver(result)
+        else:
+            sub = st.radio("阶段二子步骤", ["工程措施库与适用性准入筛选", "方案组合、约束条件、四目标参数和区域协同关系配置"], horizontal=True)
+            if sub.startswith("工程措施库"):
+                render_screening()
+            else:
+                render_solver(result)
+    elif module == MODULES[2]:
+        sub = "多目标优化计算" if st.session_state.mode == "引导式研判" and st.session_state.current_step == 4 else None
+        if sub is None:
+            sub = st.radio("阶段三子步骤", ["多目标优化计算", "Pareto候选方案分析与算法验证"], horizontal=True)
+        if sub == "多目标优化计算":
+            render_solver(result)
+        else:
+            render_plans(result)
+            render_algorithm_validation()
+    else:
+        sub = "Pareto方案与村域协同结果解析" if st.session_state.mode == "引导式研判" and st.session_state.current_step == 6 else None
+        if sub is None:
+            sub = st.radio("阶段四子步骤", ["Pareto方案与村域协同结果解析", "方案复核、专家评审与成果导出"], horizontal=True)
+        if sub == "Pareto方案与村域协同结果解析":
+            render_coordination(result)
+        else:
+            render_results(result)
     guide_footer()

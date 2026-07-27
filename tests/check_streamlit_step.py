@@ -6,13 +6,18 @@ import sys
 from streamlit.testing.v1 import AppTest
 
 
-modules = ["项目总览", "数据与单元", "智能研判", "方案比选", "空间协同", "成果管理"]
+modules = [
+    "阶段一 治理对象与基础数据",
+    "阶段二 多维综合评估",
+    "阶段三 多目标优化求解",
+    "阶段四 方案评审与决策输出",
+]
 index = int(sys.argv[1])
 root = Path(__file__).resolve().parents[1]
 app = AppTest.from_file(str(root / "app.py"), default_timeout=60)
 app.session_state["current_module"] = modules[index]
 app.session_state["module_nav"] = modules[index]
-app.session_state["current_step"] = [0, 1, 2, 5, 6, 7][index]
+app.session_state["current_step"] = [0, 2, 4, 6][index]
 app.run(timeout=60)
 if app.exception:
     raise RuntimeError("；".join(str(item.value) for item in app.exception))

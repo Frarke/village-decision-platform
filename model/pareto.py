@@ -31,5 +31,6 @@ def pareto_front(frame: pd.DataFrame) -> pd.DataFrame:
             survivors.append(idx)
             frontier = survivors
     result = frame.iloc[frontier].copy()
-    result = result.drop_duplicates(subset=OBJECTIVE_COLUMNS, keep="first")
-    return result.sort_values(["total_cost", "safety"], ascending=[True, False]).reset_index(drop=True)
+    sort_columns = ["total_cost", "safety"] + (["plan_id"] if "plan_id" in result.columns else [])
+    ascending = [True, False] + ([True] if "plan_id" in result.columns else [])
+    return result.sort_values(sort_columns, ascending=ascending, kind="mergesort").reset_index(drop=True)

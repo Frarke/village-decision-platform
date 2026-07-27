@@ -11,11 +11,9 @@ from pathlib import Path
 import pandas as pd
 
 from .combinations import estimate_enumerations, generate_unit_options
-from .constraints import check_plan_constraints
-from .evaluation import evaluate_unit
 from .pareto import pareto_front
 from .recommendation import recommend
-from .regional import evaluate_region
+from .regional import evaluate_village_scheme
 from .schemas import GovernanceUnit, Measure, SolveResult, SolverConfig, validate_measures, validate_units
 from .screening import screen_all
 from .tagging import in_governance_library, tagged_unit_record
@@ -57,6 +55,7 @@ def solve_exact(
     measures: list[Measure],
     config: SolverConfig | None = None,
     assumptions_path: str | Path | None = None,
+    topology: dict[str, object] | None = None,
 ) -> SolveResult:
     started = time.perf_counter()
     config = config or SolverConfig()
@@ -91,12 +90,16 @@ def solve_exact(
     rejection_reasons: dict[str, int] = {}
     option_lists = [options_by_unit[unit.unit_id] for unit in active_units]
     for selected_by_unit in product(*option_lists):
-        details = [
-            evaluate_unit(unit, tuple(selected), config)
-            for unit, selected in zip(active_units, selected_by_unit, strict=True)
-        ]
-        region = evaluate_region(active_units, details)
-        valid, reasons = check_plan_constraints(active_units, details, region["total_cost"], config)
+        scheme = evaluate_village_scheme(
+            active_units,
+            [tuple(selected) for selected in selected_by_unit],
+            config,
+            topology=topology,
+        )
+        details = scheme["unit_details"]
+        region = scheme["regional_objectives"]
+        valid = bool(scheme["feasible"])
+        reasons = list(scheme["constraint_reasons"])
         if not valid:
             rejected_budget += int(any("预算" in reason for reason in reasons))
             rejected_safety += int(any("FS" in reason or "安全得分" in reason or "未治理" in reason for reason in reasons))
@@ -110,6 +113,15 @@ def solve_exact(
         row: dict[str, object] = {
             "plan_id": plan_id,
             **region,
+            "total_cost": float(scheme["lifecycle_cost_total"]),
+            "lci": float(scheme["regional_lci"]),
+            "path_coverage": float(scheme["path_coverage"]),
+            "coordination_score": float(scheme["coordination_score"]),
+            "N_key": int(scheme["N_key"]),
+            "N_covered": int(scheme["N_covered"]),
+            "normalized_risk_weights": json.dumps(scheme["normalized_risk_weights"], ensure_ascii=False, sort_keys=True),
+            "constraint_status": json.dumps(scheme["constraint_status"], ensure_ascii=False, sort_keys=True),
+            "constraint_reasons": "；".join(reasons) if reasons else "无",
             "configuration_summary": configuration,
             "expert_review": "；".join(review) if review else "无",
         }
@@ -160,6 +172,7 @@ def solve_exact(
         "rejected_by_budget": rejected_budget,
         "rejected_by_safety_or_treatment": rejected_safety,
         "runtime_seconds": round(runtime, 6),
+        "topology_paths": len(topology.get("paths", [])) if topology else 0,
         "config": {
             **asdict(config),
             "preference_weights": dict(config.preference_weights),
@@ -247,11 +260,12 @@ def solve(
     config: SolverConfig | None = None,
     method: str = "exact",
     assumptions_path: str | Path | None = None,
+    topology: dict[str, object] | None = None,
 ) -> SolveResult:
     """统一求解器接口；默认稳定基线为精确枚举。"""
     if method == "exact":
-        return solve_exact(units, measures, config, assumptions_path)
+        return solve_exact(units, measures, config, assumptions_path, topology=topology)
     if method == "nsga2":
         from .nsga2 import solve_nsga2
-        return solve_nsga2(units, measures, config, assumptions_path)
+        return solve_nsga2(units, measures, config, assumptions_path, topology=topology)
     raise ValueError(f"未知求解模式：{method}")

@@ -97,10 +97,9 @@ def evaluate_unit(
     subtotal = construction_cost + maintenance_npv + organization_cost
     terrain_adjustment_cost = subtotal * (cost_factor - 1.0)
     lifecycle_cost = subtotal + terrain_adjustment_cost
-    # 保留科技报告LCI评分，并以实际全寿命周期成本作为主导校正项。
-    # 这样既保留建设/维护/施工等级信息，也避免组合措施的等级均值掩盖新增成本。
+    # 正式双轨口径：LCI/SC用于经济性目标；货币化全寿命周期成本仅用于预算约束、展示与导出。
     lifecycle_cost_score = clamp(100.0 - 0.35 * lifecycle_cost)
-    economy = clamp(0.20 * lci_score + 0.80 * lifecycle_cost_score)
+    economy = clamp(lci_score)
 
     review_items: list[str] = []
     if any(measure.measure_name == "抗滑桩" for measure in measures) and not unit.slip_surface_confirmed:
@@ -113,6 +112,7 @@ def evaluate_unit(
         "unit_name": unit.unit_name,
         "measures": "＋".join(measure.measure_name for measure in measures) if measures else "不治理",
         "measure_ids": "+".join(measure.measure_id for measure in measures) if measures else "NONE",
+        "measure_names": [measure.measure_name for measure in measures],
         "actual_cost": round(lifecycle_cost, 6),
         "construction_cost": round(construction_cost, 6),
         "maintenance_npv": round(maintenance_npv, 6),
@@ -133,9 +133,15 @@ def evaluate_unit(
         "economy": round(economy, 6),
         "sustainability": round(sustainability, 6),
         "resilience": round(resilience, 6),
+        "redundancy_score": round(redundancy, 6),
+        "recovery_score": round(recover, 6),
+        "coverage_score_local": round(coverage, 6),
         "function_count": function_count,
         "covered_paths": covered,
         "key_paths": unit.key_paths,
+        "risk_weight": round(unit.risk_weight, 6),
+        "evidence_level": unit.evidence_level,
+        "unit_notes": unit.notes,
         "expert_review": "；".join(review_items) if review_items else "无",
         "residual_hazard": max(1, min(5, int(round(unit.haz - delta_fs * 4.0 - chain_score / 70.0)))),
         "residual_risk": max(1, min(5, int(round(unit.risk - delta_fs * 3.0 - chain_score / 80.0)))),

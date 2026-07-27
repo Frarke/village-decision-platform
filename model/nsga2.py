@@ -11,11 +11,9 @@ import numpy as np
 import pandas as pd
 
 from .combinations import estimate_enumerations, generate_unit_options
-from .constraints import check_plan_constraints
-from .evaluation import evaluate_unit
 from .pareto import OBJECTIVE_COLUMNS, dominates, pareto_front
 from .recommendation import recommend
-from .regional import evaluate_region
+from .regional import evaluate_village_scheme
 from .schemas import GovernanceUnit, Measure, SolveResult, SolverConfig, validate_measures, validate_units
 from .screening import screen_all
 from .solver import run_identity
@@ -122,6 +120,7 @@ def solve_nsga2(
     measures: list[Measure],
     config: SolverConfig | None = None,
     assumptions_path: str | Path | None = None,
+    topology: dict[str, object] | None = None,
     progress_callback: Callable[[dict[str, object]], None] | None = None,
 ) -> SolveResult:
     started = time.perf_counter()
@@ -150,20 +149,37 @@ def solve_nsga2(
         if genes in cache:
             return cache[genes]
         selected_by_unit = [option_lists[i][gene] for i, gene in enumerate(genes)]
-        details = [evaluate_unit(unit, tuple(selected), config) for unit, selected in zip(active_units, selected_by_unit, strict=True)]
-        region = evaluate_region(active_units, details)
-        feasible, reasons = check_plan_constraints(active_units, details, region["total_cost"], config)
+        scheme = evaluate_village_scheme(
+            active_units,
+            [tuple(selected) for selected in selected_by_unit],
+            config,
+            topology=topology,
+        )
+        details = scheme["unit_details"]
+        region = scheme["regional_objectives"]
+        feasible = bool(scheme["feasible"])
+        reasons = list(scheme["constraint_reasons"])
         configuration = "；".join(f"{item['unit_name']}={item['measures']}" for item in details)
         review = sorted({str(item["expert_review"]) for item in details if item["expert_review"] != "无"})
         row: dict[str, object] = {
-            **region, "configuration_summary": configuration,
+            **region,
+            "total_cost": float(scheme["lifecycle_cost_total"]),
+            "lci": float(scheme["regional_lci"]),
+            "path_coverage": float(scheme["path_coverage"]),
+            "coordination_score": float(scheme["coordination_score"]),
+            "N_key": int(scheme["N_key"]),
+            "N_covered": int(scheme["N_covered"]),
+            "normalized_risk_weights": str(scheme["normalized_risk_weights"]),
+            "constraint_status": str(scheme["constraint_status"]),
+            "constraint_reasons": "；".join(reasons) if reasons else "无",
+            "configuration_summary": configuration,
             "expert_review": "；".join(review) if review else "无", "_genes": genes,
         }
         for item in details:
             row[f"unit_{item['unit_id']}"] = item["measures"]
         record = {
             "genes": genes, "details": details, "row": row, "feasible": feasible,
-            "reasons": reasons, "violation": _violation_score(reasons, float(region["total_cost"]), config),
+            "reasons": reasons, "violation": _violation_score(reasons, float(scheme["lifecycle_cost_total"]), config),
             "objectives": np.asarray([region[name] for name in OBJECTIVE_COLUMNS], dtype=float),
         }
         cache[genes] = record
@@ -306,6 +322,7 @@ def solve_nsga2(
         "feasible_ratio": round(len(feasible_records) / max(len(cache), 1), 6),
         "feasible_plans": len(feasible), "pareto_plans": len(pareto), "runtime_seconds": round(runtime, 6),
         "config": asdict(config),
+        "topology_paths": len(topology.get("paths", [])) if topology else 0,
     }
     return SolveResult(
         tagged_units=tagged_frame, measure_library=pd.DataFrame([measure.to_dict() for measure in measures]),

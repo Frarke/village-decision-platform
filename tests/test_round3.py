@@ -147,7 +147,11 @@ class RoundThreeAcceptanceTests(unittest.TestCase):
         drainage = next(x for x in self.measures if x.measure_name == "截排水工程")
         grid = next(x for x in self.measures if x.measure_name == "格构锚固")
         one = evaluate_unit(self.units[0], (grid,), self.config); two = evaluate_unit(self.units[0], (grid, drainage), self.config)
-        self.assertGreater(two["lifecycle_cost"], one["lifecycle_cost"]); self.assertLess(two["economy"], one["economy"])
+        self.assertGreater(two["lifecycle_cost"], one["lifecycle_cost"])
+        self.assertGreaterEqual(two["economy"], 0.0)
+        self.assertLessEqual(two["economy"], 100.0)
+        self.assertGreaterEqual(two["lci_score"], 0.0)
+        self.assertLessEqual(two["lci_score"], 100.0)
 
     def test_50_untreated_scores_are_not_artificially_high(self):
         result = evaluate_unit(self.units[0], (), self.config)
