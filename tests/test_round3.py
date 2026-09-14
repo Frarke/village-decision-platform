@@ -3,11 +3,13 @@ from __future__ import annotations
 from dataclasses import replace
 from pathlib import Path
 import re
+import json
 import sys
 import unittest
 
 import numpy as np
 import pandas as pd
+from streamlit.testing.v1 import AppTest
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -15,7 +17,7 @@ if str(ROOT) not in sys.path:
 
 from model.benchmarks import evaluate_benchmark, quality_metrics, theoretical_front
 from model.constraints import check_plan_constraints
-from model.data_validation import validate_project_data
+from model.data_validation import normalize_measures_frame, normalize_units_frame, validate_project_data
 from model.evaluation import evaluate_unit
 from model.i18n import chinese_frame, unmapped_columns
 from model.nsga2 import solve_nsga2
@@ -75,7 +77,10 @@ class RoundThreeAcceptanceTests(unittest.TestCase):
 
     def test_36_online_failure_has_offline_fallback(self):
         source = (ROOT / "ui_v3.py").read_text(encoding="utf-8")
-        self.assertIn('map_figure(plan_details, st.session_state.selected_unit, False)', source)
+        self.assertIn(
+            'map_figure(plan_details, st.session_state.selected_unit, False, show_units=show_units)',
+            source,
+        )
 
     def test_37_csv_geojson_topology_ids_match(self):
         self.assertEqual(validate_project_data(self.units_df, self.measures_df, self.geojson, self.topology), [])
@@ -194,6 +199,113 @@ class RoundThreeAcceptanceTests(unittest.TestCase):
         source = (ROOT / "ui_v3.py").read_text(encoding="utf-8")
         self.assertIn("max-width:1760px", source)
         self.assertIn("@media(max-width:1200px)", source)
+
+    def test_58_default_scenario_has_nonzero_constraints(self):
+        scenario = json.loads((ROOT / "data/default_scenario.json").read_text(encoding="utf-8"))
+        self.assertGreater(float(scenario["total_budget"]), 0.0)
+        self.assertGreater(float(scenario["min_safety"]), 0.0)
+        self.assertGreaterEqual(float(scenario["min_fs"]), 1.0)
+
+    def test_59_default_scenario_produces_feasible_and_pareto_results(self):
+        self.assertGreater(len(self.exact.all_feasible), 0)
+        self.assertGreater(len(self.exact.pareto), 0)
+        self.assertGreater(len(self.nsga.all_feasible), 0)
+        self.assertGreater(len(self.nsga.pareto), 0)
+
+    def test_60_navigation_uses_page_ids_instead_of_module_nav(self):
+        source = (ROOT / "ui_v3.py").read_text(encoding="utf-8")
+        self.assertIn("current_page_id", source)
+        self.assertIn("pending_page_id", source)
+        self.assertNotIn("module_nav", source)
+
+    def test_61_quick_analysis_hides_results_when_source_not_ready(self):
+        source = (ROOT / "ui_v3.py").read_text(encoding="utf-8")
+        self.assertIn("guided_snapshot", source)
+        self.assertIn("result = st.session_state.result if st.session_state.result_valid and ready else None", source)
+
+    def test_62_click_load_example_updates_quick_analysis_without_exception(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+        app.button[0].click().run()
+        app.button[0].click().run()
+        self.assertFalse(app.exception)
+        self.assertEqual(app.radio[0].value, "快速分析")
+        self.assertEqual(app.text_input[0].value, "村庄地质灾害综合整治研究")
+        self.assertEqual(app.text_input[1].value, "示例研究区")
+        self.assertEqual(float(app.number_input[0].value), 520.0)
+        self.assertEqual(float(app.number_input[1].value), 1.05)
+        self.assertEqual(float(app.number_input[2].value), 58.0)
+
+    def test_62b_click_load_example_restores_scenario_constraints(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60)
+        app.session_state["mode"] = "快速分析"
+        app.session_state["current_page_id"] = "quick"
+        app.session_state["pending_page_id"] = None
+        app.session_state["total_budget"] = 0.0
+        app.session_state["min_fs"] = 0.5
+        app.session_state["min_safety"] = 0.0
+        app.run()
+        app.button[0].click().run()
+        self.assertFalse(app.exception)
+        self.assertEqual(float(app.number_input[0].value), 520.0)
+        self.assertEqual(float(app.number_input[1].value), 1.05)
+        self.assertEqual(float(app.number_input[2].value), 58.0)
+
+    def test_62c_quick_analysis_initial_form_uses_default_scenario_values(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60)
+        app.session_state["mode"] = "快速分析"
+        app.session_state["current_page_id"] = "quick"
+        app.session_state["pending_page_id"] = None
+        app.run()
+        self.assertFalse(app.exception)
+        self.assertEqual(app.text_input[0].value, "村庄地质灾害综合整治研究")
+        self.assertEqual(app.text_input[1].value, "示例研究区")
+        self.assertEqual(app.text_input[2].value, "V4-示例场景-20260727")
+        self.assertEqual(float(app.number_input[0].value), 520.0)
+        self.assertEqual(float(app.number_input[1].value), 1.05)
+        self.assertEqual(float(app.number_input[2].value), 58.0)
+
+    def test_63_missing_evidence_level_is_normalized_for_legacy_frames(self):
+        legacy_units = normalize_units_frame(self.units_df.drop(columns=["evidence_level"]))
+        legacy_measures = normalize_measures_frame(self.measures_df.drop(columns=["evidence_level"]))
+        self.assertIn("evidence_level", legacy_units.columns)
+        self.assertIn("evidence_level", legacy_measures.columns)
+        self.assertTrue((legacy_units["evidence_level"] == "待校验").all())
+        self.assertTrue((legacy_measures["evidence_level"] == "待校验").all())
+
+    def test_64_stage_three_tabs_render_with_legacy_input_schema(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60)
+        app.session_state["mode"] = "引导式研判"
+        app.session_state["current_page_id"] = "guided_step_3"
+        app.session_state["pending_page_id"] = None
+        app.session_state["current_step"] = 3
+        app.session_state["units_df"] = self.units_df.drop(columns=["evidence_level"])
+        app.session_state["measures_df"] = self.measures_df.drop(columns=["evidence_level"])
+        app.run()
+        self.assertFalse(app.exception)
+        self.assertEqual([tab.label for tab in app.tabs], ["适用性初筛摘要", "四维评价与适宜性修正", "区域协同关系"])
+
+    def test_65_upload_source_without_real_load_disables_quick_run(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+        app.button[0].click().run()
+        app.selectbox[0].set_value("上传数据文件").run()
+        self.assertFalse(app.exception)
+        self.assertTrue(app.button[1].disabled)
+        visible = "\n".join(str(item.value) for item in app.markdown)
+        self.assertIn("当前尚未实际载入上传数据文件", visible)
+
+    def test_66_result_is_hidden_after_budget_change(self):
+        app = AppTest.from_file(str(ROOT / "app.py"), default_timeout=60).run()
+        app.button[0].click().run()
+        app.button[1].click().run(timeout=120)
+        self.assertFalse(app.exception)
+        metric_labels = [metric.label for metric in app.metric]
+        self.assertIn("可行方案", metric_labels)
+        app.number_input[0].set_value(400.0).run()
+        self.assertFalse(app.exception)
+        metric_labels = [metric.label for metric in app.metric]
+        self.assertNotIn("可行方案", metric_labels)
+        visible = "\n".join(str(item.value) for item in app.markdown)
+        self.assertIn("重新计算", visible)
 
 
 if __name__ == "__main__":

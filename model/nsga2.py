@@ -292,7 +292,12 @@ def solve_nsga2(
 
     feasible_records = [item for item in cache.values() if bool(item["feasible"])]
     if not feasible_records:
-        raise ValueError("NSGA-II未搜索到满足全部硬约束的方案，请增加种群/代数或复核预算与安全底线。")
+        ranked = sorted(cache.values(), key=lambda item: (float(item["violation"]), -float(np.sum(item["objectives"]))))
+        closest = "；".join(ranked[0]["reasons"]) if ranked else "未记录最接近可行方案。"
+        raise ValueError(
+            f"NSGA-II未搜索到满足全部硬约束的方案。已评价{len(cache)}个唯一方案；"
+            f"最接近可行方案的主要差距：{closest}。建议优先检查预算、安全底线、代数或种群规模。"
+        )
     feasible_records.sort(key=lambda item: tuple(item["genes"]))
     rows = []
     detail_lookup: dict[str, list[dict[str, object]]] = {}

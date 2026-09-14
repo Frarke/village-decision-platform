@@ -87,6 +87,7 @@ def solve_exact(
     detail_lookup: dict[str, list[dict[str, object]]] = {}
     rejected_budget = 0
     rejected_safety = 0
+    best_gap: tuple[float, list[str]] | None = None
     rejection_reasons: dict[str, int] = {}
     option_lists = [options_by_unit[unit.unit_id] for unit in active_units]
     for selected_by_unit in product(*option_lists):
@@ -106,6 +107,9 @@ def solve_exact(
             for reason in reasons:
                 category = "预算约束" if "预算" in reason else "安全底线或治理约束"
                 rejection_reasons[category] = rejection_reasons.get(category, 0) + 1
+            gap = len(reasons)
+            if best_gap is None or gap < best_gap[0]:
+                best_gap = (gap, reasons)
             continue
         plan_id = f"P{len(feasible_rows) + 1:05d}"
         configuration = "；".join(f"{item['unit_name']}={item['measures']}" for item in details)
@@ -132,7 +136,11 @@ def solve_exact(
 
     feasible = pd.DataFrame(feasible_rows)
     if feasible.empty:
-        raise ValueError("没有方案同时满足预算和安全底线，请适当提高预算或复核安全阈值/措施参数。")
+        closest = "；".join(best_gap[1]) if best_gap else "未记录最接近可行方案。"
+        raise ValueError(
+            f"没有方案同时满足约束。预算约束剔除{rejected_budget}个；安全底线或治理约束剔除{rejected_safety}个；"
+            f"最接近可行方案的主要差距：{closest}。建议优先检查预算上限、安全底线或中高风险单元治理要求。"
+        )
     pareto = pareto_front(feasible)
     representatives = recommend(pareto, config.preference_weights)
     detail_rows: list[dict[str, object]] = []

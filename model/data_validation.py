@@ -9,6 +9,32 @@ import pandas as pd
 from .schemas import GovernanceUnit, Measure, validate_measures, validate_units
 
 
+def normalize_units_frame(units_df: pd.DataFrame) -> pd.DataFrame:
+    frame = units_df.copy()
+    if "evidence_level" not in frame.columns:
+        frame["evidence_level"] = "待校验"
+    else:
+        frame["evidence_level"] = frame["evidence_level"].fillna("").map(lambda value: str(value).strip() or "待校验")
+    if "notes" not in frame.columns:
+        frame["notes"] = ""
+    else:
+        frame["notes"] = frame["notes"].fillna("").map(str)
+    return frame
+
+
+def normalize_measures_frame(measures_df: pd.DataFrame) -> pd.DataFrame:
+    frame = measures_df.copy()
+    if "evidence_level" not in frame.columns:
+        frame["evidence_level"] = "待校验"
+    else:
+        frame["evidence_level"] = frame["evidence_level"].fillna("").map(lambda value: str(value).strip() or "待校验")
+    if "notes" not in frame.columns:
+        frame["notes"] = ""
+    else:
+        frame["notes"] = frame["notes"].fillna("").map(str)
+    return frame
+
+
 def validate_project_data(
     units_df: pd.DataFrame,
     measures_df: pd.DataFrame,
@@ -16,6 +42,8 @@ def validate_project_data(
     topology: dict[str, Any],
 ) -> list[str]:
     errors: list[str] = []
+    units_df = normalize_units_frame(units_df)
+    measures_df = normalize_measures_frame(measures_df)
     try:
         units = [GovernanceUnit.from_record(row) for row in units_df.to_dict("records")]
         errors.extend(validate_units(units))
@@ -43,4 +71,3 @@ def validate_project_data(
     if not measures:
         errors.append("措施库不能为空。")
     return list(dict.fromkeys(errors))
-

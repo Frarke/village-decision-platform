@@ -94,6 +94,7 @@ def screen_measure(unit: GovernanceUnit, measure: Measure) -> ScreeningResult:
         exclusion_reason="；".join(failures) if failures else "—",
         combination_required="；".join(dict.fromkeys(combo)) if combo else "无",
         review_required="；".join(review) if review else "无",
+        evidence_level=measure.evidence_level or "待校验",
     )
 
 

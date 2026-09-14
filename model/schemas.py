@@ -30,7 +30,10 @@ def _as_bool(value: Any) -> bool:
 
 
 def _clean_text(value: Any, default: str = "") -> str:
-    return default if pd.isna(value) else str(value).strip()
+    if pd.isna(value):
+        return default
+    text = str(value).strip()
+    return text if text else default
 
 
 @dataclass(frozen=True)
@@ -68,9 +71,10 @@ class GovernanceUnit:
         values = dict(row)
         for name in BOOL_COLUMNS_UNITS:
             values[name] = _as_bool(values.get(name, False))
-        text_fields = {"unit_id", "unit_name", "evidence_level", "notes"}
-        for name in text_fields:
-            values[name] = _clean_text(values.get(name, ""))
+        values["unit_id"] = _clean_text(values.get("unit_id", ""))
+        values["unit_name"] = _clean_text(values.get("unit_name", ""))
+        values["evidence_level"] = _clean_text(values.get("evidence_level", ""), "待校验")
+        values["notes"] = _clean_text(values.get("notes", ""))
         int_fields = {"risk", "haz", "gully_level", "key_paths"}
         for name in int_fields:
             values[name] = int(float(values[name]))
@@ -111,8 +115,10 @@ class Measure:
     def from_record(cls, row: dict[str, Any]) -> "Measure":
         values = dict(row)
         values["is_primary_control"] = _as_bool(values.get("is_primary_control", False))
-        for name in ["measure_id", "measure_name", "function_type", "applicable_objects", "evidence_level", "notes"]:
+        for name in ["measure_id", "measure_name", "function_type", "applicable_objects"]:
             values[name] = _clean_text(values.get(name, ""))
+        values["evidence_level"] = _clean_text(values.get("evidence_level", ""), "待校验")
+        values["notes"] = _clean_text(values.get("notes", ""))
         values["covered_paths"] = int(float(values["covered_paths"]))
         for name in [
             "actual_cost", "build_level", "maintain_level", "construct_level",
@@ -138,6 +144,7 @@ class ScreeningResult:
     exclusion_reason: str
     combination_required: str
     review_required: str
+    evidence_level: str
 
     def to_dict(self) -> dict[str, Any]:
         return {"screening_id": f"{self.unit_id}-{self.measure_id}", **asdict(self)}
