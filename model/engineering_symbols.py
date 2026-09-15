@@ -8,6 +8,23 @@ SYMBOL_NAMES = {"M01":"截排水工程", "M02":"灌草种植", "M03":"植被混�
                 "M05":"挡墙工程", "M06":"抗滑桩", "M07":"谷坊坝", "M08":"柔性拦挡结构"}
 COLORS = {"M01":"#168bc1", "M02":"#39a65b", "M03":"#7ea954", "M04":"#da9b37",
           "M05":"#d46a42", "M06":"#8f70b7", "M07":"#297e96", "M08":"#a15c86"}
+MAP_PATHS = {
+    "M01": "M5 5v13h14M9 5v9h10m-3-3 3 3-3 3",
+    "M02": "M12 20V7m0 7C4 14 4 8 4 8c8 0 8 6 8 6Zm0-3c0-7 8-7 8-7s0 7-8 7Z",
+    "M03": "m4 20 5-16h10l2 16ZM9 15h1m3-6h1m1 8h1",
+    "M04": "M5 20 9 4h10l2 16ZM7 12h13M8 7h11M6 17h15M13 4l-2 16m5-16 1 16",
+    "M05": "M4 20h17M7 19V6h7l4 13M7 11h8m-8 4h9",
+    "M06": "M5 20V5h3v15m3 0V5h3v15m3 0V5h3v15M3 9h19",
+    "M07": "M3 19h18M5 19l3-12h8l3 12M10 3v6m4-6v6M8 13h8",
+    "M08": "M4 21V4m16 17V4M4 6l16 12M4 18 20 6M4 6h16M4 12h16M4 18h16M12 6v12",
+}
+
+
+def map_symbol_svg(measure_id: str) -> str:
+    """地图与图例复用的紧凑线性符号；详细面板保留工程立体示意。"""
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">'
+            f'<path d="{MAP_PATHS[measure_id]}" fill="none" stroke="{COLORS[measure_id]}" '
+            'stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>')
 GROUND = '<path d="M6 57 45 38 90 56 50 77Z" fill="#b9cdae" stroke="#63775c" stroke-width="1.5"/>'
 BODIES = {
     "M01": '<path d="m13 48 30-16 39 19-11 6-28-14-22 12Z" fill="#d6e7ed" stroke="#426780" stroke-width="2"/><path d="m21 48 22-11 31 16" fill="none" stroke="#119dde" stroke-width="5"/><path d="m68 46 9 7-11 2" fill="none" stroke="#11618b" stroke-width="3"/>',

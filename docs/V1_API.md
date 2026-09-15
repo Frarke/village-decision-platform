@@ -6,6 +6,28 @@ V1.1已新增分文件ZIP输入、按坐标绑定权重/路径、措施点GeoJSO
 
 这是有规模限制的同步本地服务。正式部署前需接入宿主平台的鉴权、请求限流和异步作业机制；本轮不引入账户/数据库，也不开放公网端口。
 
+## V1.2 逐项文件接口
+
+- `GET /input-defaults`：返回 `catalog`（11项定义）与 `files`（内置模拟文件），供宿主自动初始化。
+- `POST /validate-files`：返回 `items` 的 `key/title/required/present/valid/message`、整组 `valid/errors` 与成功时的 `summary`（数据性质、预算、单元数量、输入摘要）。失败不自动补默认文件。
+- `POST /optimize-files`：再次校验同一请求快照，成功返回 `{result: 完整计算结果, html: 地图HTML}`。格式/关联/求解问题返回422。宿主将 HTML 放入 iframe.srcdoc，或直接用 result 中的 GeoJSON 和分值。
+
+两个 POST 请求体相同：
+
+```json
+{
+  "files": {
+    "project.json": {"name": "当地项目.json", "content": "文件内容的Base64"},
+    "risk.tif": {"name": "当地风险.tif", "content": "文件内容的Base64"}
+  },
+  "total_budget": 400
+}
+```
+
+上例仅示意两项；实际必须传齐9项必需资料。槽位名使用清单中的标准名；上传文件原名可不同，但扩展名必须匹配。`total_budget` 为可选覆盖值；省略/null使用项目文件预算。可选的易发/易损图层可整体省略，其 manifest 引用按实际文件同步处理。其他 manifest 栅格引用须使用标准名。单文件20MB、原始文件合计50MB、Base64请求68MB上限。不保存服务器草稿，页面间互不覆盖；生产持久化由宿主管理。
+
+`GET /symbols/M01.svg?variant=map` 返回与地图/图例一致的紧凑符号；省略 variant 或使用 `illustration` 返回兼容的工程示意图。成果包同时含 `symbols/map/` 与原 `symbols/`。两类符号都以 measure_id 关联，不代表工程数量。
+
 ## 对方平台需要提供什么
 
 |字段|含义和要求|

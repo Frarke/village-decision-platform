@@ -2,7 +2,7 @@
 from pathlib import Path
 import json
 
-from .engineering_symbols import COLORS, SYMBOL_NAMES, symbol_svg
+from .engineering_symbols import COLORS, SYMBOL_NAMES, symbol_svg, map_symbol_svg
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -15,6 +15,7 @@ def geographic_map_html(prepared: dict, request: dict, result: dict | None = Non
                "context":request.get("spatial_bindings") or {"type":"FeatureCollection","features":[]},
                "result":result, "label":label, "selected":selected_unit, "embedded":embedded,
                "symbols":{mid:symbol_svg(mid) for mid in SYMBOL_NAMES}, "names":SYMBOL_NAMES,"colors":COLORS}
+    payload["glyphs"] = {mid: map_symbol_svg(mid) for mid in SYMBOL_NAMES}
     # 输入文字只以textContent或转义文本使用；防止上传字符串关闭script标签。
     data = json.dumps(payload,ensure_ascii=False,allow_nan=False,separators=(",",":")).replace("<","\\u003c")
     template = (ROOT/"assets/geographic_map.html").read_text("utf-8")

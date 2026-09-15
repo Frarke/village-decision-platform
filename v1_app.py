@@ -18,11 +18,60 @@ from model.result_exporter import (composition_figure, export_zip,
 from model.service import input_hash, load_geographic_sample, optimize_request, prepare_request
 from model.input_package import read_input_package
 from model.geographic_map import geographic_map_html, result_map_html
+from model.input_checklist import CATALOG, template_files, validate_files
 
 
 @st.cache_data(show_spinner=False)
 def prepare_cached(request):
     return prepare_request(request)
+
+
+@st.cache_data(show_spinner=False)
+def check_files_cached(files):
+    return validate_files(files)
+
+
+def checklist_input():
+    defaults = template_files()
+    if "v1_files" not in st.session_state:
+        st.session_state.v1_files = defaults.copy()
+    if st.button("恢复全部内置资料", key="v1_restore_files"):
+        st.session_state.v1_files = defaults.copy()
+        st.session_state.v1_file_revision = st.session_state.get("v1_file_revision", 0) + 1
+        st.rerun()
+    files = st.session_state.v1_files
+    revision = st.session_state.get("v1_file_revision", 0)
+    report, request = check_files_cached(files)
+    st.caption("已自动载入内置模拟资料。展开任一项可替换、移除或下载模板。绿色为文件格式通过；全部资料还需通过关联校验。")
+    for row, (name, title, required, desc) in zip(report["items"], CATALOG):
+        with st.expander(("🟢 " if row["valid"] else "🔴 ") + title + ("" if required else "（可选）")):
+            st.caption(name + " · " + desc)
+            st.caption("内置模拟资料" if files.get(name) == defaults[name] else "替换文件" if name in files else "未提供")
+            if not row["valid"]:
+                st.error(row["message"])
+            upload = st.file_uploader("替换" + title, type=[name.split(".")[-1]], key=f"file_{name}_{revision}")
+            # 每次选择只消费一次；移除不被仍存在于上传控件中的旧值撤销。
+            if upload is not None:
+                digest = (upload.file_id, upload.name)
+                seen_key = f"seen_{name}_{revision}"
+                if st.session_state.get(seen_key) != digest:
+                    st.session_state[seen_key] = digest
+                    files[name] = upload.getvalue()
+                    st.rerun()
+            columns = st.columns(2)
+            if columns[0].button("恢复内置", key=f"reset_{name}"):
+                files[name] = defaults[name]
+                st.rerun()
+            if columns[1].button("移除", key=f"remove_{name}"):
+                files.pop(name, None)
+                st.rerun()
+            st.download_button("下载此项模板", defaults[name], name, key=f"template_{name}")
+    if not report["valid"]:
+        st.error("；".join(report["errors"]))
+        st.session_state.v1_result_hash = None
+        st.stop()
+    st.success("必需资料齐全，格式与资料关联校验通过。")
+    return request
 
 
 def main():
@@ -33,7 +82,7 @@ def main():
     </style>""", unsafe_allow_html=True)
     st.title("村域综合整治工程技术智能研判与决策")
     st.caption("空间评价成果 → 重点治理区域 → 治理单元 → 多目标优化 → 空间治理方案")
-    with st.expander("我需要提供哪些资料？计算后能拿到什么？", expanded=False):
+    with st.expander("输入资料与成果接口说明", expanded=False):
         st.markdown("**提供已有空间评价成果与工程条件，治理单元由本模块计算。** 最终返回治理范围、各单元措施配置、措施图标位置、五类方案及指标，供其他系统直接显示。")
         st.dataframe(pd.DataFrame([
             ("研究范围", "boundary.geojson", "确定在哪个真实地理范围内计算"),
@@ -48,16 +97,16 @@ def main():
     with st.sidebar:
         st.subheader("项目输入")
         mode = st.radio("展示模式", ["正式展示", "开发调试"], key="v1_mode")
-        source = st.selectbox("数据来源", ["真实地点模拟资料", "上传资料包（ZIP）", "上传项目数据"], key="v1_source")
-        uploaded = st.file_uploader("资料文件（ZIP或JSON）", type=["zip", "json"], key="v1_upload") if source != "真实地点模拟资料" else None
+        source = st.selectbox("数据来源", ["逐项资料清单", "上传资料包（ZIP）", "上传项目数据"], key="v1_source")
+        uploaded = st.file_uploader("资料文件（ZIP或JSON）", type=["zip", "json"], key="v1_upload") if source != "逐项资料清单" else None
         st.download_button("下载分文件资料模板包", (ROOT/"data/v1_1/peitian_input_package.zip").read_bytes(),
                            "peitian_input_package.zip", mime="application/zip")
-        if source != "真实地点模拟资料" and uploaded is None:
+        if source != "逐项资料清单" and uploaded is None:
             st.info("请上传资料包或完整项目JSON。资料包内分别保存范围、评价栅格、调查表、空间权重和路径。")
             st.stop()
         try:
             request = (read_input_package(uploaded.getvalue()) if uploaded.name.lower().endswith(".zip")
-                       else json.loads(uploaded.getvalue())) if uploaded else load_geographic_sample()
+                       else json.loads(uploaded.getvalue())) if uploaded else checklist_input()
             request = copy.deepcopy(request)
             initial_solver = request.get("configuration", {}).get("solver", {})
             # 不同输入使用独立控件状态，避免把上一个项目的预算带入新数据。
@@ -124,13 +173,15 @@ def main():
     metrics[0].metric("全寿命成本（万元）", f"{solution['total_cost']:.1f}")
     for col, (key, name) in zip(metrics[1:], (("safety", "安全性"), ("economy", "经济性"),
                                            ("sustainability", "可持续性"), ("resilience", "韧性"))):
-        col.metric(f"{name}（分）", f"{solution['objectives'][key]:.1f}")
+        before = result["summary"]["baseline_objectives"][key]
+        col.metric(f"{name}（分）", f"{solution['objectives'][key]:.1f}",
+                   delta=f"{solution['objectives'][key] - before:+.1f} 分（治理前 {before:.1f}）")
     st.subheader("真实地图上的治理措施配置")
     ids = [f["properties"]["unit_id"] for f in result["governance_units"]["features"]]
     if st.session_state.get("v1_selected_unit") not in ids:
         st.session_state.v1_selected_unit = ids[0]
     st.selectbox("定位治理单元（也可直接点击地图和措施图标）", ids, key="v1_selected_unit")
-    components.html(result_map_html(result, label, st.session_state.v1_selected_unit, embedded=True), height=735, scrolling=True)
+    components.html(result_map_html(result, label, st.session_state.v1_selected_unit, embedded=True), height=1050, scrolling=True)
     st.write("推荐依据：" + solution["basis"])
     st.caption(f"关键路径完整覆盖率 {solution['path_coverage']:.1f}%；区域协同已进入每个候选方案的四目标评价。")
     st.subheader("方案比较")

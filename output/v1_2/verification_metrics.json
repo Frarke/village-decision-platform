@@ -1,0 +1,275 @@
+{
+  "input_check": {
+    "items": [
+      {
+        "key": "project.json",
+        "title": "项目与计算参数",
+        "required": true,
+        "description": "JSON；项目来源、数据性质、预算和求解设置",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "boundary.geojson",
+        "title": "研究范围",
+        "required": true,
+        "description": "WGS84 单个有效面；限定计算范围",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "risk.tif",
+        "title": "已有风险评价",
+        "required": true,
+        "description": "单波段 GeoTIFF；1–5 整数等级，用于重点区域识别",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "haz.tif",
+        "title": "已有危险性评价",
+        "required": true,
+        "description": "单波段 GeoTIFF；1–5 整数等级，用于工程适用性判断",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "slope_deg.tif",
+        "title": "地形坡度",
+        "required": true,
+        "description": "单波段 GeoTIFF；0–90 度",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "distance_m.tif",
+        "title": "距承灾体距离",
+        "required": true,
+        "description": "单波段 GeoTIFF；非负米数",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "profile_id.tif",
+        "title": "工程调查分区编码",
+        "required": true,
+        "description": "单波段 GeoTIFF；编码对应下方调查表",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "engineering_profiles.csv",
+        "title": "工程条件调查表",
+        "required": true,
+        "description": "UTF-8 CSV；稳定性、坡高、排水与施工条件，按 profile_id 关联",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "decision_context.geojson",
+        "title": "空间风险权重与路径",
+        "required": true,
+        "description": "WGS84 点与三点折线；显式权重、物源—输移—承灾路径",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "susceptibility.tif",
+        "title": "已有易发性评价",
+        "required": false,
+        "description": "单波段 GeoTIFF；0–1，用于解释与统计",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      },
+      {
+        "key": "vulnerability.tif",
+        "title": "已有易损性评价",
+        "required": false,
+        "description": "单波段 GeoTIFF；0–1，用于解释与统计",
+        "present": true,
+        "valid": true,
+        "message": "格式通过"
+      }
+    ],
+    "valid": true,
+    "errors": [],
+    "summary": {
+      "village": "培田村周边研究范围（模拟评价）",
+      "data_status": "MOCK",
+      "input_hash": "aa92131e3e59e3918d15bce358ef27527a868cf9c1d988fbfff653d6e0abdb82",
+      "governance_units": 4,
+      "budget": 560
+    }
+  },
+  "baseline": {
+    "safety": 11.21,
+    "economy": 100.0,
+    "sustainability": 45.0,
+    "resilience": 25.5
+  },
+  "solutions": [
+    {
+      "label": "综合均衡",
+      "total_cost": 462.6,
+      "objectives": {
+        "safety": 67.077429,
+        "economy": 64.571429,
+        "sustainability": 63.5,
+        "resilience": 70.297619
+      },
+      "path_coverage": 66.666667
+    },
+    {
+      "label": "安全优先",
+      "total_cost": 556.15,
+      "objectives": {
+        "safety": 72.117429,
+        "economy": 56.214286,
+        "sustainability": 52.357143,
+        "resilience": 74.232143
+      },
+      "path_coverage": 100.0
+    },
+    {
+      "label": "经济优先",
+      "total_cost": 323.5,
+      "objectives": {
+        "safety": 46.716857,
+        "economy": 71.642857,
+        "sustainability": 62.535714,
+        "resilience": 54.017857
+      },
+      "path_coverage": 0.0
+    },
+    {
+      "label": "韧性优先",
+      "total_cost": 502.7,
+      "objectives": {
+        "safety": 71.328857,
+        "economy": 62.857143,
+        "sustainability": 58.571429,
+        "resilience": 76.321429
+      },
+      "path_coverage": 100.0
+    },
+    {
+      "label": "可持续优先",
+      "total_cost": 351.4,
+      "objectives": {
+        "safety": 50.769429,
+        "economy": 68.0,
+        "sustainability": 69.821429,
+        "resilience": 57.446429
+      },
+      "path_coverage": 0.0
+    }
+  ],
+  "spatial": {
+    "adapter": "raster_grid",
+    "raster_shape": [
+      48,
+      48
+    ],
+    "nodata_cells": 0,
+    "transform": [
+      40.0,
+      0.0,
+      462365.2434677387,
+      0.0,
+      -40.0,
+      2836718.113528243
+    ],
+    "source_crs": "EPSG:32650",
+    "valid_features": 2304,
+    "metric_crs": "EPSG:32650",
+    "clipped_features": 1911,
+    "outside_features": 393,
+    "priority_features": 273,
+    "priority_area_m2": 436800.0,
+    "governance_unit_count": 4,
+    "filtered_patch_count": 0,
+    "filtered_area_m2": 0.0,
+    "configuration": {
+      "risk_threshold": 3,
+      "receptor_distance_m": 100.0,
+      "min_area_m2": 1600,
+      "merge_distance_m": 0,
+      "max_unit_area_m2": null,
+      "max_units": 64
+    },
+    "covered_village_area_m2": 2913025.0000016727,
+    "village_area_m2": 2913025.000001672
+  },
+  "optimization": {
+    "scenario_id": "SCN-20260915-133444-01D825",
+    "run_time": "2026-09-15T13:34:44+08:00",
+    "configuration_hash": "01d82571ba9983e6",
+    "random_seed": 42,
+    "solver": "nsga2_discrete",
+    "deterministic": true,
+    "active_units": 4,
+    "estimated_combinations": 4356,
+    "unique_evaluations": 1810,
+    "feasible_evaluations": 316,
+    "feasible_ratio": 0.174586,
+    "feasible_plans": 316,
+    "pareto_plans": 17,
+    "runtime_seconds": 2.209109,
+    "config": {
+      "total_budget": 560,
+      "max_measures_per_unit": 2,
+      "allow_untreated_medium_high": false,
+      "high_risk_min_fs": 1.05,
+      "high_risk_min_safety": 58.0,
+      "max_enumerations": 200000,
+      "drainage_synergy": 1.1,
+      "general_second_measure_factor": 0.9,
+      "nsga_population_size": 60,
+      "nsga_generations": 25,
+      "nsga_crossover_probability": 0.9,
+      "nsga_mutation_probability": 0.2,
+      "random_seed": 42,
+      "preference_weights": {
+        "safety": 0.35,
+        "economy": 0.2,
+        "sustainability": 0.2,
+        "resilience": 0.25
+      },
+      "evaluation_parameters": {
+        "status": "V1暂定参数，待工程标定",
+        "fs_score_zero": 0.8,
+        "fs_score_full": 1.4,
+        "chain_base": 20.0,
+        "delta_fs_cap": 0.7,
+        "steep_slope_deg": 45.0,
+        "tall_slope_m": 20.0,
+        "steep_cost_addition": 0.08,
+        "tall_cost_addition": 0.07,
+        "inaccessible_cost_addition": 0.12,
+        "steep_disturbance_penalty": 5.0,
+        "untreated_sustainability": 45.0,
+        "untreated_redundancy": 15.0,
+        "untreated_recovery_difficulty": 3.0,
+        "maintenance_base": 0.03,
+        "maintenance_level_factor": 0.015,
+        "organization_level_factor": 0.02,
+        "legacy_cost_score_factor": 0.35,
+        "residual_hazard_fs_factor": 4.0,
+        "residual_hazard_chain_divisor": 70.0,
+        "residual_risk_fs_factor": 3.0,
+        "residual_risk_chain_divisor": 80.0
+      }
+    },
+    "topology_paths": 3
+  }
+}

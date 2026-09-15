@@ -1,6 +1,6 @@
 # 村域综合整治工程技术智能研判与决策平台
 
-**当前交付为V1.1。** 优先查看 [输入资料与输出清单](docs/INTEGRATION_DATA_GUIDE.md)、[本轮改进与验收报告](docs/V1_1_RUN_REPORT.md)。独立集成入口为 `http://127.0.0.1:8017/integration`，实现“上传资料＋预算＋点击计算＋地图结果”；不依赖Streamlit。正式工作台仍为 `v1_app.py`，默认加载培田村真实位置上的模拟评价资料。
+**当前交付为 V1.2。** 优先查看 [输入资料与输出清单](docs/INTEGRATION_DATA_GUIDE.md)、[本轮改进与验收报告](docs/V1_2_RUN_REPORT.md)。独立入口为 `http://127.0.0.1:8017/integration`：内置资料自动载入，逐项校验、替换后计算；结果按“治理方案 / 治理成效 / 计算溯源”展示。入口不依赖 Streamlit，`v1_app.py` 同步提供逐项资料清单与共用地图。
 
 - 可交接输入模板：[peitian_input_package.zip](data/v1_1/peitian_input_package.zip)，分别包含GeoTIFF、研究范围、调查CSV及空间权重/路径，无预定义治理单元。
 - 本轮真实底图与工程图标地图：[spatial_decision_map.html](output/v1_1/spatial_decision_map.html)。在线影像需要网络，计算图层与符号在文件内。

@@ -130,3 +130,16 @@ def test_package_duplicate_names_rejected():
         with ZipFile(buffer,'w') as z:
             z.writestr('project.json','{}');z.writestr('project.json','{}')
     with pytest.raises(ValueError,match='重复'):read_input_package(buffer.getvalue())
+
+
+def test_compact_symbols_are_reusable_in_host_and_export(result):
+    from model.engineering_symbols import SYMBOL_NAMES, map_symbol_svg
+    from model.result_exporter import export_files
+    client = TestClient(app)
+    files = export_files(result)
+    for mid in SYMBOL_NAMES:
+        response = client.get(f'/symbols/{mid}.svg?variant=map')
+        assert response.status_code == 200
+        assert response.text == map_symbol_svg(mid)
+        assert files[f'symbols/map/{mid}.svg'].decode() == response.text
+    assert client.get('/symbols/M01.svg?variant=unknown').status_code == 422

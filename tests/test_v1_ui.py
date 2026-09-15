@@ -35,3 +35,16 @@ def test_upload_mode_does_not_reuse_sample_when_no_file():
     next(s for s in app.selectbox if s.key == "v1_source").set_value("上传项目数据").run()
     assert not app.exception
     assert not any(b.key == "v1_run" for b in app.button)
+
+
+def test_checklist_remove_required_restore_and_optional():
+    app = AppTest.from_file(str(ROOT / "v1_app.py"), default_timeout=60).run()
+    next(b for b in app.button if b.key == "remove_risk.tif").click().run()
+    assert not app.exception
+    assert app.error and not any(b.key == "v1_run" for b in app.button)
+    next(b for b in app.button if b.key == "reset_risk.tif").click().run()
+    assert not app.exception
+    assert any(b.key == "v1_run" for b in app.button)
+    next(b for b in app.button if b.key == "remove_susceptibility.tif").click().run()
+    assert not app.exception
+    assert any(b.key == "v1_run" for b in app.button)
