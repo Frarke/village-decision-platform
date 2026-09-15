@@ -1,5 +1,7 @@
 # V1 数据与集成接口
 
+V1.1已新增分文件ZIP输入、按坐标绑定权重/路径、措施点GeoJSON及工程符号接口。业务资料清单和一次计算集成流程请先读 [集成方资料清单](INTEGRATION_DATA_GUIDE.md)。以下V1 JSON字段仍兼容；`spatial_bindings`可替代按单元编号提供的`unit_risk_weights`和`topology`，两种方式不可混用。
+
 启动：`.venv_codex\Scripts\python.exe -m uvicorn api:app --host 127.0.0.1 --port 8017`。接口说明：`http://127.0.0.1:8017/docs`。标准环境也可使用安装了 requirements.txt 的 `.venv`。
 
 这是有规模限制的同步本地服务。正式部署前需接入宿主平台的鉴权、请求限流和异步作业机制；本轮不引入账户/数据库，也不开放公网端口。

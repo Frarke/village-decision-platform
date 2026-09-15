@@ -1,0 +1,4 @@
+2026-09-15 11:28:37,417 INFO 优化完成 input=720eea0e4ab4e0079dfa82440ceda8ffeb98aeddea09bdd90b85157d392fc81f method=nsga2 units=4 pareto=17
+2026-09-15 11:33:57,812 INFO 优化完成 input=720eea0e4ab4e0079dfa82440ceda8ffeb98aeddea09bdd90b85157d392fc81f method=nsga2 units=4 pareto=17
+2026-09-15 11:34:06,329 INFO 在当前参数下，NSGA-II目标空间近似覆盖率为100.0%，被精确Pareto集支配的比例为0.0%，跨随机种子目标集稳定性为100.0%。该结论仅评价算法在当前示例问题上的搜索表现，不替代工程参数标定与方案专家复核。
+2026-09-15 11:34:06,329 INFO 精确枚举组合4356；可行575；非劣17

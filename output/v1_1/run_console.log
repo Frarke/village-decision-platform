@@ -1,0 +1,27 @@
+2026-09-15 11:33:57,812 INFO 优化完成 input=720eea0e4ab4e0079dfa82440ceda8ffeb98aeddea09bdd90b85157d392fc81f method=nsga2 units=4 pareto=17
+2026-09-15 11:34:06,329 INFO 在当前参数下，NSGA-II目标空间近似覆盖率为100.0%，被精确Pareto集支配的比例为0.0%，跨随机种子目标集稳定性为100.0%。该结论仅评价算法在当前示例问题上的搜索表现，不替代工程参数标定与方案专家复核。
+2026-09-15 11:34:06,329 INFO 精确枚举组合4356；可行575；非劣17
+{
+  "status": "completed",
+  "output": "D:\\08Codex_WorkSpace\\MultiObjective_Platform\\output\\v1_1",
+  "summary": {
+    "village_name": "培田村周边研究范围（模拟评价）",
+    "data_status": "MOCK",
+    "governance_unit_count": 4,
+    "feasible_solutions": 316,
+    "pareto_solutions": 17,
+    "notices": [
+      "模拟示例空间数据及人工风险路径，不能作为真实工程研究成果。",
+      "单元划分与空间统计为V1暂定规则，须现场复核。",
+      "风险权重为显式输入，程序仅归一化。",
+      "措施成本按每单元整套估算，未由面积推算工程量；拆分会影响成本。",
+      "多措施组合、措施效应、成本和评分映射仍需工程标定。"
+    ],
+    "baseline_objectives": {
+      "safety": 11.21,
+      "economy": 100.0,
+      "sustainability": 45.0,
+      "resilience": 25.5
+    }
+  }
+}

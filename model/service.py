@@ -21,6 +21,8 @@ from .schemas import (BOOL_COLUMNS_UNITS, GovernanceUnit, Measure, SolverConfig,
 from .screening import screen_all
 from .solver import solve
 from .spatial import validate_topology
+from .spatial_binding import bind_spatial_context
+from .engineering_symbols import measure_placements
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,11 +51,15 @@ def load_sample_request() -> dict:
     return json.loads((ROOT / "data/v1/sample_request.json").read_text(encoding="utf-8"))
 
 
+def load_geographic_sample() -> dict:
+    return json.loads((ROOT / "data/v1_1/peitian_request.json").read_text(encoding="utf-8"))
+
+
 def _request_config(request):
     if not isinstance(request, dict):
         raise ValueError("请求须为JSON对象。")
     allowed = {"schema_version", "village", "spatial_layers", "engineering_profiles", "unit_risk_weights",
-               "topology", "configuration", "measures"}
+               "topology", "configuration", "measures", "spatial_bindings"}
     if set(request) - allowed:
         raise ValueError(f"未知请求字段：{', '.join(sorted(set(request) - allowed))}")
     if request.get("schema_version") != SCHEMA_VERSION:
@@ -88,6 +94,12 @@ def prepare_request(request: dict) -> dict:
     prepared["input_hash"] = digest
     prepared["required_risk_weight_ids"] = [f["properties"]["unit_id"] for f in prepared["governance_units"]["features"]]
     prepared["status"] = "prepared" if prepared["required_risk_weight_ids"] else "no_governance_units"
+    if prepared["required_risk_weight_ids"] and request.get("spatial_bindings") is not None:
+        _, _, trace = bind_spatial_context(request["spatial_bindings"], prepared["governance_units"])
+        prepared["spatial_binding_trace"] = trace
+        prepared["missing_risk_weight_ids"] = []
+    else:
+        prepared["missing_risk_weight_ids"] = prepared["required_risk_weight_ids"]
     return prepared
 
 
@@ -155,6 +167,11 @@ def _measures(request):
 def model_context(request: dict, prepared: dict | None = None):
     prepared = prepared or prepare_request(request)
     _, config, method = _request_config(request)
+    if request.get("spatial_bindings") is not None:
+        if request.get("unit_risk_weights") or request.get("topology"):
+            raise ValueError("空间绑定与按单元编号的权重/路径不可同时提供，避免冲突。")
+        weights, topology, _ = bind_spatial_context(request["spatial_bindings"], prepared["governance_units"])
+        request = {**request, "unit_risk_weights": weights, "topology": topology}
     units = _model_units(request, prepared)
     topology = request.get("topology")
     validate_topology(topology, {u.unit_id for u in units})
@@ -238,8 +255,10 @@ def optimize_request(request: dict) -> dict:
         "schema_version": SCHEMA_VERSION, "status": "completed", "input_hash": prepared["input_hash"],
         "recommended_solution": representatives[0], "representative_solutions": representatives,
         "pareto_front": pareto, "governance_units": prepared["governance_units"],
-        "priority_areas": prepared["priority_areas"],
-        "map_result": {"crs": "EPSG:4326", "boundary": prepared["boundary"], "solutions": map_solutions},
+        "priority_areas": prepared["priority_areas"], "evaluation_areas": prepared["evaluation_areas"],
+        "map_result": {"crs": "EPSG:4326", "boundary": prepared["boundary"], "solutions": map_solutions,
+                       "measure_placements": measure_placements(map_solutions, prepared["spatial_metrics"]["metric_crs"]),
+                       "placement_level": "治理单元配置示意；非施工设计点位、线位或工程量"},
         "summary": {"village_name": request["village"]["name"], "data_status": request["village"]["data_status"],
                     "governance_unit_count": len(units), "feasible_solutions": len(result.all_feasible),
                     "pareto_solutions": len(pareto), "notices": notices,
@@ -247,6 +266,8 @@ def optimize_request(request: dict) -> dict:
         "metrics": {"spatial": prepared["spatial_metrics"], "optimization": result.run_metadata,
                     "iteration_history": _records(result.iteration_history)},
         "provenance": {"village": request["village"], "topology": topology,
+                       "spatial_bindings": request.get("spatial_bindings"),
+                       "spatial_binding_trace": prepared.get("spatial_binding_trace", []),
                        "measure_source": measure_source, "measures": [m.to_dict() for m in measures],
                        "solver_config": asdict(config), "spatial_config": prepared["spatial_metrics"]["configuration"],
                        "method_basis": "docs/METHOD_SPEC.md；科技报告表5-1至5-3",

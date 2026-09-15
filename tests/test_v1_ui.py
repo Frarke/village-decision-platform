@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_formal_run_switch_unit_switch_plan_and_stale_results():
     app = AppTest.from_file(str(ROOT / "v1_app.py"), default_timeout=60).run()
     assert not app.exception
-    assert app.metric[0].value == "144"
+    assert app.metric[0].value == "2304"
     next(b for b in app.button if b.key == "v1_run").click().run()
     assert not app.exception
     original_result = app.session_state["v1_result"]

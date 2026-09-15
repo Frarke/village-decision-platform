@@ -78,7 +78,8 @@ def _components(records, config):
 
 def _parts(geom):
     if geom.geom_type == "Polygon":
-        return [geom]
+        # 与多面分支采用相同数值容差，排除裁剪边界上的浮点零面积碎片。
+        return [geom] if geom.area > 1e-6 else []
     return [g for g in getattr(geom, "geoms", []) if g.geom_type == "Polygon" and g.area > 1e-6]
 
 
@@ -167,6 +168,9 @@ def build_governance(village: dict, spatial_layers: dict, config: SpatialConfig 
         feature["properties"]["unit_id"] = f"U{index:02d}"
     status = village.get("data_status", "UNSPECIFIED")
     return {
+        "evaluation_areas": {"type": "FeatureCollection", "features": [
+            {"type": "Feature", "geometry": mapping(reproject(r["geometry"], metric_crs, wgs84)),
+             "properties": r["properties"]} for r in clipped], "data_status": status},
         "governance_units": {"type": "FeatureCollection", "features": units, "data_status": status},
         "priority_areas": {"type": "FeatureCollection", "features": [
             {"type": "Feature", "geometry": mapping(reproject(r["geometry"], metric_crs, wgs84)),

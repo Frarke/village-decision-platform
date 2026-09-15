@@ -11,11 +11,13 @@ if str(ROOT) not in sys.path:
 
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 
-from model.result_exporter import (composition_figure, export_zip, html_report, map_figure,
+from model.result_exporter import (composition_figure, export_zip,
                                    pareto_figure, radar_figure)
-from model.service import input_hash, load_sample_request, optimize_request, prepare_request
-from model.workflow import extract_unit_id
+from model.service import input_hash, load_geographic_sample, optimize_request, prepare_request
+from model.input_package import read_input_package
+from model.geographic_map import geographic_map_html, result_map_html
 
 
 @st.cache_data(show_spinner=False)
@@ -31,18 +33,31 @@ def main():
     </style>""", unsafe_allow_html=True)
     st.title("村域综合整治工程技术智能研判与决策")
     st.caption("空间评价成果 → 重点治理区域 → 治理单元 → 多目标优化 → 空间治理方案")
+    with st.expander("我需要提供哪些资料？计算后能拿到什么？", expanded=False):
+        st.markdown("**提供已有空间评价成果与工程条件，治理单元由本模块计算。** 最终返回治理范围、各单元措施配置、措施图标位置、五类方案及指标，供其他系统直接显示。")
+        st.dataframe(pd.DataFrame([
+            ("研究范围", "boundary.geojson", "确定在哪个真实地理范围内计算"),
+            ("已有风险、危险性评价", "risk.tif / haz.tif", "识别重点区域并筛选措施；不是普通截图"),
+            ("易发性、易损性成果", "susceptibility.tif / vulnerability.tif", "上游已有评价输入，用于空间解释和单元统计；不暗中换算风险"),
+            ("坡度及承灾体距离", "slope_deg.tif / distance_m.tif", "地形与邻近关系判断"),
+            ("工程调查条件", "profile_id.tif + engineering_profiles.csv", "稳定性、坡高、施工空间、排水及锚固条件"),
+            ("显式空间权重和风险路径", "decision_context.geojson", "按坐标关联生成单元，无需预填U01"),
+            ("预算及计算配置", "project.json", "约束及规则配置")
+        ], columns=["资料", "文件", "用途"]), hide_index=True, use_container_width=True)
+        st.caption("接入方式：POST /optimize-package 上传ZIP，或POST /optimize提交JSON。返回GeoJSON和指标；成果HTML可直接嵌入宿主页面。真实底图需要网络，空间运算不依赖底图瓦片。")
     with st.sidebar:
         st.subheader("项目输入")
         mode = st.radio("展示模式", ["正式展示", "开发调试"], key="v1_mode")
-        source = st.selectbox("数据来源", ["模拟示例空间数据", "上传项目数据"], key="v1_source")
-        uploaded = st.file_uploader("项目输入文件（JSON）", type=["json"], key="v1_upload") if source == "上传项目数据" else None
-        st.download_button("下载输入模板", json.dumps(load_sample_request(), ensure_ascii=False, indent=2),
-                           "village_input_template.json", mime="application/json")
-        if source == "上传项目数据" and uploaded is None:
-            st.info("请载入包含村界、空间评价图层和工程调查属性的项目文件。")
+        source = st.selectbox("数据来源", ["真实地点模拟资料", "上传资料包（ZIP）", "上传项目数据"], key="v1_source")
+        uploaded = st.file_uploader("资料文件（ZIP或JSON）", type=["zip", "json"], key="v1_upload") if source != "真实地点模拟资料" else None
+        st.download_button("下载分文件资料模板包", (ROOT/"data/v1_1/peitian_input_package.zip").read_bytes(),
+                           "peitian_input_package.zip", mime="application/zip")
+        if source != "真实地点模拟资料" and uploaded is None:
+            st.info("请上传资料包或完整项目JSON。资料包内分别保存范围、评价栅格、调查表、空间权重和路径。")
             st.stop()
         try:
-            request = json.loads(uploaded.getvalue()) if uploaded else load_sample_request()
+            request = (read_input_package(uploaded.getvalue()) if uploaded.name.lower().endswith(".zip")
+                       else json.loads(uploaded.getvalue())) if uploaded else load_geographic_sample()
             request = copy.deepcopy(request)
             initial_solver = request.get("configuration", {}).get("solver", {})
             # 不同输入使用独立控件状态，避免把上一个项目的预算带入新数据。
@@ -90,7 +105,9 @@ def main():
         columns[0].metric("有效评价片区", metrics["valid_features"])
         columns[1].metric("重点治理面积（公顷）", f"{metrics['priority_area_m2']/10000:.2f}")
         columns[2].metric("自动生成单元", metrics["governance_unit_count"])
-        st.write("空间数据已通过校验。运行后将展示五类代表方案、治理地图及工程措施配置。")
+        st.write("资料校验通过。下图可查看已有评价、重点区域及生成单元的空间关系；点击运行后产生工程措施配置。")
+        st.caption(f"研究范围内有效像元{metrics['clipped_features']}个，重点像元{metrics['priority_features']}个；单元由选中像元连通形成。研究范围外{metrics['outside_features']}个像元已排除。")
+        components.html(geographic_map_html(prepared, request, embedded=True), height=735, scrolling=True)
         if metrics["filtered_area_m2"]:
             st.caption(f"小斑块过滤面积：{metrics['filtered_area_m2']:.1f}平方米。")
         if mode == "开发调试":
@@ -108,34 +125,12 @@ def main():
     for col, (key, name) in zip(metrics[1:], (("safety", "安全性"), ("economy", "经济性"),
                                            ("sustainability", "可持续性"), ("resilience", "韧性"))):
         col.metric(f"{name}（分）", f"{solution['objectives'][key]:.1f}")
-    st.subheader("村域综合治理方案地图")
-    left, right = st.columns([2.6, 1], gap="large")
+    st.subheader("真实地图上的治理措施配置")
     ids = [f["properties"]["unit_id"] for f in result["governance_units"]["features"]]
     if st.session_state.get("v1_selected_unit") not in ids:
         st.session_state.v1_selected_unit = ids[0]
-    with left:
-        event = st.plotly_chart(map_figure(result, label, st.session_state.v1_selected_unit),
-                                use_container_width=True, on_select="rerun", selection_mode="points",
-                                key=f"v1_map_{result['input_hash'][:12]}_{label}")
-        clicked = extract_unit_id(event, ids)
-        signature = (label, clicked)
-        if clicked and signature != st.session_state.get("v1_selection_event"):
-            st.session_state.v1_selected_unit = clicked
-            st.session_state.v1_selection_event = signature
-            st.rerun()
-        st.caption("点击治理单元面或编号点查看详情。颜色区分措施组合；金色边界标记当前单元。地图使用本地空间成果。")
-    with right:
-        st.selectbox("查看治理单元", ids, key="v1_selected_unit")
-        feature = next(f for f in result["map_result"]["solutions"][label]["features"]
-                       if f["properties"]["unit_id"] == st.session_state.v1_selected_unit)
-        p = feature["properties"]
-        st.markdown(f"**{p['measures']}**")
-        st.write(f"治理面积：{p['area_m2']/10000:.2f} 公顷 · 原风险：{p['risk']} 级")
-        st.metric("单元安全改善（分）", f"{p['safety']:.1f}", f"{p['safety_change']:+.1f}")
-        st.metric("单元全寿命成本（万元）", f"{p['lifecycle_cost']:.2f}")
-        st.metric("单元韧性变化（分）", f"{p['resilience']:.1f}", f"{p['resilience_change']:+.1f}")
-        st.caption("纳入依据：" + "；".join(p["selection_reasons"]))
-        st.caption("复核事项：" + p["expert_review"])
+    st.selectbox("定位治理单元（也可直接点击地图和措施图标）", ids, key="v1_selected_unit")
+    components.html(result_map_html(result, label, st.session_state.v1_selected_unit, embedded=True), height=735, scrolling=True)
     st.write("推荐依据：" + solution["basis"])
     st.caption(f"关键路径完整覆盖率 {solution['path_coverage']:.1f}%；区域协同已进入每个候选方案的四目标评价。")
     st.subheader("方案比较")
@@ -153,7 +148,7 @@ def main():
     st.subheader("成果输出")
     cols = st.columns(3)
     cols[0].download_button("下载完整成果包", export_zip(result), "village_decision_results.zip", mime="application/zip")
-    cols[1].download_button("下载交互治理地图", html_report(result), "map.html", mime="text/html")
+    cols[1].download_button("下载真实底图与工程图标地图", result_map_html(result), "spatial_decision_map.html", mime="text/html")
     cols[2].download_button("下载当前方案空间数据", json.dumps(result["map_result"]["solutions"][label], ensure_ascii=False, indent=2),
                             f"{label}.geojson", mime="application/geo+json")
     st.caption("；".join(result["summary"]["notices"]))

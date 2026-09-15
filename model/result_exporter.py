@@ -177,6 +177,15 @@ def export_files(result: dict) -> dict[str, bytes]:
     files["pareto_front.csv"] = pd.DataFrame(result["pareto_front"]).to_csv(index=False).encode("utf-8-sig")
     if result["status"] == "completed":
         files["map.html"] = html_report(result).encode("utf-8")
+        from .geographic_map import result_map_html
+        from .engineering_symbols import SYMBOL_NAMES, symbol_svg
+        files["spatial_decision_map.html"] = result_map_html(result).encode("utf-8")
+        if result.get("evaluation_areas"):
+            files["evaluation_areas.geojson"] = json.dumps(result["evaluation_areas"], ensure_ascii=False).encode("utf-8")
+        for mid in SYMBOL_NAMES:
+            files[f"symbols/{mid}.svg"] = symbol_svg(mid).encode("utf-8")
+        for label, fc in result["map_result"].get("measure_placements", {}).items():
+            files[f"measures_{label}.geojson"] = json.dumps(fc, ensure_ascii=False, indent=2).encode("utf-8")
         for label, fc in result["map_result"]["solutions"].items():
             files[f"map_{label}.geojson"] = json.dumps(fc, ensure_ascii=False, indent=2, allow_nan=False).encode("utf-8")
         files["screening.csv"] = pd.DataFrame(result["screening"]).to_csv(index=False).encode("utf-8-sig")

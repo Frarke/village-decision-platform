@@ -30,7 +30,9 @@ def main():
                         handlers=[logging.FileHandler(args.output / "run.log", encoding="utf-8"), logging.StreamHandler()])
     result = optimize_request(request)
     for name, value in export_files(result).items():
-        (args.output / name).write_bytes(value)
+        target = args.output / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(value)
     (args.output / "input_request.json").write_text(json.dumps(request, ensure_ascii=False, indent=2), "utf-8")
     (args.output / "decision_results.zip").write_bytes(export_zip(result))
     if args.compare and result["status"] == "completed":

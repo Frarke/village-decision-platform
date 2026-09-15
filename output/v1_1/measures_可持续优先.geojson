@@ -1,0 +1,145 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.62925580581997,
+          25.64315070022303
+        ]
+      },
+      "properties": {
+        "unit_id": "U01",
+        "measure_id": "M03",
+        "measure_name": "植被混凝土",
+        "symbol_key": "M03",
+        "placement_basis": "单元内部代表点，仅表达技术配置归属",
+        "is_design_location": false,
+        "quantity_meaning": "图标个数不代表工程数量",
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.63104898839711,
+          25.64315524093622
+        ]
+      },
+      "properties": {
+        "unit_id": "U01",
+        "measure_id": "M04",
+        "measure_name": "格构锚固",
+        "symbol_key": "M04",
+        "placement_basis": "单元内部代表点，仅表达技术配置归属",
+        "is_design_location": false,
+        "quantity_meaning": "图标个数不代表工程数量",
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.6394182647157,
+          25.642814934857977
+        ]
+      },
+      "properties": {
+        "unit_id": "U02",
+        "measure_id": "M02",
+        "measure_name": "灌草种植",
+        "symbol_key": "M02",
+        "placement_basis": "单元内部代表点，仅表达技术配置归属",
+        "is_design_location": false,
+        "quantity_meaning": "图标个数不代表工程数量",
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.62957919419783,
+          25.635204953257944
+        ]
+      },
+      "properties": {
+        "unit_id": "U03",
+        "measure_id": "M01",
+        "measure_name": "截排水工程",
+        "symbol_key": "M01",
+        "placement_basis": "单元内部代表点，仅表达技术配置归属",
+        "is_design_location": false,
+        "quantity_meaning": "图标个数不代表工程数量",
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.63137225813914,
+          25.635209488695875
+        ]
+      },
+      "properties": {
+        "unit_id": "U03",
+        "measure_id": "M05",
+        "measure_name": "挡墙工程",
+        "symbol_key": "M05",
+        "placement_basis": "单元内部代表点，仅表达技术配置归属",
+        "is_design_location": false,
+        "quantity_meaning": "图标个数不代表工程数量",
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.6382467623183,
+          25.634865465334133
+        ]
+      },
+      "properties": {
+        "unit_id": "U04",
+        "measure_id": "M01",
+        "measure_name": "截排水工程",
+        "symbol_key": "M01",
+        "placement_basis": "单元内部代表点，仅表达技术配置归属",
+        "is_design_location": false,
+        "quantity_meaning": "图标个数不代表工程数量",
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          116.64003982292493,
+          25.63486989433569
+        ]
+      },
+      "properties": {
+        "unit_id": "U04",
+        "measure_id": "M02",
+        "measure_name": "灌草种植",
+        "symbol_key": "M02",
+        "placement_basis": "单元内部代表点，仅表达技术配置归属",
+        "is_design_location": false,
+        "quantity_meaning": "图标个数不代表工程数量",
+        "data_status": "MOCK"
+      }
+    }
+  ]
+}

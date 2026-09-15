@@ -1,0 +1,18 @@
+{
+  "date": "2026-09-15",
+  "method": "真实浏览器上传、点击、方案/图层切换及可见页面核验",
+  "formal_url": "http://127.0.0.1:8517/",
+  "integration_url": "http://127.0.0.1:8017/integration",
+  "checks": [
+    {"name":"真实底图及来源","status":"passed","observed":"Esri影像实际加载，显示培田村周边山地、道路、居民点纹理和计算范围；保留底图署名。"},
+    {"name":"原始评价与生成过程","status":"passed","observed":"切换重点区域显示273个重点像元及规则说明；切换已有评价并选择易损性，图层和图例同步变化。"},
+    {"name":"正式页面实际计算","status":"passed","observed":"运行后综合均衡成本462.6万元，显示真实地图、四个单元和八个措施配置图标。"},
+    {"name":"资料包一次计算集成","status":"passed","observed":"通过文件选择器上传peitian_input_package.zip，填写500万元预算并点击计算，结果HTML在输入页内实际显示。"},
+    {"name":"工程图标点击","status":"passed","observed":"点击植被混凝土图标后显示U04治理配置；点击格构锚固图标后显示U01治理配置及来源像元、费用、安全和韧性。"},
+    {"name":"代表方案同步","status":"passed","observed":"切换经济优先后全寿命成本323.5万元、完整路径覆盖0%，措施图标从8个变为6个，单元详情同步更新。"},
+    {"name":"嵌入兼容问题修复","status":"passed","observed":"首次Blob URL嵌入在当前浏览器出现空白；改用iframe.srcdoc后重新真实上传并计算，完整地图与详情显示正常。"}
+  ],
+  "screenshots": ["acceptance_input_layers.png", "acceptance_engineering_map.png"],
+  "screenshot_scope": "当前视口截图，未伪称全页截图",
+  "data_status": "真实地点与在线底图；研究范围、评价、调查、权重和路径为MOCK。"
+}
