@@ -1,0 +1,801 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09653907237711,
+              25.09525581684598
+            ],
+            [
+              116.0965324399057,
+              25.09615880166153
+            ],
+            [
+              116.09652580711372,
+              25.097061786365536
+            ],
+            [
+              116.09751744887521,
+              25.097067822990088
+            ],
+            [
+              116.09850909095692,
+              25.097073852987172
+            ],
+            [
+              116.09851570919358,
+              25.09617086779004
+            ],
+            [
+              116.09852232711039,
+              25.095267882481366
+            ],
+            [
+              116.09852894470733,
+              25.094364897061144
+            ],
+            [
+              116.09753732445755,
+              25.09435886780334
+            ],
+            [
+              116.09654570452798,
+              25.094352831918883
+            ],
+            [
+              116.09653907237711,
+              25.09525581684598
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "profile_id": "1",
+        "area_m2": 60000.0,
+        "source_feature_ids": [
+          "R00007C00001",
+          "R00007C00002",
+          "R00008C00001",
+          "R00008C00002",
+          "R00009C00001",
+          "R00009C00002"
+        ],
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "selection_reasons": [
+          "距承灾体≤100米",
+          "风险等级≥3"
+        ],
+        "mean_slope_deg": 41.5,
+        "max_slope_deg": 42.0,
+        "mean_susceptibility": 0.692,
+        "max_susceptibility": 0.717,
+        "mean_vulnerability": 0.72,
+        "max_vulnerability": 0.72,
+        "slope_deg": 42.0,
+        "longitude": 116.0975273870266,
+        "latitude": 25.0957133455222,
+        "unit_id": "U01",
+        "unit_name": "U01 近承灾体中高风险人工切坡",
+        "risk_weight": 4.5,
+        "normalized_risk_weight": 0.32142857142857145,
+        "available_measures": [
+          "M01",
+          "M03",
+          "M04",
+          "M06",
+          "M08"
+        ],
+        "candidate_combinations": [
+          [
+            "M01"
+          ],
+          [
+            "M04"
+          ],
+          [
+            "M06"
+          ],
+          [
+            "M01",
+            "M04"
+          ],
+          [
+            "M01",
+            "M06"
+          ],
+          [
+            "M01",
+            "M08"
+          ],
+          [
+            "M03",
+            "M04"
+          ],
+          [
+            "M03",
+            "M06"
+          ],
+          [
+            "M04",
+            "M06"
+          ],
+          [
+            "M04",
+            "M08"
+          ],
+          [
+            "M06",
+            "M08"
+          ]
+        ],
+        "engineering_attributes": {
+          "unit_id": "U01",
+          "unit_name": "U01 近承灾体中高风险人工切坡",
+          "risk": 4,
+          "haz": 4,
+          "distance_m": 35.0,
+          "rainfall_mm": 1800.0,
+          "slope_deg": 42.0,
+          "height_m": 12.0,
+          "catchment_km2": 0.03,
+          "gully_level": 1,
+          "foot_space_m": 1.5,
+          "fs0": 1.05,
+          "k_rain": 0.82,
+          "identified_or_risk_area": true,
+          "focus_unit": false,
+          "safe_drainage_outlet": true,
+          "artificial_or_bare": true,
+          "anchor_condition": true,
+          "slip_surface_or_review": true,
+          "slip_surface_confirmed": false,
+          "motion_path": true,
+          "accessible": true,
+          "wall_back_drainage": true,
+          "key_paths": 2,
+          "risk_weight": 4.5,
+          "evidence_level": "MOCK：模拟调查属性，待标定",
+          "notes": "示例治理单元；抗滑桩需后续勘察复核"
+        },
+        "measures": "植被混凝土＋格构锚固",
+        "measure_ids": "M03+M04",
+        "measure_names": [
+          "植被混凝土",
+          "格构锚固"
+        ],
+        "actual_cost": 155.9,
+        "construction_cost": 140.0,
+        "maintenance_npv": 8.4,
+        "organization_cost": 7.5,
+        "terrain_adjustment_cost": 0.0,
+        "lifecycle_cost": 155.9,
+        "cost_factor": 1.0,
+        "fs_rain": 1.231,
+        "fs_before_rain": 0.861,
+        "delta_fs": 0.37,
+        "synergy_factor": 1.0,
+        "s_fs": 71.833333,
+        "s_chain": 73.0,
+        "safety": 72.3,
+        "lci": 3.4,
+        "lci_score": 52.0,
+        "lifecycle_cost_score": 45.435,
+        "economy": 52.0,
+        "sustainability": 65.0,
+        "resilience": 56.0,
+        "redundancy_score": 70.0,
+        "recovery_score": 70.0,
+        "coverage_score_local": 0.0,
+        "function_count": 2,
+        "covered_paths": 0,
+        "key_paths": 2,
+        "evidence_level": "MOCK：模拟调查属性，待标定",
+        "unit_notes": "示例治理单元；抗滑桩需后续勘察复核",
+        "expert_review": "措施效应和成本为待标定参数",
+        "residual_hazard": 1,
+        "residual_risk": 2,
+        "risk_reduction": 2.023,
+        "downstream_transfer_review": "未识别新增导排风险",
+        "plan_id": "N00168",
+        "safety_before": 14.1,
+        "safety_change": 58.2,
+        "resilience_before": 25.5,
+        "resilience_change": 30.5,
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10348046953477,
+              25.09529793059826
+            ],
+            [
+              116.1034738880047,
+              25.096200917135018
+            ],
+            [
+              116.10346730615656,
+              25.097103903560246
+            ],
+            [
+              116.1044589501522,
+              25.09710989379233
+            ],
+            [
+              116.10545059446565,
+              25.09711587739689
+            ],
+            [
+              116.10545716175834,
+              25.09621289048232
+            ],
+            [
+              116.10546372873362,
+              25.09530990345623
+            ],
+            [
+              116.10547029539156,
+              25.094406916318622
+            ],
+            [
+              116.10447867291029,
+              25.09440093344766
+            ],
+            [
+              116.10348705074675,
+              25.09439494394998
+            ],
+            [
+              116.10348046953477,
+              25.09529793059826
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "profile_id": "2",
+        "area_m2": 60000.0,
+        "source_feature_ids": [
+          "R00007C00008",
+          "R00007C00009",
+          "R00008C00008",
+          "R00008C00009",
+          "R00009C00008",
+          "R00009C00009"
+        ],
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "selection_reasons": [
+          "距承灾体≤100米"
+        ],
+        "mean_slope_deg": 19.5,
+        "max_slope_deg": 20.0,
+        "mean_susceptibility": 0.358,
+        "max_susceptibility": 0.383,
+        "mean_vulnerability": 0.72,
+        "max_vulnerability": 0.72,
+        "slope_deg": 20.0,
+        "longitude": 116.10446881188871,
+        "latitude": 25.095755413745454,
+        "unit_id": "U02",
+        "unit_name": "U02 低风险浅表冲刷缓坡",
+        "risk_weight": 1.5,
+        "normalized_risk_weight": 0.10714285714285715,
+        "available_measures": [
+          "M02",
+          "M05"
+        ],
+        "candidate_combinations": [
+          [],
+          [
+            "M02"
+          ],
+          [
+            "M05"
+          ],
+          [
+            "M02",
+            "M05"
+          ]
+        ],
+        "engineering_attributes": {
+          "unit_id": "U02",
+          "unit_name": "U02 低风险浅表冲刷缓坡",
+          "risk": 2,
+          "haz": 2,
+          "distance_m": 80.0,
+          "rainfall_mm": 1450.0,
+          "slope_deg": 20.0,
+          "height_m": 6.0,
+          "catchment_km2": 0.015,
+          "gully_level": 0,
+          "foot_space_m": 3.0,
+          "fs0": 1.18,
+          "k_rain": 0.9,
+          "identified_or_risk_area": true,
+          "focus_unit": false,
+          "safe_drainage_outlet": true,
+          "artificial_or_bare": false,
+          "anchor_condition": true,
+          "slip_surface_or_review": false,
+          "slip_surface_confirmed": false,
+          "motion_path": false,
+          "accessible": true,
+          "wall_back_drainage": true,
+          "key_paths": 2,
+          "risk_weight": 1.5,
+          "evidence_level": "MOCK：模拟调查属性，待标定",
+          "notes": "示例治理单元；因近承灾体纳入治理对象库"
+        },
+        "measures": "灌草种植",
+        "measure_ids": "M02",
+        "measure_names": [
+          "灌草种植"
+        ],
+        "actual_cost": 15.675,
+        "construction_cost": 15.0,
+        "maintenance_npv": 0.675,
+        "organization_cost": 0.0,
+        "terrain_adjustment_cost": 0.0,
+        "lifecycle_cost": 15.675,
+        "cost_factor": 1.0,
+        "fs_rain": 1.102,
+        "fs_before_rain": 1.062,
+        "delta_fs": 0.04,
+        "synergy_factor": 1.0,
+        "s_fs": 50.333333,
+        "s_chain": 30.0,
+        "safety": 42.2,
+        "lci": 1.2,
+        "lci_score": 96.0,
+        "lifecycle_cost_score": 94.51375,
+        "economy": 96.0,
+        "sustainability": 98.0,
+        "resilience": 57.5,
+        "redundancy_score": 55.0,
+        "recovery_score": 100.0,
+        "coverage_score_local": 0.0,
+        "function_count": 1,
+        "covered_paths": 0,
+        "key_paths": 2,
+        "evidence_level": "MOCK：模拟调查属性，待标定",
+        "unit_notes": "示例治理单元；因近承灾体纳入治理对象库",
+        "expert_review": "措施效应和成本为待标定参数",
+        "residual_hazard": 1,
+        "residual_risk": 2,
+        "risk_reduction": 0.495,
+        "downstream_transfer_review": "未识别新增导排风险",
+        "plan_id": "N00168",
+        "safety_before": 34.2,
+        "safety_change": 8.0,
+        "resilience_before": 25.5,
+        "resilience_change": 32.0,
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09649927273992,
+              25.100673724065977
+            ],
+            [
+              116.09649263834496,
+              25.101576708212182
+            ],
+            [
+              116.09648600362937,
+              25.102479692246813
+            ],
+            [
+              116.09747768906419,
+              25.102485730351656
+            ],
+            [
+              116.09846937481932,
+              25.102491761827398
+            ],
+            [
+              116.09847599497537,
+              25.101588777299593
+            ],
+            [
+              116.09848261481149,
+              25.100685792660222
+            ],
+            [
+              116.09848923432769,
+              25.099782807909286
+            ],
+            [
+              116.09749757041087,
+              25.099776777172885
+            ],
+            [
+              116.09650590681426,
+              25.099770739808207
+            ],
+            [
+              116.09649927273992,
+              25.100673724065977
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "profile_id": "3",
+        "area_m2": 60000.0,
+        "source_feature_ids": [
+          "R00001C00001",
+          "R00001C00002",
+          "R00002C00001",
+          "R00002C00002",
+          "R00003C00001",
+          "R00003C00002"
+        ],
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "selection_reasons": [
+          "风险等级≥3"
+        ],
+        "mean_slope_deg": 27.5,
+        "max_slope_deg": 28.0,
+        "mean_susceptibility": 0.692,
+        "max_susceptibility": 0.717,
+        "mean_vulnerability": 0.55,
+        "max_vulnerability": 0.55,
+        "slope_deg": 28.0,
+        "longitude": 116.09748763009782,
+        "latitude": 25.101131253887782,
+        "unit_id": "U03",
+        "unit_name": "U03 沟谷汇流与物源输移单元",
+        "risk_weight": 5.0,
+        "normalized_risk_weight": 0.35714285714285715,
+        "available_measures": [
+          "M01",
+          "M02",
+          "M05",
+          "M07",
+          "M08"
+        ],
+        "candidate_combinations": [
+          [
+            "M01"
+          ],
+          [
+            "M05"
+          ],
+          [
+            "M07"
+          ],
+          [
+            "M01",
+            "M05"
+          ],
+          [
+            "M01",
+            "M07"
+          ],
+          [
+            "M01",
+            "M08"
+          ],
+          [
+            "M05",
+            "M07"
+          ],
+          [
+            "M05",
+            "M08"
+          ],
+          [
+            "M07",
+            "M08"
+          ]
+        ],
+        "engineering_attributes": {
+          "unit_id": "U03",
+          "unit_name": "U03 沟谷汇流与物源输移单元",
+          "risk": 4,
+          "haz": 4,
+          "distance_m": 120.0,
+          "rainfall_mm": 1700.0,
+          "slope_deg": 28.0,
+          "height_m": 8.0,
+          "catchment_km2": 0.12,
+          "gully_level": 3,
+          "foot_space_m": 4.0,
+          "fs0": 1.0,
+          "k_rain": 0.8,
+          "identified_or_risk_area": true,
+          "focus_unit": false,
+          "safe_drainage_outlet": true,
+          "artificial_or_bare": false,
+          "anchor_condition": true,
+          "slip_surface_or_review": false,
+          "slip_surface_confirmed": false,
+          "motion_path": true,
+          "accessible": true,
+          "wall_back_drainage": true,
+          "key_paths": 2,
+          "risk_weight": 5.0,
+          "evidence_level": "MOCK：模拟调查属性，待标定",
+          "notes": "示例治理单元；突出沟谷断链需求"
+        },
+        "measures": "截排水工程＋挡墙工程",
+        "measure_ids": "M01+M05",
+        "measure_names": [
+          "截排水工程",
+          "挡墙工程"
+        ],
+        "actual_cost": 126.875,
+        "construction_cost": 115.0,
+        "maintenance_npv": 6.375,
+        "organization_cost": 5.5,
+        "terrain_adjustment_cost": 0.0,
+        "lifecycle_cost": 126.875,
+        "cost_factor": 1.0,
+        "fs_rain": 1.158,
+        "fs_before_rain": 0.8,
+        "delta_fs": 0.358,
+        "synergy_factor": 1.0,
+        "s_fs": 59.666667,
+        "s_chain": 80.0,
+        "safety": 67.8,
+        "lci": 2.9,
+        "lci_score": 62.0,
+        "lifecycle_cost_score": 55.59375,
+        "economy": 62.0,
+        "sustainability": 56.0,
+        "resilience": 76.0,
+        "redundancy_score": 70.0,
+        "recovery_score": 70.0,
+        "coverage_score_local": 100.0,
+        "function_count": 2,
+        "covered_paths": 2,
+        "key_paths": 2,
+        "evidence_level": "MOCK：模拟调查属性，待标定",
+        "unit_notes": "示例治理单元；突出沟谷断链需求",
+        "expert_review": "措施效应和成本为待标定参数",
+        "residual_hazard": 1,
+        "residual_risk": 2,
+        "risk_reduction": 2.074,
+        "downstream_transfer_review": "需复核导排出口与下游承灾体",
+        "plan_id": "N00168",
+        "safety_before": 8.0,
+        "safety_change": 59.8,
+        "resilience_before": 25.5,
+        "resilience_change": 50.5,
+        "data_status": "MOCK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10344097558267,
+              25.100715848145843
+            ],
+            [
+              116.10343439214384,
+              25.101618834013397
+            ],
+            [
+              116.10342780838684,
+              25.102521819769407
+            ],
+            [
+              116.10441949605631,
+              25.102527811470406
+            ],
+            [
+              116.10541118404356,
+              25.102533796542257
+            ],
+            [
+              116.10541775324084,
+              25.101630810296857
+            ],
+            [
+              116.1054243221207,
+              25.100727823939927
+            ],
+            [
+              116.1054308906831,
+              25.09982483747146
+            ],
+            [
+              116.10443922453432,
+              25.099818853133268
+            ],
+            [
+              116.10344755870335,
+              25.099812862166747
+            ],
+            [
+              116.10344097558267,
+              25.100715848145843
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "profile_id": "4",
+        "area_m2": 60000.0,
+        "source_feature_ids": [
+          "R00001C00008",
+          "R00001C00009",
+          "R00002C00008",
+          "R00002C00009",
+          "R00003C00008",
+          "R00003C00009"
+        ],
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "selection_reasons": [
+          "距承灾体≤100米",
+          "风险等级≥3"
+        ],
+        "mean_slope_deg": 31.5,
+        "max_slope_deg": 32.0,
+        "mean_susceptibility": 0.525,
+        "max_susceptibility": 0.55,
+        "mean_vulnerability": 0.55,
+        "max_vulnerability": 0.55,
+        "slope_deg": 32.0,
+        "longitude": 116.10442936065283,
+        "latitude": 25.101173332427326,
+        "unit_id": "U04",
+        "unit_name": "U04 降雨敏感中风险坡面",
+        "risk_weight": 3.0,
+        "normalized_risk_weight": 0.2142857142857143,
+        "available_measures": [
+          "M01",
+          "M02",
+          "M03",
+          "M04",
+          "M05"
+        ],
+        "candidate_combinations": [
+          [
+            "M01"
+          ],
+          [
+            "M03"
+          ],
+          [
+            "M04"
+          ],
+          [
+            "M05"
+          ],
+          [
+            "M01",
+            "M02"
+          ],
+          [
+            "M01",
+            "M03"
+          ],
+          [
+            "M01",
+            "M04"
+          ],
+          [
+            "M01",
+            "M05"
+          ],
+          [
+            "M03",
+            "M04"
+          ],
+          [
+            "M03",
+            "M05"
+          ],
+          [
+            "M04",
+            "M05"
+          ]
+        ],
+        "engineering_attributes": {
+          "unit_id": "U04",
+          "unit_name": "U04 降雨敏感中风险坡面",
+          "risk": 3,
+          "haz": 3,
+          "distance_m": 65.0,
+          "rainfall_mm": 1900.0,
+          "slope_deg": 32.0,
+          "height_m": 9.0,
+          "catchment_km2": 0.025,
+          "gully_level": 0,
+          "foot_space_m": 2.5,
+          "fs0": 1.12,
+          "k_rain": 0.85,
+          "identified_or_risk_area": true,
+          "focus_unit": false,
+          "safe_drainage_outlet": true,
+          "artificial_or_bare": true,
+          "anchor_condition": true,
+          "slip_surface_or_review": false,
+          "slip_surface_confirmed": false,
+          "motion_path": false,
+          "accessible": true,
+          "wall_back_drainage": true,
+          "key_paths": 2,
+          "risk_weight": 3.0,
+          "evidence_level": "MOCK：模拟调查属性，待标定",
+          "notes": "示例治理单元；突出排水与坡面防护协同"
+        },
+        "measures": "截排水工程＋灌草种植",
+        "measure_ids": "M01+M02",
+        "measure_names": [
+          "截排水工程",
+          "灌草种植"
+        ],
+        "actual_cost": 52.95,
+        "construction_cost": 50.0,
+        "maintenance_npv": 2.25,
+        "organization_cost": 0.7,
+        "terrain_adjustment_cost": 0.0,
+        "lifecycle_cost": 52.95,
+        "cost_factor": 1.0,
+        "fs_rain": 1.1236,
+        "fs_before_rain": 0.952,
+        "delta_fs": 0.1716,
+        "synergy_factor": 1.1,
+        "s_fs": 53.933333,
+        "s_chain": 55.0,
+        "safety": 54.36,
+        "lci": 1.6,
+        "lci_score": 88.0,
+        "lifecycle_cost_score": 81.4675,
+        "economy": 88.0,
+        "sustainability": 86.0,
+        "resilience": 82.0,
+        "redundancy_score": 70.0,
+        "recovery_score": 90.0,
+        "coverage_score_local": 100.0,
+        "function_count": 2,
+        "covered_paths": 2,
+        "key_paths": 2,
+        "evidence_level": "MOCK：模拟调查属性，待标定",
+        "unit_notes": "示例治理单元；突出排水与坡面防护协同",
+        "expert_review": "措施效应和成本为待标定参数",
+        "residual_hazard": 2,
+        "residual_risk": 2,
+        "risk_reduction": 1.202,
+        "downstream_transfer_review": "需复核导排出口与下游承灾体",
+        "plan_id": "N00168",
+        "safety_before": 23.2,
+        "safety_change": 31.16,
+        "resilience_before": 25.5,
+        "resilience_change": 56.5,
+        "data_status": "MOCK"
+      }
+    }
+  ],
+  "data_status": "MOCK"
+}

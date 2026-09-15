@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+from shapely.geometry import shape
 
 
 STAGE_CONTROL_MEASURES = {
@@ -46,8 +47,26 @@ def load_topology(path: str | Path) -> dict[str, Any]:
 
 
 def polygon_centroid(feature: dict[str, Any]) -> tuple[float, float]:
-    ring = feature["geometry"]["coordinates"][0]
-    return sum(p[0] for p in ring) / len(ring), sum(p[1] for p in ring) / len(ring)
+    point = shape(feature["geometry"]).representative_point()
+    return point.x, point.y
+
+
+def validate_topology(topology: dict, unit_ids: set[str]) -> None:
+    if not isinstance(topology, dict) or not isinstance(topology.get("paths"), list):
+        raise ValueError("topology须包含paths列表；缺少路径不能默认为无风险路径。")
+    ids = set()
+    for path in topology["paths"]:
+        if not isinstance(path, dict):
+            raise ValueError("每条风险路径须为对象。")
+        pid = path.get("path_id")
+        if not isinstance(pid, str) or not pid.strip() or pid in ids or not path.get("name"):
+            raise ValueError("风险路径须有唯一path_id和非空name。")
+        ids.add(pid)
+        if "key" in path and type(path["key"]) is not bool:
+            raise ValueError("路径key标记须为布尔值。")
+        for field in ("source_unit", "transport_unit", "receptor_unit"):
+            if path.get(field) not in unit_ids:
+                raise ValueError(f"路径{pid}的{field}引用不存在的治理单元。")
 
 
 def spatial_unit_table(units_geojson: dict[str, Any]) -> pd.DataFrame:
@@ -76,7 +95,7 @@ def evaluate_path_coverage(
     plan_details: list[dict[str, object]],
 ) -> dict[str, object]:
     detail_map = {str(item["unit_id"]): item for item in plan_details}
-    paths = topology.get("paths", [])
+    paths = [p for p in topology.get("paths", []) if p.get("key", True)]
     path_rows: list[dict[str, object]] = []
     covered = partial = 0
     source_hits = transport_hits = receptor_hits = 0

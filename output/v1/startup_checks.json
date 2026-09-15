@@ -1,0 +1,55 @@
+{
+  "checked_at_utc": "2026-09-15T02:12:15.447571+00:00",
+  "code_state": "final V1 working tree",
+  "streamlit_health": {
+    "http": 200,
+    "bytes": 2
+  },
+  "streamlit_home": {
+    "http": 200,
+    "bytes": 1522
+  },
+  "api_health": {
+    "http": 200,
+    "bytes": 38
+  },
+  "api_docs": {
+    "http": 200,
+    "bytes": 966
+  },
+  "map": {
+    "http": 200,
+    "bytes": 103402
+  },
+  "api_prepare": {
+    "http": 200,
+    "status": "prepared",
+    "summary": null
+  },
+  "api_optimize": {
+    "http": 200,
+    "status": "completed",
+    "summary": {
+      "village_name": "村域综合整治示例研究区",
+      "data_status": "MOCK",
+      "governance_unit_count": 4,
+      "feasible_solutions": 295,
+      "pareto_solutions": 16,
+      "notices": [
+        "模拟示例空间数据及人工风险路径，不能作为真实工程研究成果。",
+        "单元划分与空间统计为V1暂定规则，须现场复核。",
+        "风险权重为显式输入，程序仅归一化。",
+        "措施成本按每单元整套估算，未由面积推算工程量；拆分会影响成本。",
+        "多措施组合、措施效应、成本和评分映射仍需工程标定。"
+      ],
+      "baseline_objectives": {
+        "safety": 11.21,
+        "economy": 100.0,
+        "sustainability": 45.0,
+        "resilience": 25.5
+      }
+    },
+    "matches_saved_front": true,
+    "pareto_count": 16
+  }
+}

@@ -1,19 +1,25 @@
 from __future__ import annotations
 
 from .constraints import check_plan_constraints
+from .combinations import validate_unit_combination
+from .screening import screen_measure
+from math import isfinite
 from .evaluation import evaluate_unit
 from .schemas import GovernanceUnit
 from .schemas import Measure, SolverConfig
-from .spatial import evaluate_path_coverage
+from .spatial import evaluate_path_coverage, validate_topology
 
 
 def normalized_risk_weights(units: list[GovernanceUnit]) -> dict[str, float]:
-    raw = {unit.unit_id: max(0.0, unit.risk_weight) for unit in units}
-    total = sum(raw.values())
-    if total <= 0:
-        equal = 1.0 / len(units) if units else 0.0
-        return {unit.unit_id: equal for unit in units}
-    return {unit_id: value / total for unit_id, value in raw.items()}
+    raw = {unit.unit_id: unit.risk_weight for unit in units}
+    if any(not isfinite(v) or v < 0 for v in raw.values()):
+        raise ValueError("风险权重须为有限非负数。")
+    maximum = max(raw.values(), default=0.0)
+    if maximum <= 0:
+        raise ValueError("风险权重总和须大于零，不自动生成权重。")
+    scaled = {unit_id: value / maximum for unit_id, value in raw.items()}
+    total = sum(scaled.values())
+    return {unit_id: value / total for unit_id, value in scaled.items()}
 
 
 def evaluate_region(
@@ -64,12 +70,48 @@ def evaluate_village_scheme(
     config: SolverConfig,
     topology: dict[str, object] | None = None,
 ) -> dict[str, object]:
+    if not units or len(units) != len(selected_by_unit):
+        raise ValueError("方案编码长度须与非空治理单元列表一致。")
+    ids = {unit.unit_id for unit in units}
+    if len(ids) != len(units):
+        raise ValueError("治理单元编号必须唯一。")
+    if topology is not None:
+        validate_topology(topology, ids)
+    admission_reasons = []
+    for unit, selected in zip(units, selected_by_unit, strict=True):
+        if len({m.measure_id for m in selected}) != len(selected):
+            admission_reasons.append(f"{unit.unit_id}存在重复措施")
+        valid, reason = validate_unit_combination(unit, selected, config)
+        if not valid:
+            admission_reasons.append(f"{unit.unit_id}：{reason}")
+        for measure in selected:
+            screening = screen_measure(unit, measure)
+            if not screening.eligible:
+                admission_reasons.append(f"{unit.unit_id}措施{measure.measure_name}未准入：{screening.exclusion_reason}")
     details = [
         evaluate_unit(unit, measures, config)
         for unit, measures in zip(units, selected_by_unit, strict=True)
     ]
     region = evaluate_region(units, details, topology=topology)
+    if topology is not None:
+        # 单元局部覆盖与村域完整覆盖均读取同一条路径记录；局部只统计本单元承担的环节。
+        for detail in details:
+            uid = detail["unit_id"]
+            related = [p for p in region["path_details"] if uid in
+                       (p["source_unit"], p["transport_unit"], p["receptor_unit"])]
+            controlled = sum(all(p[f"{stage}_controlled"] for stage in ("source", "transport", "receptor")
+                                 if p[f"{stage}_unit"] == uid) for p in related)
+            coverage = 100.0 * controlled / len(related) if related else 100.0
+            if detail["measure_ids"] == "NONE":
+                coverage = 0.0
+            detail["key_paths"] = len(related)
+            detail["covered_paths"] = controlled
+            detail["coverage_score_local"] = round(coverage, 6)
+            detail["resilience"] = round(0.5 * detail["redundancy_score"] +
+                                         0.3 * detail["recovery_score"] + 0.2 * coverage, 6)
     feasible, reasons = check_plan_constraints(units, details, float(region["total_cost"]), config)
+    reasons = admission_reasons + reasons
+    feasible = feasible and not admission_reasons
     return {
         "unit_details": details,
         "regional_objectives": {
@@ -93,6 +135,7 @@ def evaluate_village_scheme(
         "lifecycle_cost_total": float(region["total_cost"]),
         "constraint_reasons": reasons,
         "constraint_status": {
+            "admission_and_combination": not admission_reasons,
             "budget": not any("预算" in reason for reason in reasons),
             "safety_floor": not any("FS" in reason or "安全得分" in reason for reason in reasons),
             "treatment_rule": not any("未治理" in reason for reason in reasons),

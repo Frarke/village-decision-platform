@@ -40,6 +40,7 @@ def optimization_hash(
     measures: Sequence[Measure],
     config: SolverConfig,
     method: str,
+    topology=None,
 ) -> str:
     """仅包含会改变可行/Pareto解集的输入；偏好权重不触发重算。"""
     config_data = asdict(config)
@@ -48,7 +49,7 @@ def optimization_hash(
         "units": [asdict(item) for item in units],
         "measures": [asdict(item) for item in measures],
         "config": config_data,
-        "method": method,
+        "method": method, "topology": topology,
     }
     return hashlib.sha256(
         json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from pathlib import Path
+import json
 import time
 from typing import Callable
 
@@ -14,7 +15,8 @@ from .combinations import estimate_enumerations, generate_unit_options
 from .pareto import OBJECTIVE_COLUMNS, dominates, pareto_front
 from .recommendation import recommend
 from .regional import evaluate_village_scheme
-from .schemas import GovernanceUnit, Measure, SolveResult, SolverConfig, validate_measures, validate_units
+from .schemas import GovernanceUnit, Measure, SolveResult, SolverConfig, validate_measures, validate_units, validate_solver_config
+from .spatial import validate_topology
 from .screening import screen_all
 from .solver import run_identity
 from .tagging import in_governance_library, tagged_unit_record
@@ -125,6 +127,7 @@ def solve_nsga2(
 ) -> SolveResult:
     started = time.perf_counter()
     config = config or SolverConfig()
+    validate_solver_config(config)
     errors = validate_units(units) + validate_measures(measures)
     if errors:
         raise ValueError("\n".join(errors))
@@ -132,6 +135,10 @@ def solve_nsga2(
         raise ValueError("NSGA-II种群规模至少为20，最大迭代代数至少为1。")
     rng = np.random.default_rng(config.random_seed)
     active_units = [unit for unit in units if in_governance_library(unit)[0]]
+    if not active_units:
+        raise ValueError("没有治理单元命中入库规则。")
+    if topology is not None:
+        validate_topology(topology, {u.unit_id for u in active_units})
     screening_results = screen_all(active_units, measures)
     screening_frame = pd.DataFrame([item.to_dict() for item in screening_results])
     tagged_frame = pd.DataFrame([tagged_unit_record(unit) for unit in units])
@@ -169,8 +176,8 @@ def solve_nsga2(
             "coordination_score": float(scheme["coordination_score"]),
             "N_key": int(scheme["N_key"]),
             "N_covered": int(scheme["N_covered"]),
-            "normalized_risk_weights": str(scheme["normalized_risk_weights"]),
-            "constraint_status": str(scheme["constraint_status"]),
+            "normalized_risk_weights": json.dumps(scheme["normalized_risk_weights"], ensure_ascii=False, sort_keys=True),
+            "constraint_status": json.dumps(scheme["constraint_status"], ensure_ascii=False, sort_keys=True),
             "constraint_reasons": "；".join(reasons) if reasons else "无",
             "configuration_summary": configuration,
             "expert_review": "；".join(review) if review else "无", "_genes": genes,
@@ -321,7 +328,7 @@ def solve_nsga2(
             reason_counts[category] = reason_counts.get(category, 0) + 1
     runtime = time.perf_counter() - started
     metadata = {
-        **run_identity(units, measures, config, "nsga2_discrete"), "solver": "nsga2_discrete",
+        **run_identity(units, measures, config, "nsga2_discrete", topology), "solver": "nsga2_discrete",
         "deterministic": True, "active_units": len(active_units), "estimated_combinations": search_space,
         "unique_evaluations": len(cache), "feasible_evaluations": len(feasible_records),
         "feasible_ratio": round(len(feasible_records) / max(len(cache), 1), 6),

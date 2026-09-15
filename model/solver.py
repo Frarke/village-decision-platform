@@ -14,23 +14,24 @@ from .combinations import estimate_enumerations, generate_unit_options
 from .pareto import pareto_front
 from .recommendation import recommend
 from .regional import evaluate_village_scheme
-from .schemas import GovernanceUnit, Measure, SolveResult, SolverConfig, validate_measures, validate_units
+from .schemas import GovernanceUnit, Measure, SolveResult, SolverConfig, validate_measures, validate_units, validate_solver_config
+from .spatial import validate_topology
 from .screening import screen_all
 from .tagging import in_governance_library, tagged_unit_record
 from .i18n import FIELD_LABELS, chinese_frame
 
 
-def configuration_hash(units: list[GovernanceUnit], measures: list[Measure], config: SolverConfig, method: str) -> str:
+def configuration_hash(units: list[GovernanceUnit], measures: list[Measure], config: SolverConfig, method: str, topology=None) -> str:
     payload = {
         "units": [asdict(item) for item in units], "measures": [asdict(item) for item in measures],
-        "config": asdict(config), "method": method,
+        "config": asdict(config), "method": method, "topology": topology,
     }
     return hashlib.sha256(json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()[:16]
 
 
-def run_identity(units: list[GovernanceUnit], measures: list[Measure], config: SolverConfig, method: str) -> dict[str, object]:
+def run_identity(units: list[GovernanceUnit], measures: list[Measure], config: SolverConfig, method: str, topology=None) -> dict[str, object]:
     now = datetime.now(timezone.utc).astimezone()
-    digest = configuration_hash(units, measures, config, method)
+    digest = configuration_hash(units, measures, config, method, topology)
     return {
         "scenario_id": f"SCN-{now:%Y%m%d-%H%M%S}-{digest[:6].upper()}",
         "run_time": now.isoformat(timespec="seconds"), "configuration_hash": digest,
@@ -59,12 +60,15 @@ def solve_exact(
 ) -> SolveResult:
     started = time.perf_counter()
     config = config or SolverConfig()
+    validate_solver_config(config)
     errors = validate_units(units) + validate_measures(measures)
     if errors:
         raise ValueError("\n".join(errors))
     active_units = [unit for unit in units if in_governance_library(unit)[0]]
     if not active_units:
         raise ValueError("没有治理单元命中入库规则，请检查Risk、L或识别/重点关注字段。")
+    if topology is not None:
+        validate_topology(topology, {u.unit_id for u in active_units})
     screening_results = screen_all(active_units, measures)
     screening_frame = pd.DataFrame([item.to_dict() for item in screening_results])
     tagged_frame = pd.DataFrame([tagged_unit_record(unit) for unit in units])
@@ -170,7 +174,7 @@ def solve_exact(
 
     runtime = time.perf_counter() - started
     metadata = {
-        **run_identity(units, measures, config, "exact_enumeration"),
+        **run_identity(units, measures, config, "exact_enumeration", topology),
         "solver": "exact_enumeration",
         "deterministic": True,
         "active_units": len(active_units),

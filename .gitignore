@@ -12,3 +12,8 @@ data_private/
 runs/
 temp/
 tmp/
+
+# 本地服务运行状态；静态计算成果与验收记录保留入库。
+/output/v1/services.json
+/output/v1/*_stdout.log
+/output/v1/*_stderr.log

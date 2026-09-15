@@ -12,6 +12,7 @@ from model.nsga2 import solve_nsga2
 from model.schemas import SolverConfig, load_measures, load_units
 from model.solver import parameters_and_assumptions, result_to_json, solve_exact
 from model.validation import validate_runs
+from model.spatial import load_topology
 
 
 ROOT = Path(__file__).resolve().parent
@@ -23,9 +24,10 @@ def main() -> None:
     units = load_units(ROOT / "data/default_units.csv")
     measures = load_measures(ROOT / "data/default_measures.csv")
     config = SolverConfig()
-    exact = solve_exact(units, measures, config, ROOT / "data/assumptions.csv")
+    topology = load_topology(ROOT / "data/spatial_topology.json")
+    exact = solve_exact(units, measures, config, ROOT / "data/assumptions.csv", topology=topology)
     nsga_runs = [
-        solve_nsga2(units, measures, replace(config, random_seed=seed), ROOT / "data/assumptions.csv")
+        solve_nsga2(units, measures, replace(config, random_seed=seed), ROOT / "data/assumptions.csv", topology=topology)
         for seed in (42, 123, 2026)
     ]
     nsga = nsga_runs[0]

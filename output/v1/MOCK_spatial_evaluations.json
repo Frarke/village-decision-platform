@@ -1,0 +1,5766 @@
+{
+  "kind": "vector",
+  "crs": "EPSG:32650",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2776700.0
+            ],
+            [
+              408900.0,
+              2776700.0
+            ],
+            [
+              408900.0,
+              2776600.0
+            ],
+            [
+              408800.0,
+              2776600.0
+            ],
+            [
+              408800.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2776700.0
+            ],
+            [
+              409000.0,
+              2776700.0
+            ],
+            [
+              409000.0,
+              2776600.0
+            ],
+            [
+              408900.0,
+              2776600.0
+            ],
+            [
+              408900.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00001",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2776700.0
+            ],
+            [
+              409100.0,
+              2776700.0
+            ],
+            [
+              409100.0,
+              2776600.0
+            ],
+            [
+              409000.0,
+              2776600.0
+            ],
+            [
+              409000.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00002",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2776700.0
+            ],
+            [
+              409200.0,
+              2776700.0
+            ],
+            [
+              409200.0,
+              2776600.0
+            ],
+            [
+              409100.0,
+              2776600.0
+            ],
+            [
+              409100.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2776700.0
+            ],
+            [
+              409300.0,
+              2776700.0
+            ],
+            [
+              409300.0,
+              2776600.0
+            ],
+            [
+              409200.0,
+              2776600.0
+            ],
+            [
+              409200.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2776700.0
+            ],
+            [
+              409400.0,
+              2776700.0
+            ],
+            [
+              409400.0,
+              2776600.0
+            ],
+            [
+              409300.0,
+              2776600.0
+            ],
+            [
+              409300.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2776700.0
+            ],
+            [
+              409500.0,
+              2776700.0
+            ],
+            [
+              409500.0,
+              2776600.0
+            ],
+            [
+              409400.0,
+              2776600.0
+            ],
+            [
+              409400.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2776700.0
+            ],
+            [
+              409600.0,
+              2776700.0
+            ],
+            [
+              409600.0,
+              2776600.0
+            ],
+            [
+              409500.0,
+              2776600.0
+            ],
+            [
+              409500.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2776700.0
+            ],
+            [
+              409700.0,
+              2776700.0
+            ],
+            [
+              409700.0,
+              2776600.0
+            ],
+            [
+              409600.0,
+              2776600.0
+            ],
+            [
+              409600.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00008",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2776700.0
+            ],
+            [
+              409800.0,
+              2776700.0
+            ],
+            [
+              409800.0,
+              2776600.0
+            ],
+            [
+              409700.0,
+              2776600.0
+            ],
+            [
+              409700.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00009",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2776700.0
+            ],
+            [
+              409900.0,
+              2776700.0
+            ],
+            [
+              409900.0,
+              2776600.0
+            ],
+            [
+              409800.0,
+              2776600.0
+            ],
+            [
+              409800.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2776700.0
+            ],
+            [
+              410000.0,
+              2776700.0
+            ],
+            [
+              410000.0,
+              2776600.0
+            ],
+            [
+              409900.0,
+              2776600.0
+            ],
+            [
+              409900.0,
+              2776700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00000C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2776600.0
+            ],
+            [
+              408900.0,
+              2776600.0
+            ],
+            [
+              408900.0,
+              2776500.0
+            ],
+            [
+              408800.0,
+              2776500.0
+            ],
+            [
+              408800.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2776600.0
+            ],
+            [
+              409000.0,
+              2776600.0
+            ],
+            [
+              409000.0,
+              2776500.0
+            ],
+            [
+              408900.0,
+              2776500.0
+            ],
+            [
+              408900.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 27.0,
+        "susceptibility": 0.692,
+        "vulnerability": 0.55,
+        "profile_id": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2776600.0
+            ],
+            [
+              409100.0,
+              2776600.0
+            ],
+            [
+              409100.0,
+              2776500.0
+            ],
+            [
+              409000.0,
+              2776500.0
+            ],
+            [
+              409000.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 28.0,
+        "susceptibility": 0.692,
+        "vulnerability": 0.55,
+        "profile_id": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2776600.0
+            ],
+            [
+              409200.0,
+              2776600.0
+            ],
+            [
+              409200.0,
+              2776500.0
+            ],
+            [
+              409100.0,
+              2776500.0
+            ],
+            [
+              409100.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2776600.0
+            ],
+            [
+              409300.0,
+              2776600.0
+            ],
+            [
+              409300.0,
+              2776500.0
+            ],
+            [
+              409200.0,
+              2776500.0
+            ],
+            [
+              409200.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2776600.0
+            ],
+            [
+              409400.0,
+              2776600.0
+            ],
+            [
+              409400.0,
+              2776500.0
+            ],
+            [
+              409300.0,
+              2776500.0
+            ],
+            [
+              409300.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2776600.0
+            ],
+            [
+              409500.0,
+              2776600.0
+            ],
+            [
+              409500.0,
+              2776500.0
+            ],
+            [
+              409400.0,
+              2776500.0
+            ],
+            [
+              409400.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2776600.0
+            ],
+            [
+              409600.0,
+              2776600.0
+            ],
+            [
+              409600.0,
+              2776500.0
+            ],
+            [
+              409500.0,
+              2776500.0
+            ],
+            [
+              409500.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2776600.0
+            ],
+            [
+              409700.0,
+              2776600.0
+            ],
+            [
+              409700.0,
+              2776500.0
+            ],
+            [
+              409600.0,
+              2776500.0
+            ],
+            [
+              409600.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00008",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 32.0,
+        "susceptibility": 0.525,
+        "vulnerability": 0.55,
+        "profile_id": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2776600.0
+            ],
+            [
+              409800.0,
+              2776600.0
+            ],
+            [
+              409800.0,
+              2776500.0
+            ],
+            [
+              409700.0,
+              2776500.0
+            ],
+            [
+              409700.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00009",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 31.0,
+        "susceptibility": 0.525,
+        "vulnerability": 0.55,
+        "profile_id": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2776600.0
+            ],
+            [
+              409900.0,
+              2776600.0
+            ],
+            [
+              409900.0,
+              2776500.0
+            ],
+            [
+              409800.0,
+              2776500.0
+            ],
+            [
+              409800.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2776600.0
+            ],
+            [
+              410000.0,
+              2776600.0
+            ],
+            [
+              410000.0,
+              2776500.0
+            ],
+            [
+              409900.0,
+              2776500.0
+            ],
+            [
+              409900.0,
+              2776600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2776500.0
+            ],
+            [
+              408900.0,
+              2776500.0
+            ],
+            [
+              408900.0,
+              2776400.0
+            ],
+            [
+              408800.0,
+              2776400.0
+            ],
+            [
+              408800.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2776500.0
+            ],
+            [
+              409000.0,
+              2776500.0
+            ],
+            [
+              409000.0,
+              2776400.0
+            ],
+            [
+              408900.0,
+              2776400.0
+            ],
+            [
+              408900.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 27.0,
+        "susceptibility": 0.717,
+        "vulnerability": 0.55,
+        "profile_id": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2776500.0
+            ],
+            [
+              409100.0,
+              2776500.0
+            ],
+            [
+              409100.0,
+              2776400.0
+            ],
+            [
+              409000.0,
+              2776400.0
+            ],
+            [
+              409000.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 28.0,
+        "susceptibility": 0.717,
+        "vulnerability": 0.55,
+        "profile_id": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2776500.0
+            ],
+            [
+              409200.0,
+              2776500.0
+            ],
+            [
+              409200.0,
+              2776400.0
+            ],
+            [
+              409100.0,
+              2776400.0
+            ],
+            [
+              409100.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2776500.0
+            ],
+            [
+              409300.0,
+              2776500.0
+            ],
+            [
+              409300.0,
+              2776400.0
+            ],
+            [
+              409200.0,
+              2776400.0
+            ],
+            [
+              409200.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2776500.0
+            ],
+            [
+              409400.0,
+              2776500.0
+            ],
+            [
+              409400.0,
+              2776400.0
+            ],
+            [
+              409300.0,
+              2776400.0
+            ],
+            [
+              409300.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2776500.0
+            ],
+            [
+              409500.0,
+              2776500.0
+            ],
+            [
+              409500.0,
+              2776400.0
+            ],
+            [
+              409400.0,
+              2776400.0
+            ],
+            [
+              409400.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2776500.0
+            ],
+            [
+              409600.0,
+              2776500.0
+            ],
+            [
+              409600.0,
+              2776400.0
+            ],
+            [
+              409500.0,
+              2776400.0
+            ],
+            [
+              409500.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2776500.0
+            ],
+            [
+              409700.0,
+              2776500.0
+            ],
+            [
+              409700.0,
+              2776400.0
+            ],
+            [
+              409600.0,
+              2776400.0
+            ],
+            [
+              409600.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00008",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 32.0,
+        "susceptibility": 0.55,
+        "vulnerability": 0.55,
+        "profile_id": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2776500.0
+            ],
+            [
+              409800.0,
+              2776500.0
+            ],
+            [
+              409800.0,
+              2776400.0
+            ],
+            [
+              409700.0,
+              2776400.0
+            ],
+            [
+              409700.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00009",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 31.0,
+        "susceptibility": 0.55,
+        "vulnerability": 0.55,
+        "profile_id": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2776500.0
+            ],
+            [
+              409900.0,
+              2776500.0
+            ],
+            [
+              409900.0,
+              2776400.0
+            ],
+            [
+              409800.0,
+              2776400.0
+            ],
+            [
+              409800.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2776500.0
+            ],
+            [
+              410000.0,
+              2776500.0
+            ],
+            [
+              410000.0,
+              2776400.0
+            ],
+            [
+              409900.0,
+              2776400.0
+            ],
+            [
+              409900.0,
+              2776500.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2776400.0
+            ],
+            [
+              408900.0,
+              2776400.0
+            ],
+            [
+              408900.0,
+              2776300.0
+            ],
+            [
+              408800.0,
+              2776300.0
+            ],
+            [
+              408800.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2776400.0
+            ],
+            [
+              409000.0,
+              2776400.0
+            ],
+            [
+              409000.0,
+              2776300.0
+            ],
+            [
+              408900.0,
+              2776300.0
+            ],
+            [
+              408900.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 27.0,
+        "susceptibility": 0.667,
+        "vulnerability": 0.55,
+        "profile_id": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2776400.0
+            ],
+            [
+              409100.0,
+              2776400.0
+            ],
+            [
+              409100.0,
+              2776300.0
+            ],
+            [
+              409000.0,
+              2776300.0
+            ],
+            [
+              409000.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 28.0,
+        "susceptibility": 0.667,
+        "vulnerability": 0.55,
+        "profile_id": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2776400.0
+            ],
+            [
+              409200.0,
+              2776400.0
+            ],
+            [
+              409200.0,
+              2776300.0
+            ],
+            [
+              409100.0,
+              2776300.0
+            ],
+            [
+              409100.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2776400.0
+            ],
+            [
+              409300.0,
+              2776400.0
+            ],
+            [
+              409300.0,
+              2776300.0
+            ],
+            [
+              409200.0,
+              2776300.0
+            ],
+            [
+              409200.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2776400.0
+            ],
+            [
+              409400.0,
+              2776400.0
+            ],
+            [
+              409400.0,
+              2776300.0
+            ],
+            [
+              409300.0,
+              2776300.0
+            ],
+            [
+              409300.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2776400.0
+            ],
+            [
+              409500.0,
+              2776400.0
+            ],
+            [
+              409500.0,
+              2776300.0
+            ],
+            [
+              409400.0,
+              2776300.0
+            ],
+            [
+              409400.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2776400.0
+            ],
+            [
+              409600.0,
+              2776400.0
+            ],
+            [
+              409600.0,
+              2776300.0
+            ],
+            [
+              409500.0,
+              2776300.0
+            ],
+            [
+              409500.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2776400.0
+            ],
+            [
+              409700.0,
+              2776400.0
+            ],
+            [
+              409700.0,
+              2776300.0
+            ],
+            [
+              409600.0,
+              2776300.0
+            ],
+            [
+              409600.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00008",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 32.0,
+        "susceptibility": 0.5,
+        "vulnerability": 0.55,
+        "profile_id": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2776400.0
+            ],
+            [
+              409800.0,
+              2776400.0
+            ],
+            [
+              409800.0,
+              2776300.0
+            ],
+            [
+              409700.0,
+              2776300.0
+            ],
+            [
+              409700.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00009",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 31.0,
+        "susceptibility": 0.5,
+        "vulnerability": 0.55,
+        "profile_id": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2776400.0
+            ],
+            [
+              409900.0,
+              2776400.0
+            ],
+            [
+              409900.0,
+              2776300.0
+            ],
+            [
+              409800.0,
+              2776300.0
+            ],
+            [
+              409800.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2776400.0
+            ],
+            [
+              410000.0,
+              2776400.0
+            ],
+            [
+              410000.0,
+              2776300.0
+            ],
+            [
+              409900.0,
+              2776300.0
+            ],
+            [
+              409900.0,
+              2776400.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2776300.0
+            ],
+            [
+              408900.0,
+              2776300.0
+            ],
+            [
+              408900.0,
+              2776200.0
+            ],
+            [
+              408800.0,
+              2776200.0
+            ],
+            [
+              408800.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2776300.0
+            ],
+            [
+              409000.0,
+              2776300.0
+            ],
+            [
+              409000.0,
+              2776200.0
+            ],
+            [
+              408900.0,
+              2776200.0
+            ],
+            [
+              408900.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00001",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2776300.0
+            ],
+            [
+              409100.0,
+              2776300.0
+            ],
+            [
+              409100.0,
+              2776200.0
+            ],
+            [
+              409000.0,
+              2776200.0
+            ],
+            [
+              409000.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00002",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2776300.0
+            ],
+            [
+              409200.0,
+              2776300.0
+            ],
+            [
+              409200.0,
+              2776200.0
+            ],
+            [
+              409100.0,
+              2776200.0
+            ],
+            [
+              409100.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2776300.0
+            ],
+            [
+              409300.0,
+              2776300.0
+            ],
+            [
+              409300.0,
+              2776200.0
+            ],
+            [
+              409200.0,
+              2776200.0
+            ],
+            [
+              409200.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2776300.0
+            ],
+            [
+              409400.0,
+              2776300.0
+            ],
+            [
+              409400.0,
+              2776200.0
+            ],
+            [
+              409300.0,
+              2776200.0
+            ],
+            [
+              409300.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2776300.0
+            ],
+            [
+              409500.0,
+              2776300.0
+            ],
+            [
+              409500.0,
+              2776200.0
+            ],
+            [
+              409400.0,
+              2776200.0
+            ],
+            [
+              409400.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2776300.0
+            ],
+            [
+              409600.0,
+              2776300.0
+            ],
+            [
+              409600.0,
+              2776200.0
+            ],
+            [
+              409500.0,
+              2776200.0
+            ],
+            [
+              409500.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2776300.0
+            ],
+            [
+              409700.0,
+              2776300.0
+            ],
+            [
+              409700.0,
+              2776200.0
+            ],
+            [
+              409600.0,
+              2776200.0
+            ],
+            [
+              409600.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00008",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2776300.0
+            ],
+            [
+              409800.0,
+              2776300.0
+            ],
+            [
+              409800.0,
+              2776200.0
+            ],
+            [
+              409700.0,
+              2776200.0
+            ],
+            [
+              409700.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00009",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2776300.0
+            ],
+            [
+              409900.0,
+              2776300.0
+            ],
+            [
+              409900.0,
+              2776200.0
+            ],
+            [
+              409800.0,
+              2776200.0
+            ],
+            [
+              409800.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2776300.0
+            ],
+            [
+              410000.0,
+              2776300.0
+            ],
+            [
+              410000.0,
+              2776200.0
+            ],
+            [
+              409900.0,
+              2776200.0
+            ],
+            [
+              409900.0,
+              2776300.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00004C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2776200.0
+            ],
+            [
+              408900.0,
+              2776200.0
+            ],
+            [
+              408900.0,
+              2776100.0
+            ],
+            [
+              408800.0,
+              2776100.0
+            ],
+            [
+              408800.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2776200.0
+            ],
+            [
+              409000.0,
+              2776200.0
+            ],
+            [
+              409000.0,
+              2776100.0
+            ],
+            [
+              408900.0,
+              2776100.0
+            ],
+            [
+              408900.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00001",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2776200.0
+            ],
+            [
+              409100.0,
+              2776200.0
+            ],
+            [
+              409100.0,
+              2776100.0
+            ],
+            [
+              409000.0,
+              2776100.0
+            ],
+            [
+              409000.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00002",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2776200.0
+            ],
+            [
+              409200.0,
+              2776200.0
+            ],
+            [
+              409200.0,
+              2776100.0
+            ],
+            [
+              409100.0,
+              2776100.0
+            ],
+            [
+              409100.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2776200.0
+            ],
+            [
+              409300.0,
+              2776200.0
+            ],
+            [
+              409300.0,
+              2776100.0
+            ],
+            [
+              409200.0,
+              2776100.0
+            ],
+            [
+              409200.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2776200.0
+            ],
+            [
+              409400.0,
+              2776200.0
+            ],
+            [
+              409400.0,
+              2776100.0
+            ],
+            [
+              409300.0,
+              2776100.0
+            ],
+            [
+              409300.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2776200.0
+            ],
+            [
+              409500.0,
+              2776200.0
+            ],
+            [
+              409500.0,
+              2776100.0
+            ],
+            [
+              409400.0,
+              2776100.0
+            ],
+            [
+              409400.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2776200.0
+            ],
+            [
+              409600.0,
+              2776200.0
+            ],
+            [
+              409600.0,
+              2776100.0
+            ],
+            [
+              409500.0,
+              2776100.0
+            ],
+            [
+              409500.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2776200.0
+            ],
+            [
+              409700.0,
+              2776200.0
+            ],
+            [
+              409700.0,
+              2776100.0
+            ],
+            [
+              409600.0,
+              2776100.0
+            ],
+            [
+              409600.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00008",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2776200.0
+            ],
+            [
+              409800.0,
+              2776200.0
+            ],
+            [
+              409800.0,
+              2776100.0
+            ],
+            [
+              409700.0,
+              2776100.0
+            ],
+            [
+              409700.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00009",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2776200.0
+            ],
+            [
+              409900.0,
+              2776200.0
+            ],
+            [
+              409900.0,
+              2776100.0
+            ],
+            [
+              409800.0,
+              2776100.0
+            ],
+            [
+              409800.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2776200.0
+            ],
+            [
+              410000.0,
+              2776200.0
+            ],
+            [
+              410000.0,
+              2776100.0
+            ],
+            [
+              409900.0,
+              2776100.0
+            ],
+            [
+              409900.0,
+              2776200.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00005C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2776100.0
+            ],
+            [
+              408900.0,
+              2776100.0
+            ],
+            [
+              408900.0,
+              2776000.0
+            ],
+            [
+              408800.0,
+              2776000.0
+            ],
+            [
+              408800.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2776100.0
+            ],
+            [
+              409000.0,
+              2776100.0
+            ],
+            [
+              409000.0,
+              2776000.0
+            ],
+            [
+              408900.0,
+              2776000.0
+            ],
+            [
+              408900.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00001",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2776100.0
+            ],
+            [
+              409100.0,
+              2776100.0
+            ],
+            [
+              409100.0,
+              2776000.0
+            ],
+            [
+              409000.0,
+              2776000.0
+            ],
+            [
+              409000.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00002",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2776100.0
+            ],
+            [
+              409200.0,
+              2776100.0
+            ],
+            [
+              409200.0,
+              2776000.0
+            ],
+            [
+              409100.0,
+              2776000.0
+            ],
+            [
+              409100.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2776100.0
+            ],
+            [
+              409300.0,
+              2776100.0
+            ],
+            [
+              409300.0,
+              2776000.0
+            ],
+            [
+              409200.0,
+              2776000.0
+            ],
+            [
+              409200.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2776100.0
+            ],
+            [
+              409400.0,
+              2776100.0
+            ],
+            [
+              409400.0,
+              2776000.0
+            ],
+            [
+              409300.0,
+              2776000.0
+            ],
+            [
+              409300.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2776100.0
+            ],
+            [
+              409500.0,
+              2776100.0
+            ],
+            [
+              409500.0,
+              2776000.0
+            ],
+            [
+              409400.0,
+              2776000.0
+            ],
+            [
+              409400.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2776100.0
+            ],
+            [
+              409600.0,
+              2776100.0
+            ],
+            [
+              409600.0,
+              2776000.0
+            ],
+            [
+              409500.0,
+              2776000.0
+            ],
+            [
+              409500.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2776100.0
+            ],
+            [
+              409700.0,
+              2776100.0
+            ],
+            [
+              409700.0,
+              2776000.0
+            ],
+            [
+              409600.0,
+              2776000.0
+            ],
+            [
+              409600.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00008",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2776100.0
+            ],
+            [
+              409800.0,
+              2776100.0
+            ],
+            [
+              409800.0,
+              2776000.0
+            ],
+            [
+              409700.0,
+              2776000.0
+            ],
+            [
+              409700.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00009",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2776100.0
+            ],
+            [
+              409900.0,
+              2776100.0
+            ],
+            [
+              409900.0,
+              2776000.0
+            ],
+            [
+              409800.0,
+              2776000.0
+            ],
+            [
+              409800.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2776100.0
+            ],
+            [
+              410000.0,
+              2776100.0
+            ],
+            [
+              410000.0,
+              2776000.0
+            ],
+            [
+              409900.0,
+              2776000.0
+            ],
+            [
+              409900.0,
+              2776100.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00006C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2776000.0
+            ],
+            [
+              408900.0,
+              2776000.0
+            ],
+            [
+              408900.0,
+              2775900.0
+            ],
+            [
+              408800.0,
+              2775900.0
+            ],
+            [
+              408800.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2776000.0
+            ],
+            [
+              409000.0,
+              2776000.0
+            ],
+            [
+              409000.0,
+              2775900.0
+            ],
+            [
+              408900.0,
+              2775900.0
+            ],
+            [
+              408900.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 41.0,
+        "susceptibility": 0.692,
+        "vulnerability": 0.72,
+        "profile_id": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2776000.0
+            ],
+            [
+              409100.0,
+              2776000.0
+            ],
+            [
+              409100.0,
+              2775900.0
+            ],
+            [
+              409000.0,
+              2775900.0
+            ],
+            [
+              409000.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 42.0,
+        "susceptibility": 0.692,
+        "vulnerability": 0.72,
+        "profile_id": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2776000.0
+            ],
+            [
+              409200.0,
+              2776000.0
+            ],
+            [
+              409200.0,
+              2775900.0
+            ],
+            [
+              409100.0,
+              2775900.0
+            ],
+            [
+              409100.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2776000.0
+            ],
+            [
+              409300.0,
+              2776000.0
+            ],
+            [
+              409300.0,
+              2775900.0
+            ],
+            [
+              409200.0,
+              2775900.0
+            ],
+            [
+              409200.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2776000.0
+            ],
+            [
+              409400.0,
+              2776000.0
+            ],
+            [
+              409400.0,
+              2775900.0
+            ],
+            [
+              409300.0,
+              2775900.0
+            ],
+            [
+              409300.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2776000.0
+            ],
+            [
+              409500.0,
+              2776000.0
+            ],
+            [
+              409500.0,
+              2775900.0
+            ],
+            [
+              409400.0,
+              2775900.0
+            ],
+            [
+              409400.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2776000.0
+            ],
+            [
+              409600.0,
+              2776000.0
+            ],
+            [
+              409600.0,
+              2775900.0
+            ],
+            [
+              409500.0,
+              2775900.0
+            ],
+            [
+              409500.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2776000.0
+            ],
+            [
+              409700.0,
+              2776000.0
+            ],
+            [
+              409700.0,
+              2775900.0
+            ],
+            [
+              409600.0,
+              2775900.0
+            ],
+            [
+              409600.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00008",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 20.0,
+        "susceptibility": 0.358,
+        "vulnerability": 0.72,
+        "profile_id": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2776000.0
+            ],
+            [
+              409800.0,
+              2776000.0
+            ],
+            [
+              409800.0,
+              2775900.0
+            ],
+            [
+              409700.0,
+              2775900.0
+            ],
+            [
+              409700.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00009",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 19.0,
+        "susceptibility": 0.358,
+        "vulnerability": 0.72,
+        "profile_id": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2776000.0
+            ],
+            [
+              409900.0,
+              2776000.0
+            ],
+            [
+              409900.0,
+              2775900.0
+            ],
+            [
+              409800.0,
+              2775900.0
+            ],
+            [
+              409800.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2776000.0
+            ],
+            [
+              410000.0,
+              2776000.0
+            ],
+            [
+              410000.0,
+              2775900.0
+            ],
+            [
+              409900.0,
+              2775900.0
+            ],
+            [
+              409900.0,
+              2776000.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2775900.0
+            ],
+            [
+              408900.0,
+              2775900.0
+            ],
+            [
+              408900.0,
+              2775800.0
+            ],
+            [
+              408800.0,
+              2775800.0
+            ],
+            [
+              408800.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2775900.0
+            ],
+            [
+              409000.0,
+              2775900.0
+            ],
+            [
+              409000.0,
+              2775800.0
+            ],
+            [
+              408900.0,
+              2775800.0
+            ],
+            [
+              408900.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 41.0,
+        "susceptibility": 0.717,
+        "vulnerability": 0.72,
+        "profile_id": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2775900.0
+            ],
+            [
+              409100.0,
+              2775900.0
+            ],
+            [
+              409100.0,
+              2775800.0
+            ],
+            [
+              409000.0,
+              2775800.0
+            ],
+            [
+              409000.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 42.0,
+        "susceptibility": 0.717,
+        "vulnerability": 0.72,
+        "profile_id": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2775900.0
+            ],
+            [
+              409200.0,
+              2775900.0
+            ],
+            [
+              409200.0,
+              2775800.0
+            ],
+            [
+              409100.0,
+              2775800.0
+            ],
+            [
+              409100.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2775900.0
+            ],
+            [
+              409300.0,
+              2775900.0
+            ],
+            [
+              409300.0,
+              2775800.0
+            ],
+            [
+              409200.0,
+              2775800.0
+            ],
+            [
+              409200.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2775900.0
+            ],
+            [
+              409400.0,
+              2775900.0
+            ],
+            [
+              409400.0,
+              2775800.0
+            ],
+            [
+              409300.0,
+              2775800.0
+            ],
+            [
+              409300.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2775900.0
+            ],
+            [
+              409500.0,
+              2775900.0
+            ],
+            [
+              409500.0,
+              2775800.0
+            ],
+            [
+              409400.0,
+              2775800.0
+            ],
+            [
+              409400.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2775900.0
+            ],
+            [
+              409600.0,
+              2775900.0
+            ],
+            [
+              409600.0,
+              2775800.0
+            ],
+            [
+              409500.0,
+              2775800.0
+            ],
+            [
+              409500.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2775900.0
+            ],
+            [
+              409700.0,
+              2775900.0
+            ],
+            [
+              409700.0,
+              2775800.0
+            ],
+            [
+              409600.0,
+              2775800.0
+            ],
+            [
+              409600.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00008",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 20.0,
+        "susceptibility": 0.383,
+        "vulnerability": 0.72,
+        "profile_id": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2775900.0
+            ],
+            [
+              409800.0,
+              2775900.0
+            ],
+            [
+              409800.0,
+              2775800.0
+            ],
+            [
+              409700.0,
+              2775800.0
+            ],
+            [
+              409700.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00009",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 19.0,
+        "susceptibility": 0.383,
+        "vulnerability": 0.72,
+        "profile_id": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2775900.0
+            ],
+            [
+              409900.0,
+              2775900.0
+            ],
+            [
+              409900.0,
+              2775800.0
+            ],
+            [
+              409800.0,
+              2775800.0
+            ],
+            [
+              409800.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2775900.0
+            ],
+            [
+              410000.0,
+              2775900.0
+            ],
+            [
+              410000.0,
+              2775800.0
+            ],
+            [
+              409900.0,
+              2775800.0
+            ],
+            [
+              409900.0,
+              2775900.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2775800.0
+            ],
+            [
+              408900.0,
+              2775800.0
+            ],
+            [
+              408900.0,
+              2775700.0
+            ],
+            [
+              408800.0,
+              2775700.0
+            ],
+            [
+              408800.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2775800.0
+            ],
+            [
+              409000.0,
+              2775800.0
+            ],
+            [
+              409000.0,
+              2775700.0
+            ],
+            [
+              408900.0,
+              2775700.0
+            ],
+            [
+              408900.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 41.0,
+        "susceptibility": 0.667,
+        "vulnerability": 0.72,
+        "profile_id": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2775800.0
+            ],
+            [
+              409100.0,
+              2775800.0
+            ],
+            [
+              409100.0,
+              2775700.0
+            ],
+            [
+              409000.0,
+              2775700.0
+            ],
+            [
+              409000.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 42.0,
+        "susceptibility": 0.667,
+        "vulnerability": 0.72,
+        "profile_id": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2775800.0
+            ],
+            [
+              409200.0,
+              2775800.0
+            ],
+            [
+              409200.0,
+              2775700.0
+            ],
+            [
+              409100.0,
+              2775700.0
+            ],
+            [
+              409100.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2775800.0
+            ],
+            [
+              409300.0,
+              2775800.0
+            ],
+            [
+              409300.0,
+              2775700.0
+            ],
+            [
+              409200.0,
+              2775700.0
+            ],
+            [
+              409200.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2775800.0
+            ],
+            [
+              409400.0,
+              2775800.0
+            ],
+            [
+              409400.0,
+              2775700.0
+            ],
+            [
+              409300.0,
+              2775700.0
+            ],
+            [
+              409300.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2775800.0
+            ],
+            [
+              409500.0,
+              2775800.0
+            ],
+            [
+              409500.0,
+              2775700.0
+            ],
+            [
+              409400.0,
+              2775700.0
+            ],
+            [
+              409400.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2775800.0
+            ],
+            [
+              409600.0,
+              2775800.0
+            ],
+            [
+              409600.0,
+              2775700.0
+            ],
+            [
+              409500.0,
+              2775700.0
+            ],
+            [
+              409500.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2775800.0
+            ],
+            [
+              409700.0,
+              2775800.0
+            ],
+            [
+              409700.0,
+              2775700.0
+            ],
+            [
+              409600.0,
+              2775700.0
+            ],
+            [
+              409600.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00008",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 20.0,
+        "susceptibility": 0.333,
+        "vulnerability": 0.72,
+        "profile_id": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2775800.0
+            ],
+            [
+              409800.0,
+              2775800.0
+            ],
+            [
+              409800.0,
+              2775700.0
+            ],
+            [
+              409700.0,
+              2775700.0
+            ],
+            [
+              409700.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00009",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 19.0,
+        "susceptibility": 0.333,
+        "vulnerability": 0.72,
+        "profile_id": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2775800.0
+            ],
+            [
+              409900.0,
+              2775800.0
+            ],
+            [
+              409900.0,
+              2775700.0
+            ],
+            [
+              409800.0,
+              2775700.0
+            ],
+            [
+              409800.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2775800.0
+            ],
+            [
+              410000.0,
+              2775800.0
+            ],
+            [
+              410000.0,
+              2775700.0
+            ],
+            [
+              409900.0,
+              2775700.0
+            ],
+            [
+              409900.0,
+              2775800.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2775700.0
+            ],
+            [
+              408900.0,
+              2775700.0
+            ],
+            [
+              408900.0,
+              2775600.0
+            ],
+            [
+              408800.0,
+              2775600.0
+            ],
+            [
+              408800.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2775700.0
+            ],
+            [
+              409000.0,
+              2775700.0
+            ],
+            [
+              409000.0,
+              2775600.0
+            ],
+            [
+              408900.0,
+              2775600.0
+            ],
+            [
+              408900.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00001",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2775700.0
+            ],
+            [
+              409100.0,
+              2775700.0
+            ],
+            [
+              409100.0,
+              2775600.0
+            ],
+            [
+              409000.0,
+              2775600.0
+            ],
+            [
+              409000.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00002",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2775700.0
+            ],
+            [
+              409200.0,
+              2775700.0
+            ],
+            [
+              409200.0,
+              2775600.0
+            ],
+            [
+              409100.0,
+              2775600.0
+            ],
+            [
+              409100.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2775700.0
+            ],
+            [
+              409300.0,
+              2775700.0
+            ],
+            [
+              409300.0,
+              2775600.0
+            ],
+            [
+              409200.0,
+              2775600.0
+            ],
+            [
+              409200.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2775700.0
+            ],
+            [
+              409400.0,
+              2775700.0
+            ],
+            [
+              409400.0,
+              2775600.0
+            ],
+            [
+              409300.0,
+              2775600.0
+            ],
+            [
+              409300.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2775700.0
+            ],
+            [
+              409500.0,
+              2775700.0
+            ],
+            [
+              409500.0,
+              2775600.0
+            ],
+            [
+              409400.0,
+              2775600.0
+            ],
+            [
+              409400.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2775700.0
+            ],
+            [
+              409600.0,
+              2775700.0
+            ],
+            [
+              409600.0,
+              2775600.0
+            ],
+            [
+              409500.0,
+              2775600.0
+            ],
+            [
+              409500.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2775700.0
+            ],
+            [
+              409700.0,
+              2775700.0
+            ],
+            [
+              409700.0,
+              2775600.0
+            ],
+            [
+              409600.0,
+              2775600.0
+            ],
+            [
+              409600.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00008",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2775700.0
+            ],
+            [
+              409800.0,
+              2775700.0
+            ],
+            [
+              409800.0,
+              2775600.0
+            ],
+            [
+              409700.0,
+              2775600.0
+            ],
+            [
+              409700.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00009",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2775700.0
+            ],
+            [
+              409900.0,
+              2775700.0
+            ],
+            [
+              409900.0,
+              2775600.0
+            ],
+            [
+              409800.0,
+              2775600.0
+            ],
+            [
+              409800.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2775700.0
+            ],
+            [
+              410000.0,
+              2775700.0
+            ],
+            [
+              410000.0,
+              2775600.0
+            ],
+            [
+              409900.0,
+              2775600.0
+            ],
+            [
+              409900.0,
+              2775700.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00010C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408800.0,
+              2775600.0
+            ],
+            [
+              408900.0,
+              2775600.0
+            ],
+            [
+              408900.0,
+              2775500.0
+            ],
+            [
+              408800.0,
+              2775500.0
+            ],
+            [
+              408800.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00000",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              408900.0,
+              2775600.0
+            ],
+            [
+              409000.0,
+              2775600.0
+            ],
+            [
+              409000.0,
+              2775500.0
+            ],
+            [
+              408900.0,
+              2775500.0
+            ],
+            [
+              408900.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00001",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409000.0,
+              2775600.0
+            ],
+            [
+              409100.0,
+              2775600.0
+            ],
+            [
+              409100.0,
+              2775500.0
+            ],
+            [
+              409000.0,
+              2775500.0
+            ],
+            [
+              409000.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00002",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409100.0,
+              2775600.0
+            ],
+            [
+              409200.0,
+              2775600.0
+            ],
+            [
+              409200.0,
+              2775500.0
+            ],
+            [
+              409100.0,
+              2775500.0
+            ],
+            [
+              409100.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00003",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409200.0,
+              2775600.0
+            ],
+            [
+              409300.0,
+              2775600.0
+            ],
+            [
+              409300.0,
+              2775500.0
+            ],
+            [
+              409200.0,
+              2775500.0
+            ],
+            [
+              409200.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00004",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409300.0,
+              2775600.0
+            ],
+            [
+              409400.0,
+              2775600.0
+            ],
+            [
+              409400.0,
+              2775500.0
+            ],
+            [
+              409300.0,
+              2775500.0
+            ],
+            [
+              409300.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00005",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409400.0,
+              2775600.0
+            ],
+            [
+              409500.0,
+              2775600.0
+            ],
+            [
+              409500.0,
+              2775500.0
+            ],
+            [
+              409400.0,
+              2775500.0
+            ],
+            [
+              409400.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00006",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409500.0,
+              2775600.0
+            ],
+            [
+              409600.0,
+              2775600.0
+            ],
+            [
+              409600.0,
+              2775500.0
+            ],
+            [
+              409500.0,
+              2775500.0
+            ],
+            [
+              409500.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00007",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409600.0,
+              2775600.0
+            ],
+            [
+              409700.0,
+              2775600.0
+            ],
+            [
+              409700.0,
+              2775500.0
+            ],
+            [
+              409600.0,
+              2775500.0
+            ],
+            [
+              409600.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00008",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409700.0,
+              2775600.0
+            ],
+            [
+              409800.0,
+              2775600.0
+            ],
+            [
+              409800.0,
+              2775500.0
+            ],
+            [
+              409700.0,
+              2775500.0
+            ],
+            [
+              409700.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00009",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409800.0,
+              2775600.0
+            ],
+            [
+              409900.0,
+              2775600.0
+            ],
+            [
+              409900.0,
+              2775500.0
+            ],
+            [
+              409800.0,
+              2775500.0
+            ],
+            [
+              409800.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00010",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              409900.0,
+              2775600.0
+            ],
+            [
+              410000.0,
+              2775600.0
+            ],
+            [
+              410000.0,
+              2775500.0
+            ],
+            [
+              409900.0,
+              2775500.0
+            ],
+            [
+              409900.0,
+              2775600.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00011C00011",
+        "risk": 1,
+        "haz": 1,
+        "distance_m": 350,
+        "slope_deg": 12,
+        "susceptibility": 0.15,
+        "vulnerability": 0.2,
+        "profile_id": 0
+      }
+    }
+  ]
+}

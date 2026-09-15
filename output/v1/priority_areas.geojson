@@ -1,0 +1,1098 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09747768906419,
+              25.102485730351656
+            ],
+            [
+              116.09748431650003,
+              25.1015827460703
+            ],
+            [
+              116.09649263834496,
+              25.101576708212182
+            ],
+            [
+              116.09648600362937,
+              25.102479692246813
+            ],
+            [
+              116.09747768906419,
+              25.102485730351656
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 27.0,
+        "susceptibility": 0.692,
+        "vulnerability": 0.55,
+        "profile_id": "3",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09846937481932,
+              25.102491761827398
+            ],
+            [
+              116.09847599497537,
+              25.101588777299593
+            ],
+            [
+              116.09748431650003,
+              25.1015827460703
+            ],
+            [
+              116.09747768906419,
+              25.102485730351656
+            ],
+            [
+              116.09846937481932,
+              25.102491761827398
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 28.0,
+        "susceptibility": 0.692,
+        "vulnerability": 0.55,
+        "profile_id": "3",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10441949605631,
+              25.102527811470406
+            ],
+            [
+              116.10442607253344,
+              25.101624825469568
+            ],
+            [
+              116.10343439214384,
+              25.101618834013397
+            ],
+            [
+              116.10342780838684,
+              25.102521819769407
+            ],
+            [
+              116.10441949605631,
+              25.102527811470406
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00008",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 32.0,
+        "susceptibility": 0.525,
+        "vulnerability": 0.55,
+        "profile_id": "4",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10541118404356,
+              25.102533796542257
+            ],
+            [
+              116.10541775324084,
+              25.101630810296857
+            ],
+            [
+              116.10442607253344,
+              25.101624825469568
+            ],
+            [
+              116.10441949605631,
+              25.102527811470406
+            ],
+            [
+              116.10541118404356,
+              25.102533796542257
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00001C00009",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 31.0,
+        "susceptibility": 0.525,
+        "vulnerability": 0.55,
+        "profile_id": "4",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09748431650003,
+              25.1015827460703
+            ],
+            [
+              116.09749094361557,
+              25.100679761677377
+            ],
+            [
+              116.09649927273992,
+              25.100673724065977
+            ],
+            [
+              116.09649263834496,
+              25.101576708212182
+            ],
+            [
+              116.09748431650003,
+              25.1015827460703
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 27.0,
+        "susceptibility": 0.717,
+        "vulnerability": 0.55,
+        "profile_id": "3",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09847599497537,
+              25.101588777299593
+            ],
+            [
+              116.09848261481149,
+              25.100685792660222
+            ],
+            [
+              116.09749094361557,
+              25.100679761677377
+            ],
+            [
+              116.09748431650003,
+              25.1015827460703
+            ],
+            [
+              116.09847599497537,
+              25.101588777299593
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 28.0,
+        "susceptibility": 0.717,
+        "vulnerability": 0.55,
+        "profile_id": "3",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10442607253344,
+              25.101624825469568
+            ],
+            [
+              116.10443264869278,
+              25.100721839357192
+            ],
+            [
+              116.10344097558267,
+              25.100715848145843
+            ],
+            [
+              116.10343439214384,
+              25.101618834013397
+            ],
+            [
+              116.10442607253344,
+              25.101624825469568
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00008",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 32.0,
+        "susceptibility": 0.55,
+        "vulnerability": 0.55,
+        "profile_id": "4",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10541775324084,
+              25.101630810296857
+            ],
+            [
+              116.1054243221207,
+              25.100727823939927
+            ],
+            [
+              116.10443264869278,
+              25.100721839357192
+            ],
+            [
+              116.10442607253344,
+              25.101624825469568
+            ],
+            [
+              116.10541775324084,
+              25.101630810296857
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00002C00009",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 31.0,
+        "susceptibility": 0.55,
+        "vulnerability": 0.55,
+        "profile_id": "4",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09749094361557,
+              25.100679761677377
+            ],
+            [
+              116.09749757041087,
+              25.099776777172885
+            ],
+            [
+              116.09650590681426,
+              25.099770739808207
+            ],
+            [
+              116.09649927273992,
+              25.100673724065977
+            ],
+            [
+              116.09749094361557,
+              25.100679761677377
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 27.0,
+        "susceptibility": 0.667,
+        "vulnerability": 0.55,
+        "profile_id": "3",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09848261481149,
+              25.100685792660222
+            ],
+            [
+              116.09848923432769,
+              25.099782807909286
+            ],
+            [
+              116.09749757041087,
+              25.099776777172885
+            ],
+            [
+              116.09749094361557,
+              25.100679761677377
+            ],
+            [
+              116.09848261481149,
+              25.100685792660222
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 120.0,
+        "slope_deg": 28.0,
+        "susceptibility": 0.667,
+        "vulnerability": 0.55,
+        "profile_id": "3",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10443264869278,
+              25.100721839357192
+            ],
+            [
+              116.10443922453432,
+              25.099818853133268
+            ],
+            [
+              116.10344755870335,
+              25.099812862166747
+            ],
+            [
+              116.10344097558267,
+              25.100715848145843
+            ],
+            [
+              116.10443264869278,
+              25.100721839357192
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00008",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 32.0,
+        "susceptibility": 0.5,
+        "vulnerability": 0.55,
+        "profile_id": "4",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.1054243221207,
+              25.100727823939927
+            ],
+            [
+              116.1054308906831,
+              25.09982483747146
+            ],
+            [
+              116.10443922453432,
+              25.099818853133268
+            ],
+            [
+              116.10443264869278,
+              25.100721839357192
+            ],
+            [
+              116.1054243221207,
+              25.100727823939927
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00003C00009",
+        "risk": 3,
+        "haz": 3,
+        "distance_m": 65.0,
+        "slope_deg": 31.0,
+        "susceptibility": 0.5,
+        "vulnerability": 0.55,
+        "profile_id": "4",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09751744887521,
+              25.097067822990088
+            ],
+            [
+              116.09752407438954,
+              25.096164838039385
+            ],
+            [
+              116.0965324399057,
+              25.09615880166153
+            ],
+            [
+              116.09652580711372,
+              25.097061786365536
+            ],
+            [
+              116.09751744887521,
+              25.097067822990088
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 41.0,
+        "susceptibility": 0.692,
+        "vulnerability": 0.72,
+        "profile_id": "1",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09850909095692,
+              25.097073852987172
+            ],
+            [
+              116.09851570919358,
+              25.09617086779004
+            ],
+            [
+              116.09752407438954,
+              25.096164838039385
+            ],
+            [
+              116.09751744887521,
+              25.097067822990088
+            ],
+            [
+              116.09850909095692,
+              25.097073852987172
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 42.0,
+        "susceptibility": 0.692,
+        "vulnerability": 0.72,
+        "profile_id": "1",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.1044589501522,
+              25.09710989379233
+            ],
+            [
+              116.10446552472264,
+              25.096206907122294
+            ],
+            [
+              116.1034738880047,
+              25.096200917135018
+            ],
+            [
+              116.10346730615656,
+              25.097103903560246
+            ],
+            [
+              116.1044589501522,
+              25.09710989379233
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00008",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 20.0,
+        "susceptibility": 0.358,
+        "vulnerability": 0.72,
+        "profile_id": "2",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10545059446565,
+              25.09711587739689
+            ],
+            [
+              116.10545716175834,
+              25.09621289048232
+            ],
+            [
+              116.10446552472264,
+              25.096206907122294
+            ],
+            [
+              116.1044589501522,
+              25.09710989379233
+            ],
+            [
+              116.10545059446565,
+              25.09711587739689
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00007C00009",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 19.0,
+        "susceptibility": 0.358,
+        "vulnerability": 0.72,
+        "profile_id": "2",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09752407438954,
+              25.096164838039385
+            ],
+            [
+              116.09753069958364,
+              25.095261852977135
+            ],
+            [
+              116.09653907237711,
+              25.09525581684598
+            ],
+            [
+              116.0965324399057,
+              25.09615880166153
+            ],
+            [
+              116.09752407438954,
+              25.096164838039385
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 41.0,
+        "susceptibility": 0.717,
+        "vulnerability": 0.72,
+        "profile_id": "1",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09851570919358,
+              25.09617086779004
+            ],
+            [
+              116.09852232711039,
+              25.095267882481366
+            ],
+            [
+              116.09753069958364,
+              25.095261852977135
+            ],
+            [
+              116.09752407438954,
+              25.096164838039385
+            ],
+            [
+              116.09851570919358,
+              25.09617086779004
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 42.0,
+        "susceptibility": 0.717,
+        "vulnerability": 0.72,
+        "profile_id": "1",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10446552472264,
+              25.096206907122294
+            ],
+            [
+              116.10447209897532,
+              25.095303920340736
+            ],
+            [
+              116.10348046953477,
+              25.09529793059826
+            ],
+            [
+              116.1034738880047,
+              25.096200917135018
+            ],
+            [
+              116.10446552472264,
+              25.096206907122294
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00008",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 20.0,
+        "susceptibility": 0.383,
+        "vulnerability": 0.72,
+        "profile_id": "2",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10545716175834,
+              25.09621289048232
+            ],
+            [
+              116.10546372873362,
+              25.09530990345623
+            ],
+            [
+              116.10447209897532,
+              25.095303920340736
+            ],
+            [
+              116.10446552472264,
+              25.096206907122294
+            ],
+            [
+              116.10545716175834,
+              25.09621289048232
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00008C00009",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 19.0,
+        "susceptibility": 0.383,
+        "vulnerability": 0.72,
+        "profile_id": "2",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09753069958364,
+              25.095261852977135
+            ],
+            [
+              116.09753732445755,
+              25.09435886780334
+            ],
+            [
+              116.09654570452798,
+              25.094352831918883
+            ],
+            [
+              116.09653907237711,
+              25.09525581684598
+            ],
+            [
+              116.09753069958364,
+              25.095261852977135
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00001",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 41.0,
+        "susceptibility": 0.667,
+        "vulnerability": 0.72,
+        "profile_id": "1",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.09852232711039,
+              25.095267882481366
+            ],
+            [
+              116.09852894470733,
+              25.094364897061144
+            ],
+            [
+              116.09753732445755,
+              25.09435886780334
+            ],
+            [
+              116.09753069958364,
+              25.095261852977135
+            ],
+            [
+              116.09852232711039,
+              25.095267882481366
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00002",
+        "risk": 4,
+        "haz": 4,
+        "distance_m": 35.0,
+        "slope_deg": 42.0,
+        "susceptibility": 0.667,
+        "vulnerability": 0.72,
+        "profile_id": "1",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "风险等级≥3",
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10447209897532,
+              25.095303920340736
+            ],
+            [
+              116.10447867291029,
+              25.09440093344766
+            ],
+            [
+              116.10348705074675,
+              25.09439494394998
+            ],
+            [
+              116.10348046953477,
+              25.09529793059826
+            ],
+            [
+              116.10447209897532,
+              25.095303920340736
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00008",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 20.0,
+        "susceptibility": 0.333,
+        "vulnerability": 0.72,
+        "profile_id": "2",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "距承灾体≤100米"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              116.10546372873362,
+              25.09530990345623
+            ],
+            [
+              116.10547029539156,
+              25.094406916318622
+            ],
+            [
+              116.10447867291029,
+              25.09440093344766
+            ],
+            [
+              116.10447209897532,
+              25.095303920340736
+            ],
+            [
+              116.10546372873362,
+              25.09530990345623
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "feature_id": "R00009C00009",
+        "risk": 2,
+        "haz": 2,
+        "distance_m": 80.0,
+        "slope_deg": 19.0,
+        "susceptibility": 0.333,
+        "vulnerability": 0.72,
+        "profile_id": "2",
+        "identified_or_risk_area": false,
+        "focus_unit": false,
+        "selection_reasons": [
+          "距承灾体≤100米"
+        ]
+      }
+    }
+  ],
+  "data_status": "MOCK"
+}

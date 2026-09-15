@@ -2,9 +2,11 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
+from math import isfinite
 from typing import Any
 
 import pandas as pd
+from .parameters import EvaluationParameters
 
 
 BOOL_COLUMNS_UNITS = [
@@ -168,6 +170,7 @@ class SolverConfig:
     preference_weights: dict[str, float] = field(default_factory=lambda: {
         "safety": 0.35, "economy": 0.20, "sustainability": 0.20, "resilience": 0.25
     })
+    evaluation_parameters: EvaluationParameters = field(default_factory=EvaluationParameters)
 
 
 @dataclass
@@ -198,13 +201,19 @@ def load_measures(path: str | Path) -> list[Measure]:
 
 def validate_units(units: list[GovernanceUnit]) -> list[str]:
     errors: list[str] = []
+    if not units:
+        return ["治理单元不能为空。"]
     ids = [u.unit_id for u in units]
     if len(ids) != len(set(ids)):
         errors.append("治理单元编号必须唯一。")
     for unit in units:
+        if not unit.unit_id.strip():
+            errors.append("治理单元编号不能为空。")
+        if any(not isfinite(value) for value in unit.to_dict().values() if isinstance(value, (int, float))):
+            errors.append(f"{unit.unit_name}：数值不能含NaN或无穷值。")
         if not 1 <= unit.risk <= 5 or not 1 <= unit.haz <= 5:
             errors.append(f"{unit.unit_name}：Risk和Haz必须在1～5之间。")
-        if unit.distance_m < 0 or unit.rainfall_mm < 0 or unit.height_m < 0 or unit.catchment_km2 < 0:
+        if min(unit.distance_m, unit.rainfall_mm, unit.height_m, unit.catchment_km2, unit.foot_space_m) < 0:
             errors.append(f"{unit.unit_name}：距离、降雨、坡高和汇流面积不得为负。")
         if not 0 <= unit.slope_deg <= 90:
             errors.append(f"{unit.unit_name}：坡度必须在0～90°之间。")
@@ -212,15 +221,25 @@ def validate_units(units: list[GovernanceUnit]) -> list[str]:
             errors.append(f"{unit.unit_name}：FS0与K_rain取值无效。")
         if unit.risk_weight < 0 or unit.key_paths < 0:
             errors.append(f"{unit.unit_name}：风险权重和关键风险路径数不得为负。")
+    if sum(unit.risk_weight for unit in units) <= 0:
+        errors.append("风险权重必须显式提供且总和大于零，不得自动替换为均等权重。")
     return errors
 
 
 def validate_measures(measures: list[Measure]) -> list[str]:
     errors: list[str] = []
+    if not measures:
+        return ["措施库不能为空。"]
     ids = [m.measure_id for m in measures]
     if len(ids) != len(set(ids)):
         errors.append("措施编号必须唯一。")
     for measure in measures:
+        if not measure.measure_id.strip():
+            errors.append("措施编号不能为空。")
+        if any(not isfinite(value) for value in measure.to_dict().values() if isinstance(value, (int, float))):
+            errors.append(f"{measure.measure_name}：数值不能含NaN或无穷值。")
+        if measure.chain_delta < 0 or measure.covered_paths < 0:
+            errors.append(f"{measure.measure_name}：效果和路径数不得为负。")
         if measure.actual_cost < 0 or measure.delta_fs < 0:
             errors.append(f"{measure.measure_name}：成本和稳定性提升值不得为负。")
         for field_name in ["build_level", "maintain_level", "construct_level", "carbon_level", "disturbance_level", "recovery_difficulty"]:
@@ -230,3 +249,29 @@ def validate_measures(measures: list[Measure]) -> list[str]:
         if not 0 <= measure.eco_score <= 100:
             errors.append(f"{measure.measure_name}：生态得分必须在0～100之间。")
     return errors
+
+
+def validate_solver_config(config: SolverConfig) -> None:
+    for name in ("total_budget", "high_risk_min_fs", "high_risk_min_safety", "drainage_synergy",
+                 "general_second_measure_factor", "nsga_crossover_probability", "nsga_mutation_probability"):
+        value = getattr(config, name)
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not isfinite(value) or value < 0:
+            raise ValueError(f"{name}须为有限非负数。")
+    for name, low, high in (("max_measures_per_unit", 1, 8), ("max_enumerations", 1, 200_000),
+                            ("nsga_population_size", 20, 200), ("nsga_generations", 1, 200),
+                            ("random_seed", 0, 2**32 - 1)):
+        value = getattr(config, name)
+        if type(value) is not int or not low <= value <= high:
+            raise ValueError(f"{name}须为{low}～{high}整数。")
+    if max(config.nsga_crossover_probability, config.nsga_mutation_probability) > 1:
+        raise ValueError("交叉/变异概率须在0～1之间。")
+    if config.high_risk_min_safety > 100 or config.high_risk_min_fs <= 0:
+        raise ValueError("安全分数底线须在0～100之间，稳定系数底线须大于零。")
+    if type(config.allow_untreated_medium_high) is not bool:
+        raise ValueError("allow_untreated_medium_high须为布尔值。")
+    names = {"safety", "economy", "sustainability", "resilience"}
+    if not isinstance(config.preference_weights, dict) or set(config.preference_weights) != names:
+        raise ValueError("偏好权重须包含完整的四目标键。")
+    if any(isinstance(v, bool) or not isinstance(v, (int, float)) or not isfinite(v) or v < 0
+           for v in config.preference_weights.values()) or sum(config.preference_weights.values()) <= 0:
+        raise ValueError("偏好权重须有限非负且总和大于零。")

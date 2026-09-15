@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableExtensions
 cd /d "%~dp0"
-title Village Decision Platform V3
+title Village Decision Platform V1
 
 set "VENV_PY=.venv\Scripts\python.exe"
 set "APP_PORT=8513"
@@ -41,7 +41,7 @@ if errorlevel 1 (
 :dependencies
 echo [2/3] Checking dependencies...
 
-"%VENV_PY%" -c "import streamlit, plotly, pandas, numpy" >nul 2>nul
+"%VENV_PY%" -c "import streamlit, plotly, pandas, numpy, shapely, pyproj, rasterio, fastapi, uvicorn, openpyxl" >nul 2>nul
 if errorlevel 1 (
     echo Installing dependencies...
     "%VENV_PY%" -m pip install --upgrade pip
@@ -51,12 +51,12 @@ if errorlevel 1 (
     if errorlevel 1 goto install_error
 )
 
-echo [3/3] Starting V3 platform...
+echo [3/3] Starting spatial decision platform...
 echo Address: http://localhost:%APP_PORT%
 echo Keep this window open while using the platform.
 echo.
 
-"%VENV_PY%" -m streamlit run app.py --server.port %APP_PORT% --server.address localhost
+"%VENV_PY%" -m streamlit run v1_app.py --server.port %APP_PORT% --server.address localhost
 
 if errorlevel 1 (
     echo.

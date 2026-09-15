@@ -451,7 +451,7 @@ def model_inputs() -> tuple[list[GovernanceUnit], list[Measure]]:
 
 def current_optimization_hash() -> str:
     units, measures = model_inputs()
-    return optimization_hash(units, measures, make_config(), st.session_state.solver_method)
+    return optimization_hash(units, measures, make_config(), st.session_state.solver_method, st.session_state.topology)
 
 
 def current_preference_hash() -> str:

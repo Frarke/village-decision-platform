@@ -14,11 +14,11 @@
 
 1. `screen_all()` 先形成措施准入结果。
 2. `generate_unit_options()` 基于准入结果生成各治理单元候选措施组合。
-3. `evaluate_village_scheme()` 对每个候选村域方案执行统一评价。
+3. `evaluate_village_scheme()` 对每个候选村域方案校验编码、准入、组合和拓扑，再执行统一评价；非法候选不会在入口中自动修复。
 4. `evaluate_unit()` 计算单元四目标与成本分解。
 5. `evaluate_region()` 执行风险权重归一化与区域聚合。
 6. `evaluate_path_coverage()` 计算关键路径覆盖、区域协同与韧性相关路径指标。
-7. `check_plan_constraints()` 对预算、安全底线和未治理约束做统一判定。
+7. 单元局部路径覆盖与韧性从同一批 `path_details` 同步；`check_plan_constraints()` 对预算、安全底线和未治理约束做统一判定。
 8. 精确枚举与 NSGA-II 仅改变候选方案搜索方式，不改变评价链。
 
 ## 2. 科技报告公式与代码实现
@@ -46,9 +46,9 @@
 | `ΔFSp`, `chain_delta`, `build_level`, `maintain_level`, `construct_level` | `data/default_measures.csv` | 随样例数据载入 | 开发示例/待标定 |
 | `drainage_synergy` | `data/default_scenario.json` / UI 可调 | `1.10` | 平台当前规则/待标定 |
 | `general_second_measure_factor` | `data/default_scenario.json` / UI 可调 | `0.90` | 平台当前规则/待标定 |
-| `SFS` 线性映射区间 | `model/evaluation.py` | `FS=0.80 -> 0`, `FS=1.40 -> 100` | 平台当前规则/待标定 |
-| 陡坡扰动扣减 | `model/evaluation.py` | `slope_deg > 45` 时 `disturb -= 5` | 平台当前规则/待标定 |
-| 货币化维护/组织成本折现 | `model/evaluation.py` | `0.03 + 0.015*(maintain_level-1)`，`0.02*(construct_level-1)` | 平台当前规则/待标定 |
+| `SFS` 线性映射区间 | `model/parameters.py:EvaluationParameters` | `FS=0.80 -> 0`, `FS=1.40 -> 100` | 平台当前规则/待标定 |
+| 陡坡扰动扣减 | `model/parameters.py:EvaluationParameters` | `slope_deg > 45` 时 `disturb -= 5` | 平台当前规则/待标定 |
+| 货币化维护/组织成本折现 | `model/parameters.py:EvaluationParameters` | `0.03 + 0.015*(maintain_level-1)`，`0.02*(construct_level-1)` | 平台当前规则/待标定 |
 
 ## 4. 当前已确认的实现结论
 
@@ -66,3 +66,11 @@
 - 多措施叠加的协同与折减规则尚属平台当前规则。
 - 陡坡扰动扣减、维护折现和组织成本换算尚属平台当前规则。
 - 关键路径自动识别与“已覆盖/已阻断”的精细判定仍依赖当前示例拓扑数据结构。
+
+## 6. V1空间输入与参数溯源补充（2026-09-15）
+
+- 正式入口改为 `v1_app.py` / `api.py`，两者调用 `model/service.py`。`data_adapter.py` 读取有空间参照的评价成果，`governance.py` 根据报告表5-1识别重点区域并生成单元；不要求上游预先划好治理单元。
+- 单元风险权重必须显式提供，负值、非有限值及全零权重被拒绝；程序仅归一化，不推定风险权重公式。
+- 存在topology时，单元关键路径数量和局部覆盖直接来自候选方案实际路径记录；村域统计完整路径覆盖，二者没有分别维护人工路径计数。topology进入输入标识，改变后原结果失效。
+- 原评价中的待标定常数集中到 `EvaluationParameters`，原默认值及正式指标权重不变。配置在输入、输出与成果包中完整留存。空间规则集中于 `SpatialConfig`。
+- 当前V1模拟空间数据、工程调查属性及人工路径见 `data/v1/sample_request.json`。真实数据不足和待标定边界、实测求解对照与验收结果见 `V1_RUN_REPORT.md`。

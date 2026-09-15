@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-15",
+  "method": "真实浏览器操作、无障碍页面状态核对及截图；记录本任务内已完成的交互验收",
+  "formal_url": "http://127.0.0.1:8517/",
+  "offline_map_url": "http://127.0.0.1:8817/map.html",
+  "checks": [
+    {
+      "name": "正式页面治理单元地图点击",
+      "status": "passed",
+      "observed": "依次点击U02和U03多边形，选择框及工程措施、单元风险、成本和安全/韧性详情同步切换。"
+    },
+    {
+      "name": "正式页面代表方案切换",
+      "status": "passed",
+      "observed": "切换经济优先后成本显示323.5万元、关键路径完整覆盖率0%，地图措施图例和指标相应变化。"
+    },
+    {
+      "name": "独立HTML地图",
+      "status": "passed",
+      "observed": "点击U02能显示该单元详情；切换韧性优先后显示486.7万元和66.7%关键路径完整覆盖率，地图措施和单元详情同步更新。HTML自身包含所需数据和交互脚本。"
+    },
+    {
+      "name": "真实文件上传与输入更新",
+      "status": "passed",
+      "input_file": "acceptance_upload.json",
+      "observed": "通过文件选择器上传后显示上传验证研究区（模拟数据）及400万元预算，旧结果失效；实际点击运行后综合均衡成本为339.2万元，配置与原示例发生变化。"
+    },
+    {
+      "name": "最终代码刷新",
+      "status": "passed",
+      "observed": "点击Streamlit文件变更提示中的Rerun后，提示消失；上传文件、400万元预算、339.2万元结果、单元详情及导出按钮正常显示。"
+    }
+  ],
+  "screenshots": [
+    "acceptance_formal_page.png",
+    "acceptance_offline_map.png",
+    "acceptance_formal_final.png"
+  ],
+  "data_status": "MOCK；所有观察值仅用于本例方法及流程验证",
+  "notes": "自动化交互回归另见tests/test_v1_ui.py；HTTP启动与真实API求解核验见startup_checks.json。"
+}
